@@ -72,7 +72,11 @@ copied as it was, including undocumented Garmin messages and developer
   (speed is total distance / timer time). Maximums, minimums, the bounding
   box and normalized power (4th-power weighted mean) are combined.
   Elapsed time runs from the first start to the last end.
-- **Laps** are kept as recorded and renumbered.
+- **Laps** are kept as recorded and renumbered. The last lap before a gap
+  absorbs the pause, as a real pause inside a lap would: its elapsed time
+  grows and its timer time stays the same. This keeps laps contiguous and
+  their elapsed times adding up to the session's, as Garmin's validator
+  requires.
 - **Splits** (run/walk/stand detection, intervals) are renumbered. The
   whole-activity interval split and the per-type split summaries are
   merged.
@@ -101,7 +105,8 @@ copied as it was, including undocumented Garmin messages and developer
 
 ```
 python -m venv .venv && .venv/bin/pip install -e '.[test]'
-.venv/bin/python tools/fetch_corpus.py
+.venv/bin/python tools/fetch_corpus.py      # public FIT files
+.venv/bin/python tools/fetch_fitcsvtool.py  # optional: Garmin's validator (needs Java)
 .venv/bin/pytest
 ```
 
@@ -114,14 +119,29 @@ The tests work at three levels:
   Wahoo, Coros, Zwift and others, plus deliberately broken files) taken from
   the test suites of [fitdecode](https://github.com/polyvertex/fitdecode),
   [python-fitparse](https://github.com/dtcooper/python-fitparse) and the
-  official Garmin SDKs. `tools/fetch_corpus.py` downloads them. Every file
-  must either round-trip byte for byte or be refused with a clear error.
-  Every activity is cut into halves and into thirds with `fit-split` and
-  stitched back, and the result must reproduce the original data stream
-  exactly.
+  official Garmin SDKs. Every file must either round-trip byte for byte or
+  be refused with a clear error. Every activity is cut into halves and into
+  thirds with `fit-split` and stitched back, and the result must reproduce
+  the original data stream exactly.
 - Real activities in `samples/<case>/` (two or more parts per directory, not
   distributed) are stitched and verified too. See
   [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Every stitched file in the tests is also checked by independent decoders:
+
+- **fitdecode** must decode every message and field value exactly as
+  fitstitch's own reader does.
+- **Garmin's FitCSVTool** runs its activity file validation (`-t`), the
+  checks Garmin applies to activity files. Stitching must not introduce a
+  failure the input files did not already have. This check runs when
+  `tools/.cache/FitCSVTool.jar` (or `$FITCSVTOOL_JAR`) and Java are
+  available, as they are in CI. FitCSVTool is published by Garmin under its
+  [FIT Protocol License](https://github.com/garmin/fit-sdk-tools/blob/main/LICENSE.txt)
+  and is downloaded, never redistributed.
+
+The tool's own output checks include the same summary rules as Garmin's
+validator, with the same tolerances: laps must be contiguous, and lap
+elapsed and timer times must add up to the session's.
 
 `fit-split FILE 0.5` cuts an activity into parts as if it had been stopped
 and restarted. It is meant for testing.

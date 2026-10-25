@@ -419,6 +419,8 @@ def merge_two(a, b, warnings, force=False):
     # --- laps (+ their time in zone) ---
     lap_msgs = []
     n_a = len(laps_a)
+    if laps_a and laps_b:
+        laps_a = laps_a[:-1] + [_extend_lap(laps_a, b.start - t0, laps_b[0].raw('start_time'), t0)]
     for i, lap in enumerate(laps_a):
         lap_msgs.append(lap)
         t = _tiz(a.msgs, REF_LAP, lap.raw('message_index') if lap.has('message_index') else i)
@@ -532,6 +534,33 @@ def merge_two(a, b, warnings, force=False):
     merged = Activity(f'{a.name} + {b.name}', a.header, msgs)
     merged.gaps = getattr(a, 'gaps', []) + [gap] + getattr(b, 'gaps', [])
     return merged
+
+
+def _extend_lap(laps, span, next_start, t0):
+    """Stretch a part's last lap over the pause before the next part, as a
+    real pause inside a lap would: elapsed time grows, timer time does not.
+
+    Preferably the lap also absorbs the rounding residue of the part's laps,
+    so lap elapsed times keep adding up to the session's (FIT validators allow
+    at most 1 s difference, which would otherwise accumulate over the parts).
+    If that would make it overlap the next part's first lap, it ends exactly
+    where that lap starts instead, keeping laps contiguous."""
+    lap = laps[-1]
+    elapsed = [l.get('total_elapsed_time') for l in laps]
+    if None in elapsed or lap.raw('start_time') is None:
+        return lap
+    old_end = lap.raw('start_time') + elapsed[-1]
+    delta = span - sum(elapsed)
+    if next_start is not None and abs(old_end + delta - next_start) > 1:
+        delta = next_start - old_end
+    if delta <= 0:
+        return lap
+    lap = lap.copy()
+    lap.set('total_elapsed_time', elapsed[-1] + delta)
+    ts = lap.raw('timestamp')
+    if ts is not None and ts != t0 and abs(ts - old_end) <= 1:
+        lap.set_raw('timestamp', round(old_end + delta))  # end-of-lap convention
+    return lap
 
 
 def _record_offsets(a):

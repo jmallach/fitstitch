@@ -10,6 +10,8 @@ from fitstitch.merge import load, stitch, StitchError, Activity
 from fitstitch.verify import verify
 from fitstitch.cli import main
 
+from crosscheck import assert_fitdecode_agrees, assert_fitcsvtool_agrees
+
 HEADER = bytes([14, 0x20]) + struct.pack('<H', 2132) + b'\0\0\0\0' + b'.FIT' + b'\0\0'
 T0 = 1_100_000_000
 APP_ID = bytes(range(16))
@@ -78,6 +80,8 @@ def run(tmp_path, *parts, **kw):
     data = fitraw.encode(merged.header, merged.msgs)
     checks = verify(data, ordered)
     assert all(ok for ok, _ in checks), [d for ok, d in checks if not ok]
+    assert_fitdecode_agrees(data)
+    assert_fitcsvtool_agrees(data, [p.read_bytes() for p in paths])
     h, msgs, _ = fitraw.read_bytes(data)
     return Activity('out', h, msgs), warnings
 
@@ -241,6 +245,8 @@ def test_real_samples(case):
     data = fitraw.encode(merged.header, merged.msgs)
     checks = verify(data, ordered)
     assert all(ok for ok, _ in checks), [d for ok, d in checks if not ok]
+    assert_fitdecode_agrees(data)
+    assert_fitcsvtool_agrees(data, [fitraw.encode(a.header, a.msgs) for a in ordered])
 
 
 def test_roundtrip_real_samples():

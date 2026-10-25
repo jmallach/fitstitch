@@ -149,6 +149,8 @@ class Msg:
             return data.split(b'\0')[0].decode('utf-8', 'replace')
         end = '<' if self.arch == 0 else '>'
         n = len(data) // size
+        if n == 0:
+            return None  # field shorter than its type: invalid
         vals = list(struct.unpack(end + code * n, data[:n * size]))
         vals = [None if (inv is not None and v == inv) or (code in 'fd' and v != v) else v for v in vals]
         return vals if n > 1 else vals[0]

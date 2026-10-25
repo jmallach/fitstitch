@@ -27,7 +27,7 @@ Homepage = "https://github.com/jmallach/fitstitch"
 Issues = "https://github.com/jmallach/fitstitch/issues"
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "fitdecode>=0.10"]
 
 [project.scripts]
 fit-stitch = "fitstitch.cli:main"
@@ -41,3 +41,7 @@ version = { attr = "fitstitch.__version__" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = [
+    # fitdecode reports the deliberately malformed fields of some corpus files
+    "ignore:invalid field size:UserWarning:fitdecode",
+]

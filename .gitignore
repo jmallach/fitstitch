@@ -9,3 +9,4 @@ dist/
 samples/
 *.fit
 *.zip
+tools/.cache/

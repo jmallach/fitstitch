@@ -14,6 +14,8 @@ from fitstitch.merge import Activity, StitchError, load, stitch, RECORD, LAP, EV
 from fitstitch.split import split
 from fitstitch.verify import verify
 
+from crosscheck import assert_fitdecode_agrees, assert_fitcsvtool_agrees
+
 CORPUS = Path(__file__).parent.parent / 'samples' / 'corpus'
 FILES = sorted(CORPUS.glob('*.fit')) if CORPUS.is_dir() else []
 
@@ -57,6 +59,8 @@ def test_split_and_stitch_back(path, fractions):
 
     checks = verify(data, ordered)
     assert all(ok for ok, _ in checks), [d for ok, d in checks if not ok]
+    assert_fitdecode_agrees(data)
+    assert_fitcsvtool_agrees(data, [fitraw.encode(p.header, p.msgs) for p in ordered])
 
     out = Activity('out', *fitraw.read_bytes(data)[:2])
     # the data stream is restored exactly

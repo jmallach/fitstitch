@@ -6,9 +6,13 @@ Bug reports and pull requests are welcome.
 
 ```
 python -m venv .venv && .venv/bin/pip install -e '.[test]'
-.venv/bin/python tools/fetch_corpus.py   # public FIT files used by tests/test_corpus.py
+.venv/bin/python tools/fetch_corpus.py      # public FIT files used by tests/test_corpus.py
+.venv/bin/python tools/fetch_fitcsvtool.py  # optional: Garmin's validator, needs Java
 .venv/bin/pytest
 ```
+
+`pytest` prints whether FitCSVTool validation is enabled in its header (run
+it without `-q` to see the header).
 
 ## Sample files
 

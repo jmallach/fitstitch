@@ -4,7 +4,7 @@ from collections import Counter
 from garmin_fit_sdk import Decoder, Stream
 
 from . import fitraw
-from .merge import (Activity, RECORD, LAP, SESSION, EVENT, SUMMARY_TYPES, SETUP_ONCE,
+from .merge import (Activity, RECORD, LAP, SESSION, EVENT, ACTIVITY, SUMMARY_TYPES, SETUP_ONCE,
                     DEVELOPER_DATA_ID, FIELD_DESCRIPTION)
 
 # Message types whose count must be preserved exactly (data streams).
@@ -68,4 +68,63 @@ def verify(data, inputs):
     idx = [l.raw('message_index') for l in out.of(LAP) if l.has('message_index')]
     check(idx == list(range(len(idx))), 'lap indexes are sequential')
     check(len(out.of(SESSION)) == 1, 'exactly one session')
+
+    # Summary consistency rules from Garmin's activity file validator
+    # (ActivityFileValidationPlugin in the FIT Java SDK, run by FitCSVTool -t),
+    # with its tolerances. Checked when every input already satisfies them.
+    for rule, desc in RULES:
+        if all(rule(a) for a in inputs):
+            check(rule(out), desc)
     return checks
+
+
+def _lap_spans(act):
+    spans = []
+    for lap in act.of(LAP):
+        s, e = lap.raw('start_time'), lap.get('total_elapsed_time')
+        if s is None or e is None:
+            return None
+        spans.append((s, s + e))
+    return spans
+
+
+def _laps_abut(act):
+    spans = _lap_spans(act)
+    if not spans:
+        return False
+    return all(abs(b[0] - a[1]) <= 2 for a, b in zip(spans, spans[1:]))
+
+
+def _lap_sum(field):
+    def rule(act):
+        laps = act.of(LAP)
+        total = act.session.get(field)
+        vals = [lap.get(field) for lap in laps]
+        if not laps or total is None or None in vals:
+            return False
+        return abs(sum(vals) - total) <= 1
+    return rule
+
+
+def _activity_timer(act):
+    acts = act.of(ACTIVITY)
+    if not acts or acts[0].get('total_timer_time') is None or act.session.get('total_timer_time') is None:
+        return False
+    return abs(acts[0].get('total_timer_time') - act.session.get('total_timer_time')) <= 1
+
+
+def _records_within_session(act):
+    recs = act.of(RECORD)
+    start, elapsed = act.session.raw('start_time'), act.session.get('total_elapsed_time')
+    if start is None or elapsed is None:
+        return False
+    return recs[0].raw('timestamp') >= start and recs[-1].raw('timestamp') <= start + elapsed + 1
+
+
+RULES = [
+    (_laps_abut, 'laps are contiguous (each lap starts where the previous one ended)'),
+    (_lap_sum('total_elapsed_time'), 'lap elapsed times add up to the session elapsed time'),
+    (_lap_sum('total_timer_time'), 'lap timer times add up to the session timer time'),
+    (_activity_timer, 'activity timer time equals the session timer time'),
+    (_records_within_session, 'records fall within the session time span'),
+]
