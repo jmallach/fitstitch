@@ -27,6 +27,7 @@ def build(out):
     for name in PAGE:
         shutil.copy(ROOT / 'web' / name, out / name)
     shutil.copytree(ROOT / 'web' / 'locales', out / 'locales')
+    shutil.copy(ROOT / 'docs' / 'icon.svg', out / 'icon.svg')
     pip = [sys.executable, '-m', 'pip', '-q', '--disable-pip-version-check']
     subprocess.run(pip + ['wheel', '--no-deps', '-w', str(wheels), str(ROOT)], check=True)
     subprocess.run(pip + ['download', '--no-deps', '--only-binary', ':all:', '-d', str(wheels),
