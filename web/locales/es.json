@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Une en una sola una actividad FIT que detuviste y guardaste a medias por error, sin perder datos. Funciona en tu navegador; tus archivos no se suben.",
+    "description": "Une en una sola una actividad FIT que detuviste y guardaste a medias por error, sin perder datos. Funciona con archivos de Garmin, Suunto, Wahoo, Coros y otros; el resultado se puede subir a Garmin Connect, Strava y otras aplicaciones deportivas. Gratis y privado: funciona en tu navegador y tus archivos nunca se suben.",
     "language": "Idioma",
     "tagline": "Une dos archivos FIT en una sola actividad",
     "lede": "¿Detuviste y guardaste tu carrera o tu salida en bici a medias sin querer? Vuelve a unir las dos actividades en una, como si hubieras hecho una pausa en lugar de guardar. No se pierde ningún dato.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privado: tus archivos nunca se suben ni se guardan en ningún sitio",
     "privacy_more": "No hay ningún servidor que pueda recibirlos: fitstitch funciona entero en tu navegador y, una vez cargada la página, incluso sin conexión. Tampoco se guarda nada, salvo el idioma que elijas. El <a href=\"https://github.com/jmallach/fitstitch\">código fuente</a> es abierto y cualquiera puede revisarlo.",
     "export_h": "1. Exporta las partes",
-    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abre cada actividad y luego ⚙ → <em>Exportar original</em> (obtendrás un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abre cada actividad y luego ⋯ → <em>Exportar original</em>. Los archivos de otras aplicaciones también sirven si son archivos .fit.",
+    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abre cada actividad y luego ⚙ → <em>Exportar original</em> (obtendrás un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abre cada actividad y luego ⋯ → <em>Exportar original</em>. Los archivos FIT de otros dispositivos y aplicaciones (Suunto, Wahoo, Coros…) también sirven.",
     "export_note": "Las apps del móvil no permiten exportar: usa las webs, en el ordenador o en el navegador del móvil (si te sigue abriendo la app, pide la versión de escritorio).",
     "add_h": "2. Añádelas aquí",
     "drop": "Suelta aquí los archivos .fit o .zip, o <u>elige los archivos</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "La verificación ha fallado, así que no se ha generado ningún archivo. Por favor, notifícalo como error.",
     "unexpected": "Error inesperado: {0}",
     "replace_h": "4. Sustituye las partes",
-    "replace_p": "Primero, <strong>elimina las partes originales</strong> en Garmin Connect y en Strava: ambos rechazan una subida con la misma hora de inicio que una actividad existente. Se perderán los kudos, comentarios, fotos y títulos de las partes. Después, sube el archivo unido a Garmin Connect (<em>Importar datos</em>). Si no llega a Strava por sí solo, súbelo en <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "Primero, <strong>elimina las partes originales</strong> allí donde las hayas subido: Garmin Connect, Strava y la mayoría de las demás aplicaciones rechazan una actividad con la misma hora de inicio que una existente. Se perderán los kudos, comentarios, fotos y títulos de las partes. Después, sube el archivo unido a Garmin Connect (<em>Importar datos</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> o cualquier otra aplicación que acepte archivos FIT. Si tus aplicaciones se sincronizan entre sí, puede bastar con subirlo a una.",
     "footer": "Licencia MIT · también disponible como herramienta de línea de órdenes. El Training Effect y otros valores calculados por el reloj no se pueden recalcular; consulta las <a href=\"https://github.com/jmallach/fitstitch#limitations\">limitaciones</a>."
   },
   "messages": {

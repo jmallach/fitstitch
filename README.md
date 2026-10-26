@@ -4,6 +4,10 @@ Stitch FIT activities that were accidentally split (stopped and saved
 halfway) back into one, offline and without losing data. The result is the
 activity you would have had if you had pressed pause instead of saving.
 
+It works with FIT files from any device (Garmin, Suunto, Wahoo, Coros…),
+and the stitched file uploads to Garmin Connect, Strava and other sports
+apps.
+
 ```
 $ fit-stitch part1.zip part2.zip -o run.fit
                                Part 1               Part 2             Stitched
@@ -47,27 +51,30 @@ is used for field names and units, and to check the output independently.
 fit-stitch PART1 PART2 [PART3...] [-o OUTPUT] [-n] [-f] [--overwrite]
 ```
 
-- Inputs are `.fit` files or the `.zip` files Garmin Connect produces with
-  *Export Original*. You can give them in any order; they are sorted by
-  start time.
+- Inputs are `.fit` files, or `.zip` files holding one (such as Garmin
+  Connect's *Export Original*). You can give them in any order; they are
+  sorted by start time.
 - `-n/--dry-run` shows the result and the checks without writing anything.
 - `-f/--force` stitches parts even if the sport or the recording device
   differ.
 - If the output fails any check, the tool writes nothing and exits with
   status 2.
 
-### Replacing the activity on Garmin Connect and Strava
+### Replacing the original activities
 
-1. Export each part from the Garmin Connect website (activity → ⚙ →
-   *Export Original*) or the Strava website (activity → ⋯ → *Export
-   Original*). The phone apps can't export files; in a phone's browser,
-   ask for the desktop site if it keeps opening the app.
+1. Export the original FIT file of each part from your sports app. On
+   the Garmin Connect website: activity → ⚙ → *Export Original*; on the
+   Strava website: activity → ⋯ → *Export Original*. Their phone apps
+   can't export files; in a phone's browser, ask for the desktop site if
+   it keeps opening the app.
 2. Run `fit-stitch`, or use the web page.
-3. **Delete the original parts** on Garmin Connect and on Strava. Both
-   reject an upload with the same start time as an existing activity as a
-   duplicate. Kudos, comments, photos, titles and gear on the parts are lost.
-4. Upload the stitched file in Garmin Connect (*Import Data*). If it doesn't
-   reach Strava on its own, upload it at strava.com/upload/select.
+3. **Delete the original parts** wherever they were uploaded. Garmin
+   Connect, Strava and most other apps reject an activity with the same
+   start time as an existing one as a duplicate. Kudos, comments, photos,
+   titles and gear on the parts are lost.
+4. Upload the stitched file to Garmin Connect (*Import Data*), Strava
+   (strava.com/upload/select) or any other app that accepts FIT files. If
+   your apps sync with each other, uploading it to one may be enough.
 
 ## What it does
 
@@ -99,14 +106,15 @@ copied as it was, including undocumented Garmin messages and developer
   the fastest of the parts is kept.
 - **Setup messages** (user profile, device settings, sport, zones, course):
   the first part's copy is kept.
-- **Layout**: the first part's message order is followed. Newer Garmin
-  watches write summaries before the data; older devices write them after.
+- **Layout**: the first part's message order is followed. Some devices
+  (such as newer Garmin watches) write summaries before the data; others
+  write them after.
 
 ## Limitations
 
 - **Values calculated on the watch** (Training Effect, training load,
-  recovery time, VO2max update) come from Garmin's proprietary algorithms and
-  cannot be recalculated. The tool keeps the higher Training Effect of the
+  recovery time, VO2max update) come from the watch maker's proprietary
+  algorithms and cannot be recalculated. The tool keeps the higher Training Effect of the
   parts and adds up training load, which leaves your weekly load unchanged.
 - **Auto laps** restart at the beginning of each part, so the lap before the
   gap is a partial one, as if you had pressed the lap button.

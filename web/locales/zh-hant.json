@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "把不小心中途停止並儲存的 FIT 活動重新合併為一個，不遺失任何資料。在瀏覽器中執行，檔案不會上傳。",
+    "description": "把不小心中途停止並儲存的 FIT 活動重新合併為一個，不遺失任何資料。支援來自 Garmin、Suunto、Wahoo、Coros 等裝置的檔案；合併結果可上傳到 Garmin Connect、Strava 及其他運動應用程式。免費且私密：在瀏覽器中執行，檔案不會上傳。",
     "language": "語言",
     "tagline": "將兩個 FIT 檔案合併為一個活動",
     "lede": "跑步或騎車到一半不小心停止並儲存了？把兩段活動重新合併成一個，就像當時只是暫停而沒有儲存一樣。不會遺失任何資料。",
@@ -8,7 +8,7 @@
     "privacy_h": "隱私安全：你的檔案絕不會被上傳或儲存",
     "privacy_more": "沒有任何伺服器能接收你的檔案：fitstitch 完全在瀏覽器中執行，頁面載入後甚至可以離線使用。除了你選擇的語言外，也不會儲存任何內容。<a href=\"https://github.com/jmallach/fitstitch\">原始碼</a>公開，任何人都可以檢視。",
     "export_h": "1. 匯出各段活動",
-    "export_p": "在 <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> 中開啟每個活動，然後點 ⚙ → <em>匯出原始資料</em>（會得到一個 .zip 檔案）。在 <a href=\"https://www.strava.com/athlete/training\">Strava</a> 中開啟每個活動，然後點 ⋯ → <em>匯出原始檔案</em>。其他應用程式的檔案只要是 .fit 格式也可以使用。",
+    "export_p": "在 <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> 中開啟每個活動，然後點 ⚙ → <em>匯出原始資料</em>（會得到一個 .zip 檔案）。在 <a href=\"https://www.strava.com/athlete/training\">Strava</a> 中開啟每個活動，然後點 ⋯ → <em>匯出原始檔案</em>。來自其他裝置和應用程式（Suunto、Wahoo、Coros…）的 FIT 檔案也可以使用。",
     "export_note": "手機 App 無法匯出檔案：請使用網頁版，在電腦或手機瀏覽器中開啟（如果總是跳轉到 App，請切換為電腦版網站）。",
     "add_h": "2. 新增到這裡",
     "drop": "把 .fit 或 .zip 檔案拖到這裡，或<u>選擇檔案</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "校驗未通過，因此沒有產生檔案。請將此問題作為 bug 報告。",
     "unexpected": "意外錯誤：{0}",
     "replace_h": "4. 替換原來的各段",
-    "replace_p": "請先在 Garmin Connect 和 Strava 上<strong>刪除原來的各段活動</strong>：如果已有活動的開始時間相同，兩者都會拒絕上傳。各段上的按讚、評論、照片和標題都會遺失。然後在 Garmin Connect 上傳拼接後的檔案（<em>匯入資料</em>）。如果它沒有自動同步到 Strava，請在 <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a> 手動上傳。",
+    "replace_p": "請先在所有上傳過的地方<strong>刪除原來的各段活動</strong>：如果已有活動的開始時間相同，Garmin Connect、Strava 和大多數其他應用程式都會拒絕上傳。各段上的按讚、評論、照片和標題都會遺失。然後將拼接後的檔案上傳到 Garmin Connect（<em>匯入資料</em>）、<a href=\"https://www.strava.com/upload/select\">Strava</a> 或任何支援 FIT 檔案的應用程式。如果你的應用程式之間會互相同步，只上傳到其中一個可能就夠了。",
     "footer": "MIT 授權 · 也提供命令列版本。訓練效果等由手錶計算的數值無法重新計算；請參閱<a href=\"https://github.com/jmallach/fitstitch#limitations\">限制</a>。"
   },
   "messages": {

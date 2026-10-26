@@ -152,7 +152,7 @@ async function setLanguage(lang) {
     el.setAttribute('aria-label', t(el.dataset.i18nLabel));
   }
   document.querySelector('meta[name=description]').content = t('description');
-  document.title = `fitstitch – ${t('tagline')} · Garmin, Strava`;
+  document.title = `fitstitch – ${t('tagline')}`;
   const canonical = new URL(location.pathname, location.origin);
   if (lang !== 'en') canonical.searchParams.set('lang', lang);
   document.querySelector('link[rel=canonical]').href = canonical.href;

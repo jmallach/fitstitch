@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>fitstitch – Join two FIT files into one activity · Garmin, Strava</title>
-<meta name="description" content="Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free and private: runs in your browser, files are never uploaded, no data lost.">
-<meta name="keywords" content="join FIT files, merge FIT files, combine FIT files, stitch activities, Garmin Connect, Strava, accidentally stopped activity, split run, FIT file merger">
+<title>fitstitch – Join two FIT files into one activity</title>
+<meta name="description" content="Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with files from Garmin, Suunto, Wahoo, Coros and others; upload the result to Garmin Connect, Strava or any other sports app. Free and private: runs in your browser, files are never uploaded.">
+<meta name="keywords" content="join FIT files, merge FIT files, combine FIT files, stitch activities, accidentally stopped activity, FIT file merger, Garmin, Suunto, Wahoo, Coros, Garmin Connect, Strava">
 <meta name="google-site-verification" content="onb31Z5EYZlqBS5sE8n3xD6yryNcm8HQneMqn9leutQ">
 <meta name="msvalidate.01" content="00E7CFED34198C43F995B8781C14F63D">
 <link rel="canonical" href="https://jmallach.github.io/fitstitch/">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="fitstitch">
 <meta property="og:url" content="https://jmallach.github.io/fitstitch/">
 <meta property="og:title" content="fitstitch – Join two FIT files into one activity">
-<meta property="og:description" content="Accidentally stopped and saved your run or ride halfway? Join the two FIT files back into one, with no data lost. Free and private: it runs in your browser and your files are never uploaded.">
+<meta property="og:description" content="Accidentally stopped and saved your run or ride halfway? Join the two FIT files back into one, with no data lost, and upload it to Garmin Connect, Strava or any other sports app. Free and private: it runs in your browser.">
 <meta property="og:image" content="https://jmallach.github.io/fitstitch/social.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -30,7 +30,7 @@
   "@type": "WebApplication",
   "name": "fitstitch",
   "url": "https://jmallach.github.io/fitstitch/",
-  "description": "Join, merge or combine two FIT activity files (Garmin, Strava, Wahoo, Coros…) into one, when an activity was accidentally stopped and saved halfway. No data is lost; files are processed in the browser and never uploaded.",
+  "description": "Join, merge or combine two FIT activity files from any device (Garmin, Suunto, Wahoo, Coros…) into one, when an activity was accidentally stopped and saved halfway. No data is lost; the result uploads to Garmin Connect, Strava and other sports apps. Files are processed in the browser and never uploaded.",
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript and WebAssembly",
@@ -77,7 +77,7 @@
 
   <section>
     <h2 data-i18n="export_h">1. Export the parts</h2>
-    <p data-i18n="export_p">On <a href="https://connect.garmin.com/modern/activities">Garmin Connect</a>, open each activity, then ⚙ → <em>Export Original</em> (you get a .zip). On <a href="https://www.strava.com/athlete/training">Strava</a>, open each activity, then ⋯ → <em>Export Original</em>. Files from other apps work if they are .fit files.</p>
+    <p data-i18n="export_p">On <a href="https://connect.garmin.com/modern/activities">Garmin Connect</a>, open each activity, then ⚙ → <em>Export Original</em> (you get a .zip). On <a href="https://www.strava.com/athlete/training">Strava</a>, open each activity, then ⋯ → <em>Export Original</em>. FIT files from other devices and apps (Suunto, Wahoo, Coros…) work too.</p>
     <p class="note" data-i18n="export_note">The phone apps can't export files: use the websites, on a computer or in your phone's browser (if it keeps opening the app, ask for the desktop site).</p>
   </section>
 
@@ -111,12 +111,7 @@
 
   <section>
     <h2 data-i18n="replace_h">4. Replace the parts</h2>
-    <p data-i18n="replace_p"><strong>Delete the original parts</strong> on Garmin Connect and on
-    Strava first: both reject an upload with the same start time as an
-    existing activity. Kudos, comments, photos and titles on the parts are
-    lost. Then upload the stitched file on Garmin Connect (<em>Import
-    Data</em>). If it doesn't reach Strava on its own, upload it at
-    <a href="https://www.strava.com/upload/select">strava.com/upload</a>.</p>
+    <p data-i18n="replace_p"><strong>Delete the original parts</strong> first, wherever they were uploaded: Garmin Connect, Strava and most other apps reject an activity with the same start time as an existing one. Kudos, comments, photos and titles on the parts are lost. Then upload the stitched file to Garmin Connect (<em>Import Data</em>), <a href="https://www.strava.com/upload/select">Strava</a> or any other app that accepts FIT files. If your apps sync with each other, uploading it to one may be enough.</p>
   </section>
 
   <footer>

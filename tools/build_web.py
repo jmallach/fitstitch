@@ -74,6 +74,9 @@ def build(out):
     html = page.read_text()
     for name in ('style.css', 'app.js'):
         html = html.replace(f'"{name}"', f'"{name}?v={version}"')
+    # link previews are cached by image URL, so version the card too
+    card = hashlib.sha256((out / 'social.png').read_bytes()).hexdigest()[:10]
+    html = html.replace(f'{SITE}social.png"', f'{SITE}social.png?v={card}"')
     page.write_text(html)
     return out
 

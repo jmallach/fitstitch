@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Voeg een FIT-activiteit die je per ongeluk halverwege hebt gestopt en opgeslagen weer samen tot één, zonder gegevens te verliezen. Werkt in je browser; je bestanden worden niet geüpload.",
+    "description": "Voeg een FIT-activiteit die je per ongeluk halverwege hebt gestopt en opgeslagen weer samen tot één, zonder gegevens te verliezen. Werkt met bestanden van Garmin, Suunto, Wahoo, Coros en andere; het resultaat kun je uploaden naar Garmin Connect, Strava en andere sportapps. Gratis en privé: werkt in je browser, je bestanden worden nooit geüpload.",
     "language": "Taal",
     "tagline": "Twee FIT-bestanden samenvoegen tot één activiteit",
     "lede": "Per ongeluk je training halverwege gestopt en opgeslagen? Voeg de twee activiteiten weer samen tot één, alsof je had gepauzeerd in plaats van opgeslagen. Er gaan geen gegevens verloren.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privé: je bestanden worden nooit geüpload of opgeslagen",
     "privacy_more": "Er is geen server die ze kan ontvangen: fitstitch draait volledig in je browser en werkt, zodra de pagina geladen is, zelfs offline. Er wordt ook niets bewaard, behalve je taalkeuze. De <a href=\"https://github.com/jmallach/fitstitch\">broncode</a> is open en door iedereen te controleren.",
     "export_h": "1. Exporteer de delen",
-    "export_p": "Open in <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> elke activiteit en kies ⚙ → <em>Origineel exporteren</em> (je krijgt een .zip). Open in <a href=\"https://www.strava.com/athlete/training\">Strava</a> elke activiteit en kies ⋯ → <em>Origineel exporteren</em>. Bestanden uit andere apps werken als het .fit-bestanden zijn.",
+    "export_p": "Open in <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> elke activiteit en kies ⚙ → <em>Origineel exporteren</em> (je krijgt een .zip). Open in <a href=\"https://www.strava.com/athlete/training\">Strava</a> elke activiteit en kies ⋯ → <em>Origineel exporteren</em>. FIT-bestanden van andere apparaten en apps (Suunto, Wahoo, Coros…) werken ook.",
     "export_note": "In de telefoon-apps kun je niet exporteren: gebruik de websites, op een computer of in de browser van je telefoon (blijft de app openen, vraag dan de desktopversie aan).",
     "add_h": "2. Voeg ze hier toe",
     "drop": "Sleep de .fit- of .zip-bestanden hierheen, of <u>kies bestanden</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "De controle is mislukt, dus er is geen bestand gemaakt. Meld dit alsjeblieft als bug.",
     "unexpected": "Onverwachte fout: {0}",
     "replace_h": "4. Vervang de delen",
-    "replace_p": "<strong>Verwijder eerst de originele delen</strong> in Garmin Connect en in Strava: beide weigeren een upload met dezelfde starttijd als een bestaande activiteit. Kudos, opmerkingen, foto’s en titels van de delen gaan verloren. Upload daarna het samengevoegde bestand in Garmin Connect (<em>Gegevens importeren</em>). Komt het niet vanzelf in Strava terecht, upload het dan via <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "<strong>Verwijder eerst de originele delen</strong>, waar je ze ook hebt geüpload: Garmin Connect, Strava en de meeste andere apps weigeren een activiteit met dezelfde starttijd als een bestaande. Kudos, opmerkingen, foto’s en titels van de delen gaan verloren. Upload daarna het samengevoegde bestand naar Garmin Connect (<em>Gegevens importeren</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> of een andere app die FIT-bestanden accepteert. Als je apps onderling synchroniseren, is uploaden naar één ervan misschien genoeg.",
     "footer": "MIT-licentie · ook beschikbaar als opdrachtregelprogramma. Training Effect en andere waarden die het horloge berekent, kunnen niet opnieuw worden berekend; zie de <a href=\"https://github.com/jmallach/fitstitch#limitations\">beperkingen</a>."
   },
   "messages": {

@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Füge eine FIT-Aktivität, die du versehentlich mittendrin gestoppt und gespeichert hast, wieder zu einer zusammen, ohne Daten zu verlieren. Läuft in deinem Browser; deine Dateien werden nicht hochgeladen.",
+    "description": "Füge eine FIT-Aktivität, die du versehentlich mittendrin gestoppt und gespeichert hast, wieder zu einer zusammen, ohne Daten zu verlieren. Funktioniert mit Dateien von Garmin, Suunto, Wahoo, Coros und anderen; das Ergebnis lässt sich zu Garmin Connect, Strava und anderen Sport-Apps hochladen. Kostenlos und privat: läuft in deinem Browser, Dateien werden nie hochgeladen.",
     "language": "Sprache",
     "tagline": "Zwei FIT-Dateien zu einer Aktivität zusammenfügen",
     "lede": "Deinen Lauf oder deine Radtour versehentlich mittendrin gestoppt und gespeichert? Füge die beiden Aktivitäten wieder zu einer zusammen, als hättest du pausiert statt gespeichert. Es gehen keine Daten verloren.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privat: Deine Dateien werden nie hochgeladen oder gespeichert",
     "privacy_more": "Es gibt keinen Server, der sie empfangen könnte: fitstitch läuft vollständig in deinem Browser und funktioniert, sobald die Seite geladen ist, sogar offline. Gespeichert wird auch nichts, außer deiner Sprachauswahl. Der <a href=\"https://github.com/jmallach/fitstitch\">Quellcode</a> ist offen und für alle überprüfbar.",
     "export_h": "1. Teile exportieren",
-    "export_p": "Öffne in <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> jede Aktivität und wähle ⚙ → <em>Original exportieren</em> (du erhältst eine .zip-Datei). Öffne in <a href=\"https://www.strava.com/athlete/training\">Strava</a> jede Aktivität und wähle ⋯ → <em>Original exportieren</em>. Dateien aus anderen Apps funktionieren, wenn es .fit-Dateien sind.",
+    "export_p": "Öffne in <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> jede Aktivität und wähle ⚙ → <em>Original exportieren</em> (du erhältst eine .zip-Datei). Öffne in <a href=\"https://www.strava.com/athlete/training\">Strava</a> jede Aktivität und wähle ⋯ → <em>Original exportieren</em>. FIT-Dateien von anderen Geräten und Apps (Suunto, Wahoo, Coros…) funktionieren ebenfalls.",
     "export_note": "In den Handy-Apps lässt sich nichts exportieren: Nutze die Websites, am Computer oder im Browser deines Handys (falls sich immer wieder die App öffnet, fordere die Desktop-Version an).",
     "add_h": "2. Hier hinzufügen",
     "drop": "Zieh die .fit- oder .zip-Dateien hierher oder <u>wähle Dateien aus</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Die Prüfung ist fehlgeschlagen, daher wurde keine Datei erstellt. Bitte melde das als Fehler.",
     "unexpected": "Unerwarteter Fehler: {0}",
     "replace_h": "4. Teile ersetzen",
-    "replace_p": "<strong>Lösche zuerst die ursprünglichen Teile</strong> in Garmin Connect und in Strava: Beide lehnen einen Upload mit derselben Startzeit wie eine vorhandene Aktivität ab. Kudos, Kommentare, Fotos und Titel der Teile gehen verloren. Lade dann die zusammengefügte Datei in Garmin Connect hoch (<em>Daten importieren</em>). Wenn sie nicht von selbst bei Strava ankommt, lade sie unter <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a> hoch.",
+    "replace_p": "<strong>Lösche zuerst die ursprünglichen Teile</strong>, wo auch immer sie hochgeladen wurden: Garmin Connect, Strava und die meisten anderen Apps lehnen eine Aktivität mit derselben Startzeit wie eine vorhandene ab. Kudos, Kommentare, Fotos und Titel der Teile gehen verloren. Lade dann die zusammengefügte Datei in Garmin Connect (<em>Daten importieren</em>), bei <a href=\"https://www.strava.com/upload/select\">Strava</a> oder in jeder anderen App hoch, die FIT-Dateien akzeptiert. Wenn deine Apps sich untereinander synchronisieren, reicht es eventuell, sie bei einer davon hochzuladen.",
     "footer": "MIT-Lizenz · auch als Kommandozeilenprogramm erhältlich. Training Effect und andere auf der Uhr berechnete Werte können nicht neu berechnet werden; siehe die <a href=\"https://github.com/jmallach/fitstitch#limitations\">Einschränkungen</a>."
   },
   "messages": {

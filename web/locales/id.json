@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Gabungkan dua file FIT menjadi satu aktivitas: perbaiki lari atau bersepeda yang tidak sengaja Anda hentikan dan simpan di tengah jalan. Berfungsi dengan Garmin, Strava, Wahoo, Coros, dan lainnya. Gratis dan privat: berjalan di browser Anda, file tidak pernah diunggah, tidak ada data yang hilang.",
+    "description": "Gabungkan kembali aktivitas FIT yang tidak sengaja Anda hentikan dan simpan di tengah jalan menjadi satu, tanpa kehilangan data. Berfungsi dengan file dari Garmin, Suunto, Wahoo, Coros, dan lainnya; hasilnya bisa diunggah ke Garmin Connect, Strava, dan aplikasi olahraga lain. Gratis dan privat: berjalan di browser Anda, file tidak pernah diunggah.",
     "language": "Bahasa",
     "tagline": "Gabungkan dua file FIT menjadi satu aktivitas",
     "lede": "Tidak sengaja menghentikan dan menyimpan lari atau bersepeda Anda di tengah jalan? Gabungkan kedua aktivitas itu kembali menjadi satu, seolah-olah Anda menjeda alih-alih menyimpan. Tidak ada data yang hilang.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privat: file Anda tidak pernah diunggah atau disimpan",
     "privacy_more": "Tidak ada server yang bisa menerimanya: fitstitch sepenuhnya berjalan di browser Anda, dan setelah halaman dimuat, bahkan bisa digunakan secara offline. Tidak ada yang disimpan juga, kecuali pilihan bahasa Anda. <a href=\"https://github.com/jmallach/fitstitch\">Kode sumbernya</a> terbuka untuk diperiksa siapa saja.",
     "export_h": "1. Ekspor bagian-bagiannya",
-    "export_p": "Di <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, buka setiap aktivitas, lalu ⚙ → <em>Ekspor File Asli</em> (Anda akan mendapat file .zip). Di <a href=\"https://www.strava.com/athlete/training\">Strava</a>, buka setiap aktivitas, lalu ⋯ → <em>Ekspor Asli</em>. File dari aplikasi lain juga bisa, asalkan berupa file .fit.",
+    "export_p": "Di <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, buka setiap aktivitas, lalu ⚙ → <em>Ekspor File Asli</em> (Anda akan mendapat file .zip). Di <a href=\"https://www.strava.com/athlete/training\">Strava</a>, buka setiap aktivitas, lalu ⋯ → <em>Ekspor Asli</em>. File FIT dari perangkat dan aplikasi lain (Suunto, Wahoo, Coros…) juga bisa.",
     "export_note": "Aplikasi ponsel tidak bisa mengekspor file: gunakan situs webnya, di komputer atau di browser ponsel Anda (jika terus membuka aplikasi, minta versi situs desktop).",
     "add_h": "2. Tambahkan di sini",
     "drop": "Letakkan file .fit atau .zip di sini, atau <u>pilih file</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Verifikasi gagal, jadi tidak ada file yang dibuat. Harap laporkan ini sebagai bug.",
     "unexpected": "Kegagalan tak terduga: {0}",
     "replace_h": "4. Ganti bagian-bagiannya",
-    "replace_p": "<strong>Hapus dulu bagian aslinya</strong> di Garmin Connect dan di Strava: keduanya menolak unggahan dengan waktu mulai yang sama dengan aktivitas yang sudah ada. Kudos, komentar, foto, dan judul pada bagian-bagian itu akan hilang. Lalu unggah file gabungannya di Garmin Connect (<em>Impor Data</em>). Jika tidak otomatis masuk ke Strava, unggah di <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "<strong>Hapus dulu bagian aslinya</strong> di mana pun bagian itu diunggah: Garmin Connect, Strava, dan sebagian besar aplikasi lain menolak aktivitas dengan waktu mulai yang sama dengan aktivitas yang sudah ada. Kudos, komentar, foto, dan judul pada bagian-bagian itu akan hilang. Lalu unggah file gabungannya ke Garmin Connect (<em>Impor Data</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a>, atau aplikasi lain yang menerima file FIT. Jika aplikasi Anda saling tersinkron, mengunggahnya ke salah satu saja mungkin sudah cukup.",
     "footer": "Lisensi MIT · juga tersedia sebagai alat baris perintah. Training Effect dan nilai lain yang dihitung di jam tangan tidak dapat dihitung ulang; lihat <a href=\"https://github.com/jmallach/fitstitch#limitations\">batasannya</a>."
   },
   "messages": {

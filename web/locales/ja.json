@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "途中でうっかり停止・保存してしまった FIT アクティビティを、データを失わずに 1 つに結合します。ブラウザー内で動作し、ファイルはアップロードされません。",
+    "description": "途中でうっかり停止・保存してしまった FIT アクティビティを、データを失わずに 1 つに結合します。Garmin、Suunto、Wahoo、Coros などのファイルに対応し、結果は Garmin Connect、Strava などのスポーツアプリにアップロードできます。無料でプライバシーも安心。ブラウザー内で動作し、ファイルはアップロードされません。",
     "language": "言語",
     "tagline": "2つのFITファイルを1つのアクティビティに結合",
     "lede": "ランやライドの途中でうっかり停止して保存してしまいましたか？2 つのアクティビティを、保存せずに一時停止していたかのように 1 つに結合し直します。データは失われません。",
@@ -8,7 +8,7 @@
     "privacy_h": "プライバシー：ファイルがアップロードや保存されることはありません",
     "privacy_more": "ファイルを受け取るサーバーは存在しません。fitstitch はすべてブラウザー内で動作し、ページの読み込み後はオフラインでも使えます。選んだ言語以外は何も保存されません。<a href=\"https://github.com/jmallach/fitstitch\">ソースコード</a>は公開されており、誰でも確認できます。",
     "export_h": "1. 各パートをエクスポート",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> で各アクティビティを開き、⚙ → <em>オリジナルをエクスポート</em> を選びます（.zip ファイルが保存されます）。<a href=\"https://www.strava.com/athlete/training\">Strava</a> では各アクティビティを開き、⋯ → <em>オリジナルをエクスポート</em> を選びます。ほかのアプリのファイルも .fit ファイルであれば使えます。",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> で各アクティビティを開き、⚙ → <em>オリジナルをエクスポート</em> を選びます（.zip ファイルが保存されます）。<a href=\"https://www.strava.com/athlete/training\">Strava</a> では各アクティビティを開き、⋯ → <em>オリジナルをエクスポート</em> を選びます。ほかのデバイスやアプリ（Suunto、Wahoo、Coros…）の FIT ファイルも使えます。",
     "export_note": "スマートフォンのアプリではエクスポートできません。パソコンかスマートフォンのブラウザーでウェブサイトを使ってください（アプリが開いてしまう場合は、PC 版サイトを表示してください）。",
     "add_h": "2. ここに追加",
     "drop": ".fit または .zip ファイルをここにドロップするか、<u>ファイルを選択</u>してください",
@@ -29,7 +29,7 @@
     "verify_failed": "検証に失敗したため、ファイルは作成されませんでした。バグとして報告してください。",
     "unexpected": "予期しないエラー：{0}",
     "replace_h": "4. 元のパートを置き換える",
-    "replace_p": "まず Garmin Connect と Strava で<strong>元のパートを削除</strong>してください。どちらも、既存のアクティビティと開始時刻が同じファイルのアップロードを受け付けません。パートに付いていた Kudos、コメント、写真、タイトルは失われます。次に、結合したファイルを Garmin Connect にアップロードします（<em>データのインポート</em>）。Strava に自動で同期されない場合は、<a href=\"https://www.strava.com/upload/select\">strava.com/upload</a> からアップロードしてください。",
+    "replace_p": "まず、アップロードしたすべての場所で<strong>元のパートを削除</strong>してください。Garmin Connect、Strava、その他ほとんどのアプリは、既存のアクティビティと開始時刻が同じアクティビティを受け付けません。パートに付いていた Kudos、コメント、写真、タイトルは失われます。次に、結合したファイルを Garmin Connect（<em>データのインポート</em>）、<a href=\"https://www.strava.com/upload/select\">Strava</a>、または FIT ファイルに対応したほかのアプリにアップロードします。アプリ同士が同期している場合は、どれか 1 つにアップロードするだけで済むこともあります。",
     "footer": "MIT ライセンス · コマンドラインツールとしても利用できます。トレーニング効果など、ウォッチで計算された値は再計算できません。詳しくは<a href=\"https://github.com/jmallach/fitstitch#limitations\">制限事項</a>をご覧ください。"
   },
   "messages": {

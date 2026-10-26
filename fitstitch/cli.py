@@ -69,7 +69,7 @@ def main(argv=None):
                     'halfway) into a single activity, preserving all recorded data. The time '
                     'between parts becomes a pause.')
     p.add_argument('files', nargs='+', metavar='FILE',
-                   help='.fit files, or .zip files as exported by Garmin Connect ("Export Original")')
+                   help='.fit files, or .zip files holding one (e.g. "Export Original" in Garmin Connect)')
     p.add_argument('-o', '--output', help='output .fit file (default: stitched-<start time>.fit)')
     p.add_argument('-n', '--dry-run', action='store_true', help='show the result without writing a file')
     p.add_argument('-f', '--force', action='store_true',
@@ -116,8 +116,9 @@ def main(argv=None):
     with open(out, 'wb') as f:
         f.write(data)
     say(f'\nWrote {out}')
-    say('Before uploading, delete the original parts on Garmin Connect / Strava: they reject\n'
-        'an activity with the same start time as an existing one as a duplicate.')
+    say('Before uploading, delete the original parts wherever they were uploaded: Garmin\n'
+        'Connect, Strava and most other apps reject an activity with the same start time\n'
+        'as an existing one as a duplicate.')
     return 0
 
 

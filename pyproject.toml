@@ -5,14 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fitstitch"
 dynamic = ["version"]
-description = "Stitch accidentally split FIT activities (Garmin, Wahoo, Coros...) back into one, losslessly"
+description = "Join accidentally split FIT activities back into one, losslessly, from any device (Garmin, Suunto, Wahoo, Coros...)"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "Jordi Mallach", email = "jordi@mallach.net" }]
 requires-python = ">=3.9"
 dependencies = ["garmin-fit-sdk>=21.100"]
-keywords = ["fit", "garmin", "strava", "gps", "running", "cycling", "activity"]
+keywords = ["fit", "gps", "running", "cycling", "activity", "garmin", "suunto", "wahoo", "coros", "strava"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",

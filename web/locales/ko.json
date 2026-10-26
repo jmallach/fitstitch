@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "두 개의 FIT 파일을 하나의 활동으로 합쳐요. 실수로 중간에 정지하고 저장한 달리기나 라이딩을 되살릴 수 있어요. Garmin, Strava, Wahoo, Coros 등과 함께 쓸 수 있어요. 무료이고 안전해요. 브라우저에서 실행되고, 파일은 업로드되지 않으며, 데이터도 사라지지 않아요.",
+    "description": "실수로 중간에 정지하고 저장한 FIT 활동을 데이터 손실 없이 하나로 다시 합쳐요. Garmin, Suunto, Wahoo, Coros 등의 파일을 지원하고, 결과 파일은 Garmin Connect, Strava 등 다른 스포츠 앱에 업로드할 수 있어요. 무료이고 안전해요. 브라우저에서 실행되며 파일은 업로드되지 않아요.",
     "language": "언어",
     "tagline": "두 FIT 파일을 하나의 활동으로 합치기",
     "lede": "달리기나 라이딩 도중 실수로 정지하고 저장하셨나요? 두 활동을 다시 하나로 합쳐 드려요. 저장하지 않고 일시정지한 것처럼요. 데이터는 하나도 사라지지 않아요.",
@@ -8,7 +8,7 @@
     "privacy_h": "안전해요: 파일은 업로드되거나 저장되지 않아요",
     "privacy_more": "파일을 받을 서버 자체가 없어요. fitstitch는 전부 브라우저 안에서 실행되고, 페이지가 한 번 로드되면 오프라인에서도 작동해요. 선택한 언어 외에는 아무것도 저장하지 않아요. 누구나 확인할 수 있도록 <a href=\"https://github.com/jmallach/fitstitch\">소스 코드</a>가 공개되어 있어요.",
     "export_h": "1. 파트 내보내기",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>에서 각 활동을 열고 ⚙ → <em>원본 내보내기</em>를 선택하세요(.zip 파일을 받게 돼요). <a href=\"https://www.strava.com/athlete/training\">Strava</a>에서는 각 활동을 열고 ⋯ → <em>원본 내보내기</em>(Export Original)를 선택하세요. 다른 앱의 파일도 .fit 파일이라면 사용할 수 있어요.",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>에서 각 활동을 열고 ⚙ → <em>원본 내보내기</em>를 선택하세요(.zip 파일을 받게 돼요). <a href=\"https://www.strava.com/athlete/training\">Strava</a>에서는 각 활동을 열고 ⋯ → <em>원본 내보내기</em>(Export Original)를 선택하세요. 다른 기기와 앱(Suunto, Wahoo, Coros…)의 FIT 파일도 사용할 수 있어요.",
     "export_note": "휴대폰 앱에서는 파일을 내보낼 수 없어요. 컴퓨터나 휴대폰 브라우저에서 웹사이트를 이용하세요(계속 앱이 열리면 데스크톱 사이트를 요청하세요).",
     "add_h": "2. 여기에 추가하기",
     "drop": ".fit 또는 .zip 파일을 여기에 끌어다 놓거나 <u>파일을 선택하세요</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "검증에 실패해서 파일을 만들지 않았어요. 버그로 신고해 주세요.",
     "unexpected": "예상치 못한 오류: {0}",
     "replace_h": "4. 파트 바꾸기",
-    "replace_p": "먼저 Garmin Connect와 Strava에서 <strong>원래 파트를 삭제하세요</strong>. 두 서비스 모두 기존 활동과 시작 시간이 같은 업로드를 거부해요. 파트에 달린 Kudos, 댓글, 사진, 제목은 사라져요. 그런 다음 Garmin Connect에서 합친 파일을 업로드하세요(<em>데이터 가져오기</em>). Strava에 자동으로 올라가지 않으면 <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>에서 업로드하세요.",
+    "replace_p": "먼저 업로드했던 모든 곳에서 <strong>원래 파트를 삭제하세요</strong>. Garmin Connect, Strava를 비롯한 대부분의 앱은 기존 활동과 시작 시간이 같은 활동을 거부해요. 파트에 달린 Kudos, 댓글, 사진, 제목은 사라져요. 그런 다음 합친 파일을 Garmin Connect(<em>데이터 가져오기</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> 또는 FIT 파일을 지원하는 다른 앱에 업로드하세요. 앱끼리 서로 동기화된다면 한 곳에만 올려도 충분할 수 있어요.",
     "footer": "MIT 라이선스 · 명령줄 도구로도 사용할 수 있어요. Training Effect 등 시계에서 계산한 값은 다시 계산할 수 없어요. <a href=\"https://github.com/jmallach/fitstitch#limitations\">제한 사항</a>을 확인하세요."
   },
   "messages": {

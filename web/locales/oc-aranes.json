@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Ajunta en ua soleta ua activitat FIT qu'as arturat e guardat per error a mieg camin, sense pèrder donades. Fonciona en tòn navegador; es tòns fichèrs non se pugen.",
+    "description": "Ajunta en ua soleta ua activitat FIT qu'as arturat e guardat per error a mieg camin, sense pèrder donades. Fonciona damb fichèrs de Garmin, Suunto, Wahoo, Coros e d'autes; eth resultat se pòt pujar a Garmin Connect, Strava e d'autes aplicacions esportives. Gratuït e privat: fonciona en tòn navegador e es tòns fichèrs non se pugen jamès.",
     "language": "Lengua",
     "tagline": "Ajunta dus fichèrs FIT en ua soleta activitat",
     "lede": "As arturat e guardat era tua corsa o sortida en bici a mieg camin sense voler? Torna a ajuntar es dues activitats en ua, coma s'auesses hèt ua pausa en lòc de guardar-la. Non se pèrd cap donada.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privat: es tòns fichèrs jamès se pugen ni se guarden en nat lòc",
     "privacy_more": "Non i a cap de servidor que les pogue recéber: fitstitch fonciona sancer en tòn navegador e, un còp cargada era pagina, enquia sense connexion. Tanpòc non se guarde arren, sauf era lengua que causisques. Eth <a href=\"https://github.com/jmallach/fitstitch\">còdi font</a> ei dubèrt e quinsevolh lo pòt revisar.",
     "export_h": "1. Exporta es parts",
-    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, daurís cada activitat e dempús ⚙ → <em>Exportar originau</em> («Exportar original»); auràs un .zip. En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, daurís cada activitat e dempús ⋯ → <em>Exportar originau</em> («Exportar original»). Es fichèrs d'autes aplicacions tanben foncionen se son fichèrs .fit.",
+    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, daurís cada activitat e dempús ⚙ → <em>Exportar originau</em> («Exportar original»); auràs un .zip. En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, daurís cada activitat e dempús ⋯ → <em>Exportar originau</em> («Exportar original»). Es fichèrs FIT d'auti dispositius e aplicacions (Suunto, Wahoo, Coros…) tanben foncionen.",
     "export_note": "Es aplicacions deth mobil non permeten exportar: hè servir es webs, en ordinador o en navegador deth mobil (se te daurís era aplicacion, demana era version d'escriptòri).",
     "add_h": "2. Hica-les ací",
     "drop": "Hica ací es fichèrs .fit o .zip, o <u>causís fichèrs</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Era verificacion a falhat, per açò non s'a generat cap fichèr. Per favor, informa-mos d'aguest problèma.",
     "unexpected": "Problèma inesperat: {0}",
     "replace_h": "4. Remplaça es parts",
-    "replace_p": "<strong>Esborra prumèr es parts originaus</strong> en Garmin Connect e en Strava: es dus refusen ua pujada damb era madeisha ora de començament qu'ua activitat existent. Es kudos, comentaris, fotos e títols des parts se pèrden. Dempús puja eth fichèr ajuntat en Garmin Connect (<em>Importar donades</em>, «Importar datos»). Se non arribe a Strava solet, puja-lo en <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "<strong>Esborra prumèr es parts originaus</strong> pertot a on les ages pujat: Garmin Connect, Strava e era màger part des autes aplicacions refusen ua activitat damb era madeisha ora de començament qu'ua activitat existent. Es kudos, comentaris, fotos e títols des parts se pèrden. Dempús puja eth fichèr ajuntat en Garmin Connect (<em>Importar donades</em>, «Importar datos»), <a href=\"https://www.strava.com/upload/select\">Strava</a> o quinsevolh auta aplicacion qu'accepte fichèrs FIT. Se es tues aplicacions se sincronizen entre eres, pòt èster que sigue pro de pujar-lo en ua.",
     "footer": "Licéncia MIT · tanben disponible coma aisina de linha de comandes. Eth Training Effect e d'autes valors calculades peth relòtge non se pòden tornar a calcular; consulta es <a href=\"https://github.com/jmallach/fitstitch#limitations\">limitacions</a>."
   },
   "messages": {

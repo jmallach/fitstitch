@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "İki FIT dosyasını tek bir aktivitede birleştirin: yanlışlıkla yarıda durdurup kaydettiğiniz koşuyu veya sürüşü düzeltin. Garmin, Strava, Wahoo, Coros ve diğerleriyle çalışır. Ücretsiz ve gizli: tarayıcınızda çalışır, dosyalar asla yüklenmez, hiçbir veri kaybolmaz.",
+    "description": "Yanlışlıkla yarıda durdurup kaydettiğiniz bir FIT aktivitesini hiçbir veri kaybetmeden yeniden tek bir aktivitede birleştirin. Garmin, Suunto, Wahoo, Coros ve diğerlerinden gelen dosyalarla çalışır; sonuç Garmin Connect, Strava ve diğer spor uygulamalarına yüklenebilir. Ücretsiz ve gizli: tarayıcınızda çalışır, dosyalar asla yüklenmez.",
     "language": "Dil",
     "tagline": "İki FIT dosyasını tek bir aktivitede birleştirin",
     "lede": "Koşunuzu veya sürüşünüzü yanlışlıkla yarıda durdurup kaydettiniz mi? İki aktiviteyi, kaydetmek yerine duraklatmışsınız gibi yeniden tek bir aktivitede birleştirin. Hiçbir veri kaybolmaz.",
@@ -8,7 +8,7 @@
     "privacy_h": "Gizli: dosyalarınız asla yüklenmez veya saklanmaz",
     "privacy_more": "Dosyaları alabilecek bir sunucu yok: fitstitch tamamen tarayıcınızda çalışır ve sayfa yüklendikten sonra çevrimdışı bile çalışır. Dil seçiminiz dışında hiçbir şey saklanmaz. <a href=\"https://github.com/jmallach/fitstitch\">Kaynak kodu</a> herkesin inceleyebilmesi için açıktır.",
     "export_h": "1. Bölümleri dışa aktarın",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> üzerinde her aktiviteyi açın, ardından ⚙ → <em>Orijinali Dışa Aktar</em> seçin (bir .zip dosyası alırsınız). <a href=\"https://www.strava.com/athlete/training\">Strava</a> üzerinde her aktiviteyi açın, ardından ⋯ → <em>Orijinali Dışa Aktar</em> seçin. Diğer uygulamalardan gelen dosyalar da .fit dosyasıysa çalışır.",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> üzerinde her aktiviteyi açın, ardından ⚙ → <em>Orijinali Dışa Aktar</em> seçin (bir .zip dosyası alırsınız). <a href=\"https://www.strava.com/athlete/training\">Strava</a> üzerinde her aktiviteyi açın, ardından ⋯ → <em>Orijinali Dışa Aktar</em> seçin. Diğer cihaz ve uygulamalardan (Suunto, Wahoo, Coros…) gelen FIT dosyaları da çalışır.",
     "export_note": "Telefon uygulamaları dosya dışa aktaramaz: web sitelerini bilgisayardan veya telefonunuzun tarayıcısından kullanın (sürekli uygulama açılıyorsa masaüstü sitesini isteyin).",
     "add_h": "2. Buraya ekleyin",
     "drop": ".fit veya .zip dosyalarını buraya bırakın ya da <u>dosya seçin</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Doğrulama başarısız oldu, bu yüzden dosya oluşturulmadı. Lütfen bunu bir hata olarak bildirin.",
     "unexpected": "Beklenmeyen hata: {0}",
     "replace_h": "4. Bölümleri değiştirin",
-    "replace_p": "Önce Garmin Connect ve Strava üzerinde <strong>orijinal bölümleri silin</strong>: ikisi de mevcut bir aktiviteyle aynı başlangıç saatine sahip yüklemeleri reddeder. Bölümlerdeki kudos, yorumlar, fotoğraflar ve başlıklar kaybolur. Ardından birleştirilmiş dosyayı Garmin Connect üzerinde yükleyin (<em>Veri İçe Aktar</em>). Strava'ya kendiliğinden ulaşmazsa <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a> adresinden yükleyin.",
+    "replace_p": "Önce, nereye yüklendiyse <strong>orijinal bölümleri silin</strong>: Garmin Connect, Strava ve diğer uygulamaların çoğu mevcut bir aktiviteyle aynı başlangıç saatine sahip aktiviteleri reddeder. Bölümlerdeki kudos, yorumlar, fotoğraflar ve başlıklar kaybolur. Ardından birleştirilmiş dosyayı Garmin Connect'e (<em>Veri İçe Aktar</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a>'ya veya FIT dosyalarını kabul eden başka bir uygulamaya yükleyin. Uygulamalarınız birbiriyle senkronize oluyorsa birine yüklemeniz yeterli olabilir.",
     "footer": "MIT lisansı · komut satırı aracı olarak da mevcuttur. Training Effect ve saatte hesaplanan diğer değerler yeniden hesaplanamaz; <a href=\"https://github.com/jmallach/fitstitch#limitations\">sınırlamalara</a> bakın."
   },
   "messages": {

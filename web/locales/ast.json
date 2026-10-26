@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Xuni nuna sola una actividá FIT que paresti y guardesti a metá ensin querer, ensin perder datos. Funciona nel to restolador; los tos ficheros nun se xuben.",
+    "description": "Xuni nuna sola una actividá FIT que paresti y guardesti a metá ensin querer, ensin perder datos. Funciona con ficheros de Garmin, Suunto, Wahoo, Coros y otros; el resultáu pue xubise a Garmin Connect, Strava y otres aplicaciones deportives. De baldre y priváu: funciona nel to restolador y los tos ficheros enxamás se xuben.",
     "language": "Llingua",
     "tagline": "Xune dos ficheros FIT nuna sola actividá",
     "lede": "¿Paresti y guardesti la to carrera o salida en bici a metá ensin querer? Vuelvi xunir les dos actividaes nuna, como si ficieres una posa en cuenta de guardala. Nun se pierde nengún datu.",
@@ -8,7 +8,7 @@
     "privacy_h": "Priváu: los tos ficheros enxamás se xuben nin se guarden en nengún sitiu",
     "privacy_more": "Nun hai nengún sirvidor que los pueda recibir: fitstitch funciona enteru nel restolador y, una vegada cargada la páxina, inclusive ensin conexón. Tampoco nun se guarda nada, sacante la llingua qu'escueyas. El <a href=\"https://github.com/jmallach/fitstitch\">códigu fonte</a> ye abiertu y cualquiera pue revisalu.",
     "export_h": "1. Esporta les partes",
-    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abri cada actividá y depués ⚙ → <em>Esportar l'orixinal</em> (vas consiguir un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abri cada actividá y depués ⋯ → <em>Esportar l'orixinal</em> (Export Original). Los ficheros d'otres aplicaciones tamién valen si son ficheros .fit.",
+    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abri cada actividá y depués ⚙ → <em>Esportar l'orixinal</em> (vas consiguir un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abri cada actividá y depués ⋯ → <em>Esportar l'orixinal</em> (Export Original). Los ficheros FIT d'otros preseos y aplicaciones (Suunto, Wahoo, Coros…) tamién valen.",
     "export_note": "Les aplicaciones del móvil nun permiten esportar: usa les webs, nel ordenador o nel restolador del móvil (si te sigue abriendo l'aplicación, pidi la versión d'escritoriu).",
     "add_h": "2. Amiéstales equí",
     "drop": "Suelta equí los ficheros .fit o .zip, o <u>escueyi los ficheros</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "La verificación falló, asina que nun se xeneró nengún ficheru. Por favor, informa d'esto como un fallu.",
     "unexpected": "Fallu inesperáu: {0}",
     "replace_h": "4. Sustitúi les partes",
-    "replace_p": "Primero, <strong>desanicia les partes orixinales</strong> en Garmin Connect y en Strava: dambos refuguen una xubida cola mesma hora d'aniciu qu'una actividá que yá esiste. Van perdese los kudos, comentarios, semeyes y títulos de les partes. Depués, xubi'l ficheru xuníu a Garmin Connect (<em>Importar datos</em>). Si nun llega a Strava por sí solu, xúbilu en <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "Primero, <strong>desanicia les partes orixinales</strong> onde quiera que les xubieres: Garmin Connect, Strava y la mayoría de les otres aplicaciones refuguen una actividá cola mesma hora d'aniciu qu'una que yá esiste. Van perdese los kudos, comentarios, semeyes y títulos de les partes. Depués, xubi'l ficheru xuníu a Garmin Connect (<em>Importar datos</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> o cualquier otra aplicación qu'aceute ficheros FIT. Si les tos aplicaciones se sincronicen ente elles, quiciabes abasta con xubilu a una.",
     "footer": "Llicencia MIT · tamién disponible como ferramienta de llinia de comandos. El Training Effect y otros valores calculaos pol reló nun se puen volver calcular; mira les <a href=\"https://github.com/jmallach/fitstitch#limitations\">llimitaciones</a>."
   },
   "messages": {

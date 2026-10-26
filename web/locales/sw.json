@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Unganisha faili mbili za FIT kuwa shughuli moja: rekebisha mbio au safari ya baiskeli uliyoisimamisha na kuihifadhi katikati kwa bahati mbaya. Inafanya kazi na Garmin, Strava, Wahoo, Coros na zaidi. Bure na ya faragha: inaendeshwa kwenye kivinjari chako, faili hazipakiwi kamwe, hakuna data inayopotea.",
+    "description": "Unganisha tena kuwa moja shughuli ya FIT uliyoisimamisha na kuihifadhi katikati kwa bahati mbaya, bila kupoteza data. Inafanya kazi na faili kutoka Garmin, Suunto, Wahoo, Coros na zaidi; matokeo yanapakiwa kwenye Garmin Connect, Strava na programu nyingine za michezo. Bure na ya faragha: inaendeshwa kwenye kivinjari chako, faili hazipakiwi kamwe.",
     "language": "Lugha",
     "tagline": "Unganisha faili mbili za FIT kuwa shughuli moja",
     "lede": "Ulisimamisha na kuhifadhi mbio au safari yako ya baiskeli katikati kwa bahati mbaya? Unganisha shughuli hizo mbili tena kuwa moja, kana kwamba ulisitisha badala ya kuhifadhi. Hakuna data inayopotea.",
@@ -8,7 +8,7 @@
     "privacy_h": "Faragha: faili zako hazipakiwi wala kuhifadhiwa kamwe",
     "privacy_more": "Hakuna seva inayoweza kuzipokea: fitstitch inaendeshwa kikamilifu kwenye kivinjari chako, na ukurasa ukishapakia inafanya kazi hata bila mtandao. Pia hakuna kinachohifadhiwa, isipokuwa lugha uliyochagua. <a href=\"https://github.com/jmallach/fitstitch\">Msimbo chanzo</a> uko wazi kwa yeyote kuukagua.",
     "export_h": "1. Hamisha sehemu",
-    "export_p": "Kwenye <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, fungua kila shughuli, kisha ⚙ → <em>Export Original</em> (utapata faili ya .zip). Kwenye <a href=\"https://www.strava.com/athlete/training\">Strava</a>, fungua kila shughuli, kisha ⋯ → <em>Export Original</em>. Faili kutoka programu nyingine zinafanya kazi ikiwa ni faili za .fit.",
+    "export_p": "Kwenye <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, fungua kila shughuli, kisha ⚙ → <em>Export Original</em> (utapata faili ya .zip). Kwenye <a href=\"https://www.strava.com/athlete/training\">Strava</a>, fungua kila shughuli, kisha ⋯ → <em>Export Original</em>. Faili za FIT kutoka vifaa na programu nyingine (Suunto, Wahoo, Coros…) zinafanya kazi pia.",
     "export_note": "Programu za simu haziwezi kuhamisha faili: tumia tovuti, kwenye kompyuta au kwenye kivinjari cha simu yako (ikiendelea kufungua programu, omba toleo la kompyuta la tovuti).",
     "add_h": "2. Ziongeze hapa",
     "drop": "Dondosha faili za .fit au .zip hapa, au <u>chagua faili</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Uhakiki umeshindwa, kwa hiyo hakuna faili iliyotengenezwa. Tafadhali ripoti hili kama hitilafu.",
     "unexpected": "Hitilafu isiyotarajiwa: {0}",
     "replace_h": "4. Badilisha sehemu",
-    "replace_p": "Kwanza <strong>futa sehemu za awali</strong> kwenye Garmin Connect na kwenye Strava: zote mbili zinakataa upakiaji wenye muda wa kuanza sawa na shughuli iliyopo. Kudos, maoni, picha na majina ya sehemu hizo yatapotea. Kisha pakia faili iliyounganishwa kwenye Garmin Connect (<em>Import Data</em>). Isipofika Strava yenyewe, ipakie kwenye <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "Kwanza <strong>futa sehemu za awali</strong> popote zilipopakiwa: Garmin Connect, Strava na programu nyingine nyingi zinakataa shughuli yenye muda wa kuanza sawa na shughuli iliyopo. Kudos, maoni, picha na majina ya sehemu hizo yatapotea. Kisha pakia faili iliyounganishwa kwenye Garmin Connect (<em>Import Data</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> au programu nyingine yoyote inayokubali faili za FIT. Ikiwa programu zako zinasawazishwa zenyewe, kuipakia kwenye moja huenda kukatosha.",
     "footer": "Leseni ya MIT · inapatikana pia kama zana ya mstari wa amri. Training Effect na thamani nyingine zilizokokotolewa kwenye saa haziwezi kukokotolewa upya; angalia <a href=\"https://github.com/jmallach/fitstitch#limitations\">vikwazo</a>."
   },
   "messages": {

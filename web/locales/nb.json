@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Slå sammen to FIT-filer til én aktivitet: fiks en løpe- eller sykkeltur du ved et uhell stoppet og lagret halvveis. Fungerer med Garmin, Strava, Wahoo, Coros og flere. Gratis og privat: kjører i nettleseren din, filene lastes aldri opp, ingen data går tapt.",
+    "description": "Slå sammen en FIT-aktivitet du ved et uhell stoppet og lagret halvveis, til én igjen uten å miste data. Fungerer med filer fra Garmin, Suunto, Wahoo, Coros og flere; resultatet kan lastes opp til Garmin Connect, Strava og andre treningsapper. Gratis og privat: kjører i nettleseren din, filene lastes aldri opp.",
     "language": "Språk",
     "tagline": "Slå sammen to FIT-filer til én aktivitet",
     "lede": "Kom du til å stoppe og lagre løpe- eller sykkelturen halvveis? Slå de to aktivitetene sammen til én igjen, som om du hadde satt på pause i stedet for å lagre. Ingen data går tapt.",
@@ -8,7 +8,7 @@
     "privacy_h": "Privat: filene dine blir aldri lastet opp eller lagret",
     "privacy_more": "Det finnes ingen server som kunne tatt imot dem: fitstitch kjører helt i nettleseren din, og når siden først er lastet inn, fungerer den til og med uten nett. Ingenting lagres heller, bortsett fra språkvalget ditt. <a href=\"https://github.com/jmallach/fitstitch\">Kildekoden</a> er åpen, så hvem som helst kan sjekke den.",
     "export_h": "1. Eksporter delene",
-    "export_p": "På <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> åpner du hver aktivitet og velger ⚙ → <em>Eksporter original</em> (du får en .zip). På <a href=\"https://www.strava.com/athlete/training\">Strava</a> åpner du hver aktivitet og velger ⋯ → <em>Eksporter original</em>. Filer fra andre apper fungerer hvis de er .fit-filer.",
+    "export_p": "På <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> åpner du hver aktivitet og velger ⚙ → <em>Eksporter original</em> (du får en .zip). På <a href=\"https://www.strava.com/athlete/training\">Strava</a> åpner du hver aktivitet og velger ⋯ → <em>Eksporter original</em>. FIT-filer fra andre enheter og apper (Suunto, Wahoo, Coros…) fungerer også.",
     "export_note": "Mobilappene kan ikke eksportere filer: bruk nettsidene, på en datamaskin eller i nettleseren på mobilen (hvis appen stadig åpnes, be om datamaskinversjonen av siden).",
     "add_h": "2. Legg dem til her",
     "drop": "Slipp .fit- eller .zip-filene her, eller <u>velg filer</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Kontrollen feilet, så ingen fil ble laget. Meld gjerne fra om dette som en feil.",
     "unexpected": "Uventet feil: {0}",
     "replace_h": "4. Erstatt delene",
-    "replace_p": "<strong>Slett først de opprinnelige delene</strong> på Garmin Connect og på Strava: begge avviser en opplasting med samme starttid som en eksisterende aktivitet. Kudos, kommentarer, bilder og titler på delene går tapt. Last deretter opp den sammenslåtte filen på Garmin Connect (<em>Importer data</em>). Hvis den ikke kommer til Strava av seg selv, laster du den opp på <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "<strong>Slett først de opprinnelige delene</strong>, uansett hvor de er lastet opp: Garmin Connect, Strava og de fleste andre apper avviser en aktivitet med samme starttid som en eksisterende. Kudos, kommentarer, bilder og titler på delene går tapt. Last deretter opp den sammenslåtte filen til Garmin Connect (<em>Importer data</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> eller en hvilken som helst annen app som godtar FIT-filer. Hvis appene dine synkroniseres med hverandre, kan det holde å laste den opp til én av dem.",
     "footer": "MIT-lisens · finnes også som kommandolinjeverktøy. Training Effect og andre verdier som beregnes på klokka, kan ikke beregnes på nytt; se <a href=\"https://github.com/jmallach/fitstitch#limitations\">begrensningene</a>."
   },
   "messages": {

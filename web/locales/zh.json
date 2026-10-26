@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "把不小心中途停止并保存的 FIT 活动重新合并为一个，不丢失任何数据。在浏览器中运行，文件不会上传。",
+    "description": "把不小心中途停止并保存的 FIT 活动重新合并为一个，不丢失任何数据。支持来自 Garmin、Suunto、Wahoo、Coros 等设备的文件；合并结果可上传到 Garmin Connect、Strava 及其他运动应用。免费且私密：在浏览器中运行，文件不会上传。",
     "language": "语言",
     "tagline": "将两个 FIT 文件合并为一个活动",
     "lede": "跑步或骑行到一半不小心停止并保存了？把两段活动重新合并成一个，就像当时只是暂停而没有保存一样。不会丢失任何数据。",
@@ -8,7 +8,7 @@
     "privacy_h": "隐私安全：你的文件绝不会被上传或存储",
     "privacy_more": "没有任何服务器能接收你的文件：fitstitch 完全在浏览器中运行，页面加载后甚至可以离线使用。除了你选择的语言外，也不会保存任何内容。<a href=\"https://github.com/jmallach/fitstitch\">源代码</a>公开，任何人都可以查看。",
     "export_h": "1. 导出各段活动",
-    "export_p": "在 <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> 中打开每个活动，然后点 ⚙ → <em>导出原始数据</em>（会得到一个 .zip 文件）。在 <a href=\"https://www.strava.com/athlete/training\">Strava</a> 中打开每个活动，然后点 ⋯ → <em>导出原始文件</em>。其他应用的文件只要是 .fit 格式也可以使用。",
+    "export_p": "在 <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> 中打开每个活动，然后点 ⚙ → <em>导出原始数据</em>（会得到一个 .zip 文件）。在 <a href=\"https://www.strava.com/athlete/training\">Strava</a> 中打开每个活动，然后点 ⋯ → <em>导出原始文件</em>。来自其他设备和应用（Suunto、Wahoo、Coros…）的 FIT 文件也可以使用。",
     "export_note": "手机 App 无法导出文件：请使用网页版，在电脑或手机浏览器中打开（如果总是跳转到 App，请切换为桌面版网站）。",
     "add_h": "2. 添加到这里",
     "drop": "把 .fit 或 .zip 文件拖到这里，或<u>选择文件</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "校验未通过，因此没有生成文件。请将此问题作为 bug 报告。",
     "unexpected": "意外错误：{0}",
     "replace_h": "4. 替换原来的各段",
-    "replace_p": "请先在 Garmin Connect 和 Strava 上<strong>删除原来的各段活动</strong>：如果已有活动的开始时间相同，两者都会拒绝上传。各段上的点赞、评论、照片和标题都会丢失。然后在 Garmin Connect 上传拼接后的文件（<em>导入数据</em>）。如果它没有自动同步到 Strava，请在 <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a> 手动上传。",
+    "replace_p": "请先在所有上传过的地方<strong>删除原来的各段活动</strong>：如果已有活动的开始时间相同，Garmin Connect、Strava 和大多数其他应用都会拒绝上传。各段上的点赞、评论、照片和标题都会丢失。然后将拼接后的文件上传到 Garmin Connect（<em>导入数据</em>）、<a href=\"https://www.strava.com/upload/select\">Strava</a> 或任何支持 FIT 文件的应用。如果你的应用之间会互相同步，只上传到其中一个可能就够了。",
     "footer": "MIT 许可证 · 也提供命令行版本。训练效果等由手表计算的数值无法重新计算；请参阅<a href=\"https://github.com/jmallach/fitstitch#limitations\">局限性</a>。"
   },
   "messages": {

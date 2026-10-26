@@ -1,6 +1,6 @@
 {
   "ui": {
-    "description": "Pagdugtungin ang dalawang FIT file para maging isang activity: ayusin ang takbo o ride na aksidente mong na-stop at na-save sa kalagitnaan. Gumagana sa Garmin, Strava, Wahoo, Coros at iba pa. Libre at pribado: tumatakbo sa browser mo, hindi kailanman ina-upload ang mga file, walang nawawalang data.",
+    "description": "Pagdugtungin muli sa iisang activity ang FIT activity na aksidente mong na-stop at na-save sa kalagitnaan, nang walang nawawalang data. Gumagana sa mga file mula sa Garmin, Suunto, Wahoo, Coros at iba pa; puwedeng i-upload ang resulta sa Garmin Connect, Strava at iba pang sports app. Libre at pribado: tumatakbo sa browser mo, hindi kailanman ina-upload ang mga file.",
     "language": "Wika",
     "tagline": "Pagdugtungin ang dalawang FIT file para maging isang activity",
     "lede": "Aksidente mo bang na-stop at na-save ang takbo o ride mo sa kalagitnaan? Pagdugtungin muli ang dalawang activity para maging isa, na parang nag-pause ka lang sa halip na mag-save. Walang nawawalang data.",
@@ -8,7 +8,7 @@
     "privacy_h": "Pribado: hindi kailanman ina-upload o sine-save ang mga file mo",
     "privacy_more": "Walang server na puwedeng tumanggap sa mga ito: buong tumatakbo ang fitstitch sa browser mo, at kapag na-load na ang page, gumagana pa ito kahit offline. Wala ring sine-save, maliban sa napili mong wika. Bukas ang <a href=\"https://github.com/jmallach/fitstitch\">source code</a> para masuri ng kahit sino.",
     "export_h": "1. I-export ang mga bahagi",
-    "export_p": "Sa <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, buksan ang bawat activity, tapos ⚙ → <em>Export Original</em> (makakakuha ka ng .zip). Sa <a href=\"https://www.strava.com/athlete/training\">Strava</a>, buksan ang bawat activity, tapos ⋯ → <em>Export Original</em>. Gumagana rin ang mga file mula sa ibang app kung .fit file ang mga ito.",
+    "export_p": "Sa <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, buksan ang bawat activity, tapos ⚙ → <em>Export Original</em> (makakakuha ka ng .zip). Sa <a href=\"https://www.strava.com/athlete/training\">Strava</a>, buksan ang bawat activity, tapos ⋯ → <em>Export Original</em>. Gumagana rin ang mga FIT file mula sa ibang device at app (Suunto, Wahoo, Coros…).",
     "export_note": "Hindi makakapag-export ng file ang mga phone app: gamitin ang mga website, sa computer o sa browser ng phone mo (kung paulit-ulit nitong binubuksan ang app, piliin ang desktop site).",
     "add_h": "2. Idagdag dito",
     "drop": "I-drop dito ang mga .fit o .zip file, o <u>pumili ng mga file</u>",
@@ -29,7 +29,7 @@
     "verify_failed": "Pumalya ang pag-verify, kaya walang nagawang file. Paki-report ito bilang bug.",
     "unexpected": "Hindi inaasahang error: {0}",
     "replace_h": "4. Palitan ang mga bahagi",
-    "replace_p": "<strong>Burahin muna ang mga orihinal na bahagi</strong> sa Garmin Connect at sa Strava: parehong tinatanggihan ng mga ito ang upload na may parehong oras ng simula ng isang umiiral na activity. Mawawala ang mga kudos, comment, larawan at pamagat ng mga bahagi. Pagkatapos, i-upload ang pinagdugtong na file sa Garmin Connect (<em>Import Data</em>). Kung hindi ito kusang makarating sa Strava, i-upload ito sa <a href=\"https://www.strava.com/upload/select\">strava.com/upload</a>.",
+    "replace_p": "<strong>Burahin muna ang mga orihinal na bahagi</strong> saanman mo ito na-upload: tinatanggihan ng Garmin Connect, Strava at karamihan ng ibang app ang activity na may parehong oras ng simula ng isang umiiral na activity. Mawawala ang mga kudos, comment, larawan at pamagat ng mga bahagi. Pagkatapos, i-upload ang pinagdugtong na file sa Garmin Connect (<em>Import Data</em>), <a href=\"https://www.strava.com/upload/select\">Strava</a> o anumang ibang app na tumatanggap ng FIT file. Kung nagsi-sync ang mga app mo sa isa't isa, baka sapat na ang i-upload ito sa isa.",
     "footer": "MIT license · available din bilang command-line tool. Hindi na makakalkula muli ang Training Effect at iba pang value na kinalkula sa relo; tingnan ang <a href=\"https://github.com/jmallach/fitstitch#limitations\">mga limitasyon</a>."
   },
   "messages": {
