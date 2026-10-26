@@ -13,38 +13,41 @@
 <body>
 <main>
   <header>
-    <h1>fitstitch</h1>
-    <p class="lede">Stopped and saved your run halfway by accident? Join the two
+    <div class="top">
+      <h1>fitstitch</h1>
+      <select id="lang" aria-label="Language" data-i18n-label="language"></select>
+    </div>
+    <p class="lede" data-i18n="lede">Stopped and saved your run halfway by accident? Join the two
     activities back into one, as if you had paused instead of saving.
     No data is lost.</p>
-    <p class="private">Your files stay on this device: everything runs in your
+    <p class="private" data-i18n="private">Your files stay on this device: everything runs in your
     browser and nothing is uploaded.</p>
   </header>
 
   <section>
-    <h2>1. Export the parts</h2>
-    <p>On Garmin Connect, open each activity, then ⚙ → <em>Export Original</em>
+    <h2 data-i18n="export_h">1. Export the parts</h2>
+    <p data-i18n="export_p">On Garmin Connect, open each activity, then ⚙ → <em>Export Original</em>
     (you get a .zip). On Strava, open each activity, then ⋯ →
     <em>Export Original</em>. Files from other apps work if they are .fit files.</p>
   </section>
 
   <section>
-    <h2>2. Add them here</h2>
+    <h2 data-i18n="add_h">2. Add them here</h2>
     <label id="drop" class="drop">
       <input id="files" type="file" multiple accept=".fit,.zip">
-      <span>Drop the .fit or .zip files here, or <u>choose files</u></span>
+      <span data-i18n="drop">Drop the .fit or .zip files here, or <u>choose files</u></span>
     </label>
     <ul id="filelist"></ul>
     <div class="actions">
       <button id="stitch" disabled>Loading…</button>
-      <label class="force"><input id="force" type="checkbox"> Stitch even if the sport or the device differ</label>
-      <button id="clear" class="secondary" hidden>Clear</button>
+      <label class="force"><input id="force" type="checkbox"> <span data-i18n="force">Stitch even if the sport or the device differ</span></label>
+      <button id="clear" class="secondary" hidden data-i18n="clear">Clear</button>
     </div>
     <p id="status" role="status"></p>
   </section>
 
   <section id="result" hidden>
-    <h2>3. Check and download</h2>
+    <h2 data-i18n="result_h">3. Check and download</h2>
     <p id="error" class="error" hidden></p>
     <div id="report" hidden>
       <div class="table-wrap"><table id="table"></table></div>
@@ -56,8 +59,8 @@
   </section>
 
   <section>
-    <h2>4. Replace the parts</h2>
-    <p><strong>Delete the original parts</strong> on Garmin Connect and on
+    <h2 data-i18n="replace_h">4. Replace the parts</h2>
+    <p data-i18n="replace_p"><strong>Delete the original parts</strong> on Garmin Connect and on
     Strava first: both reject an upload with the same start time as an
     existing activity. Kudos, comments, photos and titles on the parts are
     lost. Then upload the stitched file on Garmin Connect (<em>Import
@@ -67,10 +70,10 @@
 
   <footer>
     <p><a href="https://github.com/jmallach/fitstitch">fitstitch</a>
-    <span id="version"></span> · MIT license · also available as a
+    <span id="version"></span> · <span data-i18n="footer">MIT license · also available as a
     command-line tool. Training Effect and other values computed on the
     watch cannot be recalculated; see the
-    <a href="https://github.com/jmallach/fitstitch#limitations">limitations</a>.</p>
+    <a href="https://github.com/jmallach/fitstitch#limitations">limitations</a>.</span></p>
   </footer>
 </main>
 </body>

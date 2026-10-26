@@ -34,7 +34,6 @@ def run(paths, force=False):
         with open(OUTPUT, 'wb') as f:
             f.write(data)
     return json.dumps({
-        'columns': [f'Part {i + 1}' for i in range(len(ordered))] + ['Stitched'],
         'parts': [_clean(a.name) for a in ordered],
         'rows': [[label] + [fn(a) for a in ordered + [merged]] for label, fn in ROWS],
         'reordered': [a.name for a in ordered] != [a.name for a in acts],

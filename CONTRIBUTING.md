@@ -29,3 +29,21 @@ To test with your own files without committing them, put each case in its
 own directory under `samples/` (git-ignored), e.g. `samples/my-split-run/`
 holding the two parts. `tests/test_stitch.py` stitches and verifies every
 such directory.
+
+## Translations
+
+The web page's strings live in `web/locales/<lang>.json`, with
+`web/locales/en.json` as the source. Corrections from native speakers are
+very welcome: the initial translations were machine-made.
+
+- `ui` holds the page's strings. Keep the `{0}` placeholders and the HTML
+  markup (`<em>`, `<a href=…>`…) as they are.
+- `messages` translates the English messages fitstitch itself produces
+  (table labels, checks, refusals). The keys are matching templates: copy
+  them unchanged and translate only the values.
+- To add a language, copy `en.json`, translate it and add the language's
+  native name to `LANGUAGES` in `web/app.js`.
+
+`tests/test_locales.py` checks that every locale has every string with the
+same placeholders and markup, and that the templates still match what
+fitstitch says.

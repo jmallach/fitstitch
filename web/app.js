@@ -4,8 +4,121 @@ const $ = (id) => document.getElementById(id);
 let files = [];
 let run = null;
 let downloadUrl = null;
+let lastResult = null;
+let lastData = null;
+let state = 'loading'; // loading | ready | unavailable
+
+// Native names, in the order shown in the language menu.
+const LANGUAGES = {
+  en: 'English',
+  es: 'Español',
+  ca: 'Català',
+  gl: 'Galego',
+  eu: 'Euskara',
+  pt: 'Português',
+  ast: 'Asturianu',
+  an: 'Aragonés',
+  'oc-aranes': 'Aranés',
+  de: 'Deutsch',
+  fr: 'Français',
+  it: 'Italiano',
+  nl: 'Nederlands',
+  pl: 'Polski',
+  ru: 'Русский',
+  zh: '中文（简体）',
+  ja: '日本語',
+};
+
+// Browser language tags to use for a language without its own entry.
+const ALIASES = { oc: 'oc-aranes' };
+
+let english = null;
+let locale = null;
+
+function format(text, args) {
+  return text.replace(/\{(\d+)\}/g, (m, i) => (args[i] === undefined ? m : args[i]));
+}
+
+function t(key, ...args) {
+  const text = (locale && locale.ui[key]) || english.ui[key] || key;
+  return format(text, args);
+}
+
+// Messages produced by fitstitch itself (table labels, checks, errors) are
+// English; translate them by matching the templates in the locale files.
+const templateCache = new Map();
+function templateRegex(template) {
+  if (!templateCache.has(template)) {
+    const escaped = template.replace(/[.*+?^$()|[\]\\]/g, '\\$&');
+    const parts = escaped.split(/\\?\{(\d+)\\?\}/);
+    let src = '';
+    for (let i = 0; i < parts.length; i++) src += i % 2 ? '(.+?)' : parts[i].replace(/[{}]/g, '\\$&');
+    templateCache.set(template, new RegExp(`^${src}$`, 's'));
+  }
+  return templateCache.get(template);
+}
+
+function tm(message) {
+  for (const table of [locale && locale.messages, english.messages]) {
+    if (!table) continue;
+    if (table[message] !== undefined) return table[message];
+    for (const [template, text] of Object.entries(table)) {
+      if (!template.includes('{')) continue;
+      const m = templateRegex(template).exec(message);
+      if (m) return format(text, m.slice(1));
+    }
+  }
+  return message;
+}
+
+async function loadLocale(lang) {
+  const res = await fetch(`locales/${lang}.json`);
+  if (!res.ok) throw new Error(`locales/${lang}.json: ${res.status}`);
+  return res.json();
+}
+
+function pickLanguage() {
+  const wanted = [new URLSearchParams(location.search).get('lang')];
+  try { wanted.push(localStorage.getItem('fitstitch-lang')); } catch (e) { /* no storage */ }
+  wanted.push(...(navigator.languages || [navigator.language]));
+  for (const w of wanted) {
+    if (!w) continue;
+    const tag = w.toLowerCase();
+    const base = tag.split('-')[0];
+    for (const code of [tag, ALIASES[tag], base, ALIASES[base]]) if (code && LANGUAGES[code]) return code;
+  }
+  return 'en';
+}
+
+async function setLanguage(lang) {
+  if (!english) english = await loadLocale('en');
+  try {
+    locale = lang === 'en' ? english : await loadLocale(lang);
+  } catch (e) {
+    console.error(e);
+    lang = 'en';
+    locale = english;
+  }
+  document.documentElement.lang = lang;
+  $('lang').value = lang;
+  for (const el of document.querySelectorAll('[data-i18n]')) el.innerHTML = t(el.dataset.i18n);
+  for (const el of document.querySelectorAll('[data-i18n-label]')) {
+    el.setAttribute('aria-label', t(el.dataset.i18nLabel));
+  }
+  document.querySelector('meta[name=description]').content = t('description');
+  update();
+  if (lastResult) show(lastResult, lastData, false);
+}
 
 async function init() {
+  const menu = $('lang');
+  for (const [code, name] of Object.entries(LANGUAGES)) menu.append(new Option(name, code));
+  menu.addEventListener('change', () => {
+    try { localStorage.setItem('fitstitch-lang', menu.value); } catch (e) { /* no storage */ }
+    setLanguage(menu.value);
+  });
+  await setLanguage(pickLanguage());
+
   try {
     const pyodide = await loadPyodide();
     await pyodide.loadPackage('micropip');
@@ -17,12 +130,13 @@ async function init() {
     run = (paths, force) => JSON.parse(py.get('run')(pyodide.toPy(paths), force));
     $('version').textContent = py.get('version')();
     window.fitstitch = { pyodide, ready: true };
-    update();
+    state = 'ready';
   } catch (e) {
-    $('stitch').textContent = 'Unavailable';
-    $('status').textContent = `Could not load the Python runtime: ${e}`;
+    state = 'unavailable';
+    $('status').textContent = t('load_failed', e);
     console.error(e);
   }
+  update();
 }
 
 function update() {
@@ -34,10 +148,13 @@ function update() {
   }));
   $('clear').hidden = files.length === 0;
   const btn = $('stitch');
-  if (!run) return;
+  if (state !== 'ready') {
+    btn.textContent = t(state);
+    return;
+  }
   btn.disabled = files.length < 2;
-  btn.textContent = 'Stitch';
-  $('status').textContent = files.length === 1 ? 'Add at least one more part.' : '';
+  btn.textContent = t('stitch');
+  $('status').textContent = files.length === 1 ? t('one_more') : '';
 }
 
 function addFiles(list) {
@@ -45,13 +162,14 @@ function addFiles(list) {
     if (!files.some((g) => g.name === f.name && g.size === f.size)) files.push(f);
   }
   $('result').hidden = true;
+  lastResult = null;
   update();
 }
 
 async function stitch() {
   const btn = $('stitch');
   btn.disabled = true;
-  btn.textContent = 'Stitching…';
+  btn.textContent = t('stitching');
   // let the browser repaint before the (synchronous) Python work starts
   await new Promise((r) => setTimeout(r, 30));
   const FS = window.fitstitch.pyodide.FS;
@@ -68,7 +186,7 @@ async function stitch() {
     const res = run(paths, $('force').checked);
     show(res, res.ok ? FS.readFile('/tmp/stitched.fit') : null);
   } catch (e) {
-    show({ error: `Unexpected failure: ${e}` });
+    show({ error: t('unexpected', e), translated: true });
     console.error(e);
   }
   update();
@@ -80,53 +198,62 @@ function cell(tag, text) {
   return el;
 }
 
-function show(res, data) {
+function show(res, data, scroll = true) {
+  lastResult = res;
+  lastData = data;
   $('result').hidden = false;
   $('error').hidden = !res.error;
   $('report').hidden = !!res.error;
   if (res.error) {
-    $('error').textContent = res.error;
+    $('error').textContent = res.translated ? res.error : tm(res.error);
     return;
   }
   const head = document.createElement('tr');
-  head.append(cell('th', ''), ...res.columns.map((c) => cell('th', c)));
+  head.append(cell('th', ''), ...res.parts.map((_, i) => cell('th', t('part', i + 1))),
+    cell('th', t('stitched')));
   const rows = res.rows.map(([label, ...vals]) => {
     const tr = document.createElement('tr');
-    tr.append(cell('th', label), ...vals.map((v) => cell('td', v)));
+    tr.append(cell('th', tm(label)), ...vals.map((v) => cell('td', v)));
     return tr;
   });
   $('table').replaceChildren(head, ...rows);
 
-  const notes = res.gaps.map((g, i) => `Pause between part ${i + 1} and ${i + 2}: ${g}.`);
-  if (res.reordered) notes.unshift(`Parts sorted by start time: ${res.parts.map((p, i) => `${i + 1}. ${p}`).join(', ')}.`);
+  const notes = res.gaps.map((g, i) => t('pause', i + 1, i + 2, g));
+  if (res.reordered) notes.unshift(t('sorted', res.parts.map((p, i) => `${i + 1}. ${p}`).join(', ')));
   $('notes').textContent = notes.join(' ');
 
   $('checks').replaceChildren(...res.checks.map(([ok, desc]) => {
-    const li = cell('li', desc);
+    const li = cell('li', tm(desc));
     li.className = ok ? 'ok' : 'fail';
     return li;
   }));
-  $('warnings').replaceChildren(...res.warnings.map((w) => cell('li', w)));
+  $('warnings').replaceChildren(...res.warnings.map((w) => cell('li', tm(w))));
 
   const a = $('download');
-  if (downloadUrl) URL.revokeObjectURL(downloadUrl);
-  downloadUrl = null;
   if (data) {
-    downloadUrl = URL.createObjectURL(new Blob([data], { type: 'application/octet-stream' }));
+    if (!downloadUrl || scroll) {
+      if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+      downloadUrl = URL.createObjectURL(new Blob([data], { type: 'application/octet-stream' }));
+    }
     a.href = downloadUrl;
     a.download = res.filename;
-    a.textContent = `Download ${res.filename}`;
+    a.textContent = t('download', res.filename);
     a.hidden = false;
   } else {
     a.hidden = true;
-    $('warnings').prepend(cell('li', 'Verification failed, so no file was produced. Please report this as a bug.'));
+    $('warnings').prepend(cell('li', t('verify_failed')));
   }
-  $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (scroll) $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 $('files').addEventListener('change', (e) => { addFiles(e.target.files); e.target.value = ''; });
 $('stitch').addEventListener('click', stitch);
-$('clear').addEventListener('click', () => { files = []; $('result').hidden = true; update(); });
+$('clear').addEventListener('click', () => {
+  files = [];
+  lastResult = null;
+  $('result').hidden = true;
+  update();
+});
 const drop = $('drop');
 for (const ev of ['dragenter', 'dragover']) {
   drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('over'); });

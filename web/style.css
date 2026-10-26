@@ -38,6 +38,16 @@ a { color: var(--accent); }
 .lede { font-size: 1.1rem; margin: 0 0 .5rem; }
 .private { color: var(--muted); margin: 0; }
 header { margin-bottom: 1.5rem; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+#lang {
+  font: inherit;
+  font-size: .9rem;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .3rem .5rem;
+}
 section {
   background: var(--card);
   border: 1px solid var(--border);

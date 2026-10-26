@@ -51,7 +51,7 @@ def page(site):
             if exe or not system:
                 pytest.skip('no Chromium for playwright')
             browser = p.chromium.launch(executable_path=system)
-        page = browser.new_page()
+        page = browser.new_page(locale='en-US')
         errors = []
         page.on('pageerror', lambda e: errors.append(e))
         page.goto(site)
@@ -107,3 +107,29 @@ def test_refusal_is_shown(page, tmp_path):
     page.click('#stitch')
     page.wait_for_selector('#download:not([hidden])')
     page.uncheck('#force')
+
+
+def test_language_switch(page, tmp_path):
+    import json
+    ca = json.loads((ROOT / 'web' / 'locales' / 'ca.json').read_text())
+    paths = [write(tmp_path, 'a.fit', make_activity(T0)),
+             write(tmp_path, 'b.fit', make_activity(T0 + 100))]
+    add(page, paths)
+    page.click('#stitch')
+    page.wait_for_selector('#download:not([hidden])')
+
+    page.select_option('#lang', 'ca')
+    page.wait_for_function("document.documentElement.lang === 'ca'")
+    assert page.inner_text('[data-i18n=result_h]') == ca['ui']['result_h']
+    assert page.text_content('#stitch') == ca['ui']['stitch']
+    # the existing result is re-rendered: labels, checks and pauses
+    assert page.text_content('#table tr:nth-child(2) th') == ca['messages']['Start']
+    assert page.text_content('#checks li') == ca['messages']['file structure and CRC are valid']
+    assert ca['ui']['pause'].split('{')[0] in page.text_content('#notes')
+
+    # remembered across reloads
+    page.reload()
+    page.wait_for_function('window.fitstitch && window.fitstitch.ready', timeout=120_000)
+    assert page.eval_on_selector('#lang', 'e => e.value') == 'ca'
+    page.select_option('#lang', 'en')
+    page.wait_for_function("document.documentElement.lang === 'en'")
