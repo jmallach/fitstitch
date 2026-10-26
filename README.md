@@ -144,9 +144,10 @@ The tests work at three levels:
   be refused with a clear error. Every activity is cut into halves and into
   thirds with `fit-split` and stitched back, and the result must reproduce
   the original data stream exactly.
-- Real activities in `samples/<case>/` (two or more parts per directory, not
-  distributed) are stitched and verified too. See
-  [CONTRIBUTING.md](CONTRIBUTING.md).
+- Real split activities are stitched and verified too: anonymized ones in
+  `tests/data/<case>/` (so far a Suunto Ambit3 run whose second half lost
+  the heart-rate strap), and your own in `samples/<case>/`, which is not
+  distributed. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Every stitched file in the tests is also checked by independent decoders:
 

@@ -8,6 +8,7 @@ dist/
 # activity files are personal data; keep them out of git
 samples/
 *.fit
+!tests/data/**/*.fit
 *.zip
 tools/.cache/
 _site/

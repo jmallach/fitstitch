@@ -231,9 +231,12 @@ def test_zip_input(tmp_path):
     assert len(merged.of(20)) == 60
 
 
-# Optional: real-world specimens in samples/<case>/*.fit|zip (not distributed).
+# Real-world split activities: anonymized ones shipped in tests/data/<case>/,
+# and optional private ones in samples/<case>/*.fit|zip (not distributed).
+DATA = Path(__file__).parent / 'data'
 SAMPLES = Path(__file__).parent.parent / 'samples'
-CASES = sorted(d for d in SAMPLES.iterdir() if d.is_dir() and d.name != 'corpus') if SAMPLES.is_dir() else []
+CASES = sorted(d for d in DATA.iterdir() if d.is_dir())
+CASES += sorted(d for d in SAMPLES.iterdir() if d.is_dir() and d.name != 'corpus') if SAMPLES.is_dir() else []
 
 
 @pytest.mark.parametrize('case', CASES, ids=[c.name for c in CASES])
@@ -259,3 +262,21 @@ def test_roundtrip_real_samples():
         h2, msgs2, _ = fitraw.read_bytes(fitraw.encode(h, msgs))
         assert [(m.gnum, m.fields, m.devfields) for m in msgs] == \
                [(m.gnum, m.fields, m.devfields) for m in msgs2]
+
+
+def test_suunto_ambit3_quirks():
+    # see tests/data/suunto-ambit3-split/README.md
+    case = DATA / 'suunto-ambit3-split'
+    parts = [load(case / 'part1.fit'), load(case / 'part2.fit')]
+    assert parts[1].session.get('total_calories') is None
+    merged, ordered, warnings = stitch(parts)
+    s = merged.session
+    # calories and training stress score only exist for part 1, and are kept
+    assert s.get('total_calories') == parts[0].session.get('total_calories')
+    assert s.get('training_stress_score') == parts[0].session.get('training_stress_score')
+    # a value missing from one part is not a disagreement
+    assert not any('training_stress_score' in w for w in warnings)
+    assert merged.of(19) == [] and s.get('num_laps') in (None, 0)
+    # part 1's developer fields survive, part 2's records gain none
+    assert sum(len(r.devfields) for r in merged.of(20)) == sum(len(r.devfields) for r in parts[0].of(20))
+    assert merged.gaps == [parts[1].start - parts[0].end]

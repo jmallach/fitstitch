@@ -25,10 +25,21 @@ contain your name, weight, birth year, heart-rate zones and device serial
 numbers. Only share files you are comfortable making public, or ask in the
 issue for a private way to send them.
 
+`tools/anonymize_fit.py` makes files safer to share: it clears the GPS
+fixes near where the activity starts and ends (500 m by default, see
+`--radius`), rotates and moves the rest of the track to a random place
+(keeping its distances), and removes
+serial numbers and user profile data. Times, altitude and sensor data stay,
+so look at the result before publishing it:
+
+```
+.venv/bin/python tools/anonymize_fit.py part1.fit part2.fit -o anonymized/
+```
+
 To test with your own files without committing them, put each case in its
 own directory under `samples/` (git-ignored), e.g. `samples/my-split-run/`
 holding the two parts. `tests/test_stitch.py` stitches and verifies every
-such directory.
+such directory, as well as the anonymized cases shipped in `tests/data/`.
 
 ## Translations
 
