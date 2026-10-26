@@ -78,6 +78,7 @@ section {
   margin-bottom: 1rem;
 }
 section p { margin: 0; }
+section p.note { margin-top: .5rem; font-size: .9rem; color: var(--muted); }
 footer { color: var(--muted); font-size: .9rem; margin-top: 1.5rem; }
 
 .drop {

@@ -59,8 +59,10 @@ fit-stitch PART1 PART2 [PART3...] [-o OUTPUT] [-n] [-f] [--overwrite]
 
 ### Replacing the activity on Garmin Connect and Strava
 
-1. Export each part from Garmin Connect (activity → ⚙ → *Export Original*)
-   or Strava (activity → ⋯ → *Export Original*).
+1. Export each part from the Garmin Connect website (activity → ⚙ →
+   *Export Original*) or the Strava website (activity → ⋯ → *Export
+   Original*). The phone apps can't export files; in a phone's browser,
+   ask for the desktop site if it keeps opening the app.
 2. Run `fit-stitch`, or use the web page.
 3. **Delete the original parts** on Garmin Connect and on Strava. Both
    reject an upload with the same start time as an existing activity as a
