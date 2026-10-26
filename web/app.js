@@ -26,11 +26,20 @@ const LANGUAGES = {
   pl: 'Polski',
   ru: 'Русский',
   zh: '中文（简体）',
+  'zh-hant': '中文（繁體）',
   ja: '日本語',
 };
 
 // Browser language tags to use for a language without its own entry.
-const ALIASES = { oc: 'oc-aranes' };
+const ALIASES = {
+  oc: 'oc-aranes',
+  'zh-tw': 'zh-hant',
+  'zh-hk': 'zh-hant',
+  'zh-mo': 'zh-hant',
+  'zh-hant-tw': 'zh-hant',
+  'zh-hant-hk': 'zh-hant',
+  'zh-hant-mo': 'zh-hant',
+};
 
 let english = null;
 let locale = null;

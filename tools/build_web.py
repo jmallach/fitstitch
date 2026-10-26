@@ -18,8 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGE = ['index.html', 'app.js', 'app.py', 'style.css']
 ASSETS = ['icon.svg', 'apple-touch-icon.png', 'social.png']
 SITE = 'https://jmallach.github.io/fitstitch/'
-# hreflang wants plain language codes; Aranese is the site's only Occitan
-HREFLANG = {'oc-aranes': 'oc'}
+# hreflang codes; Aranese is the site's only Occitan
+HREFLANG = {'oc-aranes': 'oc', 'zh': 'zh-Hans', 'zh-hant': 'zh-Hant'}
 
 
 def _alternates(langs):
