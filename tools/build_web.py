@@ -20,7 +20,7 @@ PAGE = ['index.html', 'app.js', 'app.py', 'style.css']
 ASSETS = ['icon.svg', 'apple-touch-icon.png', 'social.png']
 SITE = 'https://jmallach.github.io/fitstitch/'
 # hreflang codes; Aranese is the site's only Occitan
-HREFLANG = {'oc-aranes': 'oc', 'zh': 'zh-Hans', 'zh-hant': 'zh-Hant'}
+HREFLANG = {'oc-aranes': 'oc', 'pt': 'pt-PT', 'pt-br': 'pt-BR', 'zh': 'zh-Hans', 'zh-hant': 'zh-Hant'}
 
 
 def _alternates(langs):
