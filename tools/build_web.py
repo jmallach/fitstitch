@@ -10,6 +10,7 @@ Serve the result with e.g. `python -m http.server -d _site`.
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -20,7 +21,7 @@ PAGE = ['index.html', 'app.js', 'app.py', 'style.css']
 ASSETS = ['icon.svg', 'apple-touch-icon.png', 'social.png']
 SITE = 'https://jmallach.github.io/fitstitch/'
 # hreflang codes; Aranese is the site's only Occitan
-HREFLANG = {'oc-aranes': 'oc', 'pt': 'pt-PT', 'pt-br': 'pt-BR', 'zh': 'zh-Hans', 'zh-hant': 'zh-Hant'}
+HREFLANG = {'oc-aranes': 'oc', 'fil': 'tl', 'pt': 'pt-PT', 'pt-br': 'pt-BR', 'zh': 'zh-Hans', 'zh-hant': 'zh-Hant'}
 
 
 def _alternates(langs):
@@ -53,6 +54,8 @@ def build(out):
     page = out / 'index.html'
     html = page.read_text().replace('<!-- alternates -->', '\n'.join(
         f'<link rel="alternate" hreflang="{h}" href="{u}">' for h, u in _alternates(langs)))
+    html = re.sub(r'"inLanguage": \[[^\]]*\]', '"inLanguage": ' + json.dumps(
+        [HREFLANG.get(l, l) for l in langs]), html)
     page.write_text(html)
     (out / 'sitemap.xml').write_text(_sitemap(langs))
     pip = [sys.executable, '-m', 'pip', '-q', '--disable-pip-version-check']

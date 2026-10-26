@@ -133,3 +133,16 @@ def test_language_switch(page, tmp_path):
     assert page.eval_on_selector('#lang', 'e => e.value') == 'ca'
     page.select_option('#lang', 'en')
     page.wait_for_function("document.documentElement.lang === 'en'")
+
+
+def test_right_to_left(page):
+    page.select_option('#lang', 'ar')
+    page.wait_for_function("document.documentElement.lang === 'ar'")
+    assert page.evaluate('document.documentElement.dir') == 'rtl'
+    # the language menu sits on the left in RTL, at the reading end of the row
+    title = page.locator('h1').bounding_box()
+    menu = page.locator('#lang').bounding_box()
+    assert menu['x'] < title['x']
+    page.select_option('#lang', 'en')
+    page.wait_for_function("document.documentElement.lang === 'en'")
+    assert page.evaluate('document.documentElement.dir') == 'ltr'

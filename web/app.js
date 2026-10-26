@@ -32,11 +32,27 @@ const LANGUAGES = {
   zh: '中文（简体）',
   'zh-hant': '中文（繁體）',
   ja: '日本語',
+  ko: '한국어',
+  vi: 'Tiếng Việt',
+  th: 'ไทย',
+  id: 'Bahasa Indonesia',
+  ms: 'Bahasa Melayu',
+  fil: 'Filipino',
+  hi: 'हिन्दी',
+  bn: 'বাংলা',
+  ta: 'தமிழ்',
+  ur: 'اردو',
+  ar: 'العربية',
+  fa: 'فارسی',
+  tr: 'Türkçe',
+  sw: 'Kiswahili',
 };
+const RTL = new Set(['ar', 'fa', 'ur']);
 
 // Browser language tags to use for a language without its own entry.
 const ALIASES = {
   oc: 'oc-aranes',
+  tl: 'fil',
   'zh-tw': 'zh-hant',
   'zh-hk': 'zh-hant',
   'zh-mo': 'zh-hant',
@@ -49,7 +65,14 @@ let english = null;
 let locale = null;
 
 function format(text, args) {
-  return text.replace(/\{(\d+)\}/g, (m, i) => (args[i] === undefined ? m : args[i]));
+  // In right-to-left languages, keep each value (numbers, file names,
+  // durations) and a unit written after it as one left-to-right run.
+  const rtl = RTL.has(document.documentElement.lang);
+  return text.replace(/\{(\d+)\}(?: (m|s|kcal)\b)?/g, (m, i, unit) => {
+    if (args[i] === undefined) return m;
+    const value = unit ? `${args[i]}\u00a0${unit}` : `${args[i]}`;
+    return rtl ? `\u2066${value}\u2069` : value;
+  });
 }
 
 function t(key, ...args) {
@@ -113,6 +136,7 @@ async function setLanguage(lang) {
     locale = english;
   }
   document.documentElement.lang = lang;
+  document.documentElement.dir = RTL.has(lang) ? 'rtl' : 'ltr';
   $('lang').value = lang;
   for (const el of document.querySelectorAll('[data-i18n]')) el.innerHTML = t(el.dataset.i18n);
   for (const el of document.querySelectorAll('[data-i18n-label]')) {
@@ -164,6 +188,7 @@ function update() {
   const list = $('filelist');
   list.replaceChildren(...files.map((f) => {
     const li = document.createElement('li');
+    li.dir = 'ltr';
     li.textContent = `${f.name} (${(f.size / 1024).toFixed(0)} KB)`;
     return li;
   }));

@@ -42,7 +42,9 @@ very welcome: the initial translations were machine-made.
   (table labels, checks, refusals). The keys are matching templates: copy
   them unchanged and translate only the values.
 - To add a language, copy `en.json`, translate it and add the language's
-  native name to `LANGUAGES` in `web/app.js`.
+  native name to `LANGUAGES` in `web/app.js`. For a right-to-left language,
+  also add it to `RTL` there, and turn the `→` in the export instructions
+  into `←`.
 
 `tests/test_locales.py` checks that every locale has every string with the
 same placeholders and markup, and that the templates still match what
