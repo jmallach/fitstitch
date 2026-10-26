@@ -184,6 +184,7 @@ async function init() {
     run = (paths, force) => JSON.parse(py.get('run')(pyodide.toPy(paths), force));
     $('version').textContent = py.get('version')();
     window.fitstitch = { pyodide, ready: true };
+    document.documentElement.dataset.ready = '';
     state = 'ready';
   } catch (e) {
     state = 'unavailable';

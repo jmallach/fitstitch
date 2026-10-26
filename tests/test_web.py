@@ -54,8 +54,11 @@ def page(site):
         page = browser.new_page(locale='en-US')
         errors = []
         page.on('pageerror', lambda e: errors.append(e))
+        # anything the Content-Security-Policy blocks is a bug (or a leak)
+        page.on('console', lambda m: errors.append(m.text) if 'Content Security Policy' in m.text else None)
+        page.csp_errors = errors
         page.goto(site)
-        page.wait_for_function('window.fitstitch && window.fitstitch.ready', timeout=120_000)
+        page.wait_for_selector('html[data-ready]', state='attached', timeout=120_000)
         yield page
         assert not errors
         browser.close()
@@ -119,7 +122,7 @@ def test_language_switch(page, tmp_path):
     page.wait_for_selector('#download:not([hidden])')
 
     page.select_option('#lang', 'ca')
-    page.wait_for_function("document.documentElement.lang === 'ca'")
+    page.wait_for_selector('html[lang="ca"]', state='attached')
     assert page.inner_text('[data-i18n=result_h]') == ca['ui']['result_h']
     assert page.text_content('#stitch') == ca['ui']['stitch']
     # the existing result is re-rendered: labels, checks and pauses
@@ -129,20 +132,32 @@ def test_language_switch(page, tmp_path):
 
     # remembered across reloads
     page.reload()
-    page.wait_for_function('window.fitstitch && window.fitstitch.ready', timeout=120_000)
+    page.wait_for_selector('html[data-ready]', state='attached', timeout=120_000)
     assert page.eval_on_selector('#lang', 'e => e.value') == 'ca'
     page.select_option('#lang', 'en')
-    page.wait_for_function("document.documentElement.lang === 'en'")
+    page.wait_for_selector('html[lang="en"]', state='attached')
 
 
 def test_right_to_left(page):
     page.select_option('#lang', 'ar')
-    page.wait_for_function("document.documentElement.lang === 'ar'")
+    page.wait_for_selector('html[lang="ar"]', state='attached')
     assert page.evaluate('document.documentElement.dir') == 'rtl'
     # the language menu sits on the left in RTL, at the reading end of the row
     title = page.locator('h1').bounding_box()
     menu = page.locator('#lang').bounding_box()
     assert menu['x'] < title['x']
     page.select_option('#lang', 'en')
-    page.wait_for_function("document.documentElement.lang === 'en'")
+    page.wait_for_selector('html[lang="en"]', state='attached')
     assert page.evaluate('document.documentElement.dir') == 'ltr'
+
+
+def test_csp_blocks_other_hosts(page):
+    # the privacy promise is enforced by the browser: no request can leave
+    # for anywhere but the site itself and the Pyodide CDN
+    result = page.evaluate("""() => fetch('https://example.com/', {method: 'POST', body: 'data'})
+                                   .then(() => 'sent', () => 'blocked')""")
+    assert result == 'blocked'
+    blocked = [e for e in page.csp_errors if 'example.com' in e]
+    assert blocked
+    for e in blocked:
+        page.csp_errors.remove(e)
