@@ -37,10 +37,12 @@ Japanese; corrections are welcome (see
 ## Install
 
 ```
-pipx install git+https://github.com/jmallach/fitstitch
+pipx install fitstitch
 ```
 
-or, from a checkout, `pip install .`.
+or `pip install fitstitch`. For the latest code, use
+`pipx install git+https://github.com/jmallach/fitstitch`, or `pip install .`
+from a checkout.
 
 Requires Python 3.9+ and the official `garmin-fit-sdk` package. That package
 is used for field names and units, and to check the output independently.
