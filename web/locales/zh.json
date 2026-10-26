@@ -2,6 +2,7 @@
   "ui": {
     "description": "把不小心中途停止并保存的 FIT 活动重新合并为一个，不丢失任何数据。在浏览器中运行，文件不会上传。",
     "language": "语言",
+    "tagline": "将两个 FIT 文件合并为一个活动",
     "lede": "跑到一半不小心停止并保存了？把两段活动重新合并成一个，就像当时只是暂停而没有保存一样。不会丢失任何数据。",
     "private": "你的文件只保留在本设备上：所有处理都在浏览器中完成，不会上传任何内容。",
     "export_h": "1. 导出各段活动",
@@ -39,7 +40,6 @@
     "Avg / max power": "平均 / 最大功率",
     "Laps": "圈数",
     "Records": "记录点",
-
     "file structure and CRC are valid": "文件结构和 CRC 有效",
     "file cannot be re-read: {0}": "无法重新读取文件：{0}",
     "Garmin FIT SDK decodes the file without errors": "Garmin FIT SDK 解码文件无错误",
@@ -61,7 +61,6 @@
     "lap timer times add up to the session timer time": "各圈计时时间之和等于活动计时时间",
     "activity timer time equals the session timer time": "活动的计时时间等于运动段的计时时间",
     "records fall within the session time span": "所有记录的数据都在活动的时间范围内",
-
     "need at least two activities to stitch": "请至少添加两个活动进行拼接。",
     "{0}: not an activity file": "{0} 不是活动文件。",
     "{0}: has no session summary (unfinished or partial recording?)": "{0} 没有活动摘要。是不是未完成或不完整的记录？",

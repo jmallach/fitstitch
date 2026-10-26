@@ -2,6 +2,7 @@
   "ui": {
     "description": "Une en una sola una actividad FIT que detuviste y guardaste a medias por error, sin perder datos. Funciona en tu navegador; tus archivos no se suben.",
     "language": "Idioma",
+    "tagline": "Une dos archivos FIT en una sola actividad",
     "lede": "¿Detuviste y guardaste tu carrera a medias sin querer? Vuelve a unir las dos actividades en una, como si hubieras hecho una pausa en lugar de guardar. No se pierde ningún dato.",
     "private": "Tus archivos no salen de este dispositivo: todo funciona en tu navegador y no se sube nada.",
     "export_h": "1. Exporta las partes",

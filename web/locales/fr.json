@@ -2,6 +2,7 @@
   "ui": {
     "description": "Réunissez en une seule une activité FIT que vous avez arrêtée et enregistrée par erreur en cours de route, sans perdre de données. Fonctionne dans votre navigateur ; vos fichiers ne sont pas envoyés.",
     "language": "Langue",
+    "tagline": "Fusionner deux fichiers FIT en une seule activité",
     "lede": "Vous avez arrêté et enregistré votre sortie par erreur en cours de route ? Réunissez les deux activités en une seule, comme si vous aviez fait une pause au lieu d’enregistrer. Aucune donnée n’est perdue.",
     "private": "Vos fichiers restent sur cet appareil : tout fonctionne dans votre navigateur et rien n’est envoyé.",
     "export_h": "1. Exportez les parties",

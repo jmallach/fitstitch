@@ -2,6 +2,7 @@
   "ui": {
     "description": "Ajunta en ua soleta ua activitat FIT qu'as arturat e guardat per error a mieg camin, sense pèrder donades. Fonciona en tòn navegador; es tòns fichèrs non se pugen.",
     "language": "Lengua",
+    "tagline": "Ajunta dus fichèrs FIT en ua soleta activitat",
     "lede": "As arturat e guardat era tua corsa a mieg camin sense voler? Torna a ajuntar es dues activitats en ua, coma s'auesses hèt ua pausa en lòc de guardar-la. Non se pèrd cap donada.",
     "private": "Es tòns fichèrs se demoren en aguest dispositiu: tot fonciona en tòn navegador e non se puge arren.",
     "export_h": "1. Exporta es parts",
@@ -39,7 +40,6 @@
     "Avg / max power": "Potència mieja / max",
     "Laps": "Vòutes",
     "Records": "Registres",
-
     "file structure and CRC are valid": "era estructura deth fichèr e eth CRC son valids",
     "file cannot be re-read: {0}": "eth fichèr non se pòt tornar a léger: {0}",
     "Garmin FIT SDK decodes the file without errors": "eth Garmin FIT SDK descodifique eth fichèr sense errors",
@@ -61,7 +61,6 @@
     "lap timer times add up to the session timer time": "es temps de cronomètre des vòutes sumen eth temps de cronomètre totau",
     "activity timer time equals the session timer time": "eth temps de cronomètre dera activitat ei igau ath dera session",
     "records fall within the session time span": "totes es donades registrades son laguens deth periòde dera activitat",
-
     "need at least two activities to stitch": "Hica ath mens dues activitats entà ajuntar-les.",
     "{0}: not an activity file": "{0} non ei un fichèr d'activitat.",
     "{0}: has no session summary (unfinished or partial recording?)": "{0} non a resum d'activitat. Ei un registre incomplet o parciau?",

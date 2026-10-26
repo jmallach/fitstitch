@@ -32,13 +32,14 @@ body {
   font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 main { max-width: 52rem; margin: 0 auto; padding: 2rem 16px 3rem; }
-h1 { margin: 0 0 .5rem; font-size: 2rem; letter-spacing: -.02em; }
+h1 { margin: 0; font-size: 2rem; letter-spacing: -.02em; }
+.tagline { margin: 0 0 .75rem; color: var(--muted); font-weight: 600; }
 h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
 a { color: var(--accent); }
 .lede { font-size: 1.1rem; margin: 0 0 .5rem; }
 .private { color: var(--muted); margin: 0; }
 header { margin-bottom: 1.5rem; }
-.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
 #lang {
   font: inherit;
   font-size: .9rem;

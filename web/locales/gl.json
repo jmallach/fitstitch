@@ -2,6 +2,7 @@
   "ui": {
     "description": "Volve unir nunha soa unha actividade FIT que detiveches e gardaches á metade por erro, sen perder datos. Funciona no teu navegador; os teus ficheiros non se envían.",
     "language": "Idioma",
+    "tagline": "Une dous ficheiros FIT nunha soa actividade",
     "lede": "Detiveches e gardaches a túa carreira á metade sen querer? Volve unir as dúas actividades nunha, coma se fixeses unha pausa en vez de gardar. Non se perde ningún dato.",
     "private": "Os teus ficheiros non saen deste dispositivo: todo funciona no navegador e non se envía nada.",
     "export_h": "1. Exporta as partes",

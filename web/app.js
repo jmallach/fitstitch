@@ -106,6 +106,10 @@ async function setLanguage(lang) {
     el.setAttribute('aria-label', t(el.dataset.i18nLabel));
   }
   document.querySelector('meta[name=description]').content = t('description');
+  document.title = `fitstitch – ${t('tagline')} · Garmin, Strava`;
+  const canonical = new URL(location.pathname, location.origin);
+  if (lang !== 'en') canonical.searchParams.set('lang', lang);
+  document.querySelector('link[rel=canonical]').href = canonical.href;
   update();
   if (lastResult) show(lastResult, lastData, false);
 }
@@ -115,6 +119,10 @@ async function init() {
   for (const [code, name] of Object.entries(LANGUAGES)) menu.append(new Option(name, code));
   menu.addEventListener('change', () => {
     try { localStorage.setItem('fitstitch-lang', menu.value); } catch (e) { /* no storage */ }
+    // keep the address shareable in the chosen language
+    const url = new URL(location.href);
+    url.searchParams.set('lang', menu.value);
+    history.replaceState(null, '', url);
     setLanguage(menu.value);
   });
   await setLanguage(pickLanguage());

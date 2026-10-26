@@ -2,6 +2,7 @@
   "ui": {
     "description": "Voeg een FIT-activiteit die je per ongeluk halverwege hebt gestopt en opgeslagen weer samen tot één, zonder gegevens te verliezen. Werkt in je browser; je bestanden worden niet geüpload.",
     "language": "Taal",
+    "tagline": "Twee FIT-bestanden samenvoegen tot één activiteit",
     "lede": "Per ongeluk je training halverwege gestopt en opgeslagen? Voeg de twee activiteiten weer samen tot één, alsof je had gepauzeerd in plaats van opgeslagen. Er gaan geen gegevens verloren.",
     "private": "Je bestanden blijven op dit apparaat: alles draait in je browser en er wordt niets geüpload.",
     "export_h": "1. Exporteer de delen",

@@ -2,6 +2,7 @@
   "ui": {
     "description": "Füge eine FIT-Aktivität, die du versehentlich mittendrin gestoppt und gespeichert hast, wieder zu einer zusammen, ohne Daten zu verlieren. Läuft in deinem Browser; deine Dateien werden nicht hochgeladen.",
     "language": "Sprache",
+    "tagline": "Zwei FIT-Dateien zu einer Aktivität zusammenfügen",
     "lede": "Deinen Lauf versehentlich mittendrin gestoppt und gespeichert? Füge die beiden Aktivitäten wieder zu einer zusammen, als hättest du pausiert statt gespeichert. Es gehen keine Daten verloren.",
     "private": "Deine Dateien bleiben auf diesem Gerät: Alles läuft in deinem Browser und nichts wird hochgeladen.",
     "export_h": "1. Teile exportieren",

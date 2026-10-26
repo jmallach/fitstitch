@@ -2,6 +2,7 @@
   "ui": {
     "description": "途中でうっかり停止・保存してしまった FIT アクティビティを、データを失わずに 1 つに結合します。ブラウザー内で動作し、ファイルはアップロードされません。",
     "language": "言語",
+    "tagline": "2つのFITファイルを1つのアクティビティに結合",
     "lede": "ランの途中でうっかり停止して保存してしまいましたか？2 つのアクティビティを、保存せずに一時停止していたかのように 1 つに結合し直します。データは失われません。",
     "private": "ファイルはこのデバイスから出ません。すべての処理はブラウザー内で行われ、何もアップロードされません。",
     "export_h": "1. 各パートをエクスポート",
@@ -39,7 +40,6 @@
     "Avg / max power": "平均 / 最大パワー",
     "Laps": "ラップ",
     "Records": "記録ポイント",
-
     "file structure and CRC are valid": "ファイル構造と CRC は正常です",
     "file cannot be re-read: {0}": "ファイルを読み直せません：{0}",
     "Garmin FIT SDK decodes the file without errors": "Garmin FIT SDK でエラーなくデコードできます",
@@ -61,7 +61,6 @@
     "lap timer times add up to the session timer time": "各ラップのタイムの合計が全体のタイムと一致します",
     "activity timer time equals the session timer time": "アクティビティのタイムがセッションのタイムと一致します",
     "records fall within the session time span": "記録されたデータはすべてアクティビティの時間内に収まっています",
-
     "need at least two activities to stitch": "結合するには、アクティビティを 2 つ以上追加してください。",
     "{0}: not an activity file": "{0} はアクティビティファイルではありません。",
     "{0}: has no session summary (unfinished or partial recording?)": "{0} にはアクティビティの概要がありません。記録が未完了または不完全ではありませんか？",

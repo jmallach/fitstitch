@@ -16,6 +16,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ['index.html', 'app.js', 'app.py', 'style.css']
+ASSETS = ['icon.svg', 'apple-touch-icon.png', 'social.png']
+SITE = 'https://jmallach.github.io/fitstitch/'
+# hreflang wants plain language codes; Aranese is the site's only Occitan
+HREFLANG = {'oc-aranes': 'oc'}
+
+
+def _alternates(langs):
+    return [('x-default', SITE)] + [(HREFLANG.get(l, l), SITE if l == 'en' else f'{SITE}?lang={l}')
+                                    for l in langs]
+
+
+def _sitemap(langs):
+    alts = '\n'.join(f'    <xhtml:link rel="alternate" hreflang="{h}" href="{u.replace("&", "&amp;")}"/>'
+                     for h, u in _alternates(langs))
+    urls = '\n'.join(f'  <url>\n    <loc>{u}</loc>\n{alts}\n  </url>'
+                     for h, u in _alternates(langs) if h != 'x-default')
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '\n</urlset>\n')
 
 
 def build(out):
@@ -27,7 +46,13 @@ def build(out):
     for name in PAGE:
         shutil.copy(ROOT / 'web' / name, out / name)
     shutil.copytree(ROOT / 'web' / 'locales', out / 'locales')
-    shutil.copy(ROOT / 'docs' / 'icon.svg', out / 'icon.svg')
+    for name in ASSETS:
+        shutil.copy(ROOT / 'docs' / name, out / name)
+    langs = ['en'] + sorted(p.stem for p in (out / 'locales').glob('*.json') if p.stem != 'en')
+    page = out / 'index.html'
+    page.write_text(page.read_text().replace('<!-- alternates -->', '\n'.join(
+        f'<link rel="alternate" hreflang="{h}" href="{u}">' for h, u in _alternates(langs))))
+    (out / 'sitemap.xml').write_text(_sitemap(langs))
     pip = [sys.executable, '-m', 'pip', '-q', '--disable-pip-version-check']
     subprocess.run(pip + ['wheel', '--no-deps', '-w', str(wheels), str(ROOT)], check=True)
     subprocess.run(pip + ['download', '--no-deps', '--only-binary', ':all:', '-d', str(wheels),
