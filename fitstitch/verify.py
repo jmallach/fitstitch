@@ -64,7 +64,8 @@ def verify(data, inputs):
         check(abs(s.get('total_elapsed_time') - exp_elapsed) < 1.5,
               f'session elapsed time spans first start to last end ({exp_elapsed:.0f} s)')
     nl = sum(len(a.of(LAP)) for a in inputs)
-    check(len(out.of(LAP)) == nl and (s.raw('num_laps') in (None, nl)), f'all {nl} laps present')
+    if nl or out.of(LAP):
+        check(len(out.of(LAP)) == nl and (s.raw('num_laps') in (None, nl)), f'all {nl} laps present')
     idx = [l.raw('message_index') for l in out.of(LAP) if l.has('message_index')]
     check(idx == list(range(len(idx))), 'lap indexes are sequential')
     check(len(out.of(SESSION)) == 1, 'exactly one session')

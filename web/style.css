@@ -8,6 +8,7 @@
   --accent-fg: #ffffff;
   --ok: #1a7f37;
   --fail: #c62828;
+  --warn: #9a6700;
   --safe: #1a7f37;
   --safe-bg: #e9f6ec;
   color-scheme: light dark;
@@ -23,6 +24,7 @@
     --accent-fg: #0b1a2b;
     --ok: #4cc26a;
     --fail: #ff6b6b;
+    --warn: #e3b341;
     --safe: #4cc26a;
     --safe-bg: #15271b;
   }
@@ -131,7 +133,8 @@ td:last-child, tr:first-child th:last-child { font-weight: 700; }
 #checks li.ok::before { content: "✓"; color: var(--ok); }
 #checks li.fail::before { content: "✗"; color: var(--fail); }
 #checks li.fail { color: var(--fail); }
-#warnings li { color: var(--fail); }
+#warnings li { color: var(--warn); }
+#warnings li.fail { color: var(--fail); font-weight: 600; }
 #warnings li::before { content: "⚠ "; }
 
 @media (max-width: 600px) {

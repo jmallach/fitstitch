@@ -225,7 +225,9 @@ def merge_summary(a, b, warnings, extra_rules=None):
             rule = 'first'
         else:
             rule = 'first'
-            if va != vb:
+            if va is None and vb is not None:
+                rule = 'last'  # only the second part has a value: keep it
+            elif vb is not None and va != vb:
                 warnings.append(f'{a.name}.{name}: values differ ({va} vs {vb}); kept the first')
         if va is None and vb is None or rule in ('first', 'skip'):
             continue

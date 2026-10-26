@@ -297,7 +297,9 @@ function show(res, data, scroll = true) {
     a.hidden = false;
   } else {
     a.hidden = true;
-    $('warnings').prepend(cell('li', t('verify_failed')));
+    const failed = cell('li', t('verify_failed'));
+    failed.className = 'fail';
+    $('warnings').prepend(failed);
   }
   if (scroll) $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
