@@ -3,7 +3,7 @@
     "description": "Ajunta en ua soleta ua activitat FIT qu'as arturat e guardat per error a mieg camin, sense pèrder donades. Fonciona en tòn navegador; es tòns fichèrs non se pugen.",
     "language": "Lengua",
     "tagline": "Ajunta dus fichèrs FIT en ua soleta activitat",
-    "lede": "As arturat e guardat era tua corsa a mieg camin sense voler? Torna a ajuntar es dues activitats en ua, coma s'auesses hèt ua pausa en lòc de guardar-la. Non se pèrd cap donada.",
+    "lede": "As arturat e guardat era tua corsa o sortida en bici a mieg camin sense voler? Torna a ajuntar es dues activitats en ua, coma s'auesses hèt ua pausa en lòc de guardar-la. Non se pèrd cap donada.",
     "private": "Es tòns fichèrs se demoren en aguest dispositiu: tot fonciona en tòn navegador e non se puge arren.",
     "export_h": "1. Exporta es parts",
     "export_p": "En Garmin Connect, daurís cada activitat e dempús ⚙ → <em>Exportar originau</em> («Exportar original»); auràs un .zip. En Strava, daurís cada activitat e dempús ⋯ → <em>Exportar originau</em> («Exportar original»). Es fichèrs d'autes aplicacions tanben foncionen se son fichèrs .fit.",

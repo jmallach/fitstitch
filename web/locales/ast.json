@@ -3,7 +3,7 @@
     "description": "Xuni nuna sola una actividá FIT que paresti y guardesti a metá ensin querer, ensin perder datos. Funciona nel to restolador; los tos ficheros nun se xuben.",
     "language": "Llingua",
     "tagline": "Xune dos ficheros FIT nuna sola actividá",
-    "lede": "¿Paresti y guardesti la to carrera a metá ensin querer? Vuelvi xunir les dos actividaes nuna, como si ficieres una posa en cuenta de guardala. Nun se pierde nengún datu.",
+    "lede": "¿Paresti y guardesti la to carrera o salida en bici a metá ensin querer? Vuelvi xunir les dos actividaes nuna, como si ficieres una posa en cuenta de guardala. Nun se pierde nengún datu.",
     "private": "Los tos ficheros nun salen d'esti preséu: too funciona nel restolador y nun se xube nada.",
     "export_h": "1. Esporta les partes",
     "export_p": "En Garmin Connect, abri cada actividá y depués ⚙ → <em>Esportar l'orixinal</em> (vas consiguir un .zip). En Strava, abri cada actividá y depués ⋯ → <em>Esportar l'orixinal</em>. Los ficheros d'otres aplicaciones tamién valen si son ficheros .fit.",

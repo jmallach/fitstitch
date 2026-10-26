@@ -3,7 +3,7 @@
     "description": "Połącz z powrotem w jedną aktywność FIT przypadkiem zatrzymaną i zapisaną w połowie, bez utraty danych. Działa w przeglądarce; Twoje pliki nie są nigdzie wysyłane.",
     "language": "Język",
     "tagline": "Połącz dwa pliki FIT w jedną aktywność",
-    "lede": "Bieg przypadkiem zatrzymany i zapisany w połowie? Połącz obie aktywności z powrotem w jedną, tak jakby zamiast zapisu była pauza. Nie tracisz żadnych danych.",
+    "lede": "Bieg lub jazda na rowerze przypadkiem zatrzymane i zapisane w połowie? Połącz obie aktywności z powrotem w jedną, tak jakby zamiast zapisu była pauza. Nie tracisz żadnych danych.",
     "private": "Twoje pliki zostają na tym urządzeniu: wszystko działa w przeglądarce i nic nie jest wysyłane.",
     "export_h": "1. Wyeksportuj części",
     "export_p": "W Garmin Connect otwórz każdą aktywność, a następnie ⚙ → <em>Eksportuj oryginał</em> (otrzymasz plik .zip). W serwisie Strava otwórz każdą aktywność, a następnie ⋯ → <em>Eksportuj oryginał</em>. Pliki z innych aplikacji też zadziałają, jeśli są plikami .fit.",

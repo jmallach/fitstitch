@@ -3,7 +3,7 @@
     "description": "Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free, no data lost, runs in your browser.",
     "language": "Language",
     "tagline": "Join two FIT files into one activity",
-    "lede": "Stopped and saved your run halfway by accident? Join the two activities back into one, as if you had paused instead of saving. No data is lost.",
+    "lede": "Stopped and saved your run or ride halfway by accident? Join the two activities back into one, as if you had paused instead of saving. No data is lost.",
     "private": "Your files stay on this device: everything runs in your browser and nothing is uploaded.",
     "export_h": "1. Export the parts",
     "export_p": "On Garmin Connect, open each activity, then ⚙ → <em>Export Original</em> (you get a .zip). On Strava, open each activity, then ⋯ → <em>Export Original</em>. Files from other apps work if they are .fit files.",

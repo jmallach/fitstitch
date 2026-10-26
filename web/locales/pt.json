@@ -3,7 +3,7 @@
     "description": "Junta numa só uma atividade FIT que paraste e guardaste a meio por engano, sem perder dados. Funciona no teu navegador; os teus ficheiros não são carregados.",
     "language": "Idioma",
     "tagline": "Junta dois ficheiros FIT numa só atividade",
-    "lede": "Paraste e guardaste a tua corrida a meio sem querer? Junta novamente as duas atividades numa só, como se tivesses feito uma pausa em vez de guardar. Não se perdem dados.",
+    "lede": "Paraste e guardaste a tua corrida ou volta de bicicleta a meio sem querer? Junta novamente as duas atividades numa só, como se tivesses feito uma pausa em vez de guardar. Não se perdem dados.",
     "private": "Os teus ficheiros ficam neste dispositivo: tudo funciona no teu navegador e nada é carregado.",
     "export_h": "1. Exporta as partes",
     "export_p": "No Garmin Connect, abre cada atividade e depois ⚙ → <em>Exportar original</em> (obténs um .zip). No Strava, abre cada atividade e depois ⋯ → <em>Exportar original</em>. Os ficheiros de outras aplicações também servem, desde que sejam ficheiros .fit.",

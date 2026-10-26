@@ -3,7 +3,7 @@
     "description": "Torna a unir en una sola una activitat FIT que vas aturar i desar a mitges per error, sense perdre dades. Funciona al navegador; els fitxers no es pugen enlloc.",
     "language": "Llengua",
     "tagline": "Uneix dos fitxers FIT en una sola activitat",
-    "lede": "Has aturat i desat la cursa a mitges sense voler? Torna a unir les dues activitats en una, com si haguessis fet una pausa en lloc de desar-la. No es perd cap dada.",
+    "lede": "Has aturat i desat la cursa o la sortida en bici a mitges sense voler? Torna a unir les dues activitats en una, com si haguessis fet una pausa en lloc de desar-la. No es perd cap dada.",
     "private": "Els fitxers no surten d'aquest dispositiu: tot funciona al navegador i no es puja res.",
     "export_h": "1. Exporta les parts",
     "export_p": "A Garmin Connect, obre cada activitat i després ⚙ → <em>Exporta l'original</em> (obtindràs un .zip). A Strava, obre cada activitat i després ⋯ → <em>Exporta l'original</em>. Els fitxers d'altres aplicacions també funcionen si són fitxers .fit.",

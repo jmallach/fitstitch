@@ -3,7 +3,7 @@
     "description": "Riunisci in una sola un’attività FIT che hai fermato e salvato per sbaglio a metà, senza perdere dati. Funziona nel tuo browser; i tuoi file non vengono caricati.",
     "language": "Lingua",
     "tagline": "Unisci due file FIT in un'unica attività",
-    "lede": "Hai fermato e salvato per sbaglio la tua corsa a metà? Riunisci le due attività in una sola, come se avessi messo in pausa invece di salvare. Nessun dato va perso.",
+    "lede": "Hai fermato e salvato per sbaglio la tua corsa o uscita in bici a metà? Riunisci le due attività in una sola, come se avessi messo in pausa invece di salvare. Nessun dato va perso.",
     "private": "I tuoi file restano su questo dispositivo: tutto funziona nel tuo browser e non viene caricato nulla.",
     "export_h": "1. Esporta le parti",
     "export_p": "Su Garmin Connect apri ogni attività, poi ⚙ → <em>Esporta originale</em> (ottieni un .zip). Su Strava apri ogni attività, poi ⋯ → <em>Esporta originale</em>. Funzionano anche i file di altre app, purché siano file .fit.",

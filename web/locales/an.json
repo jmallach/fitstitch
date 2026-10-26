@@ -3,7 +3,7 @@
     "description": "Chunta en una sola una actividat FIT que has aturau y alzau por error a meyo camín, sin perder datos. Funciona en o tuyo navegador; os tuyos ficheros no se puyan.",
     "language": "Luenga",
     "tagline": "Chunta dos ficheros FIT en una sola actividat",
-    "lede": "Has aturau y alzau a tuya carrera a meyo camín sin querer? Torna a chuntar as dos actividaz en una, como si heses feito una pausa en cuenta d'alzar-la. No se pierde garra dato.",
+    "lede": "Has aturau y alzau a tuya carrera u salida en bici a meyo camín sin querer? Torna a chuntar as dos actividaz en una, como si heses feito una pausa en cuenta d'alzar-la. No se pierde garra dato.",
     "private": "Os tuyos ficheros se quedan en iste dispositivo: tot funciona en o tuyo navegador y no se puya cosa.",
     "export_h": "1. Exporta as partes",
     "export_p": "En Garmin Connect, ubre cada actividat y dimpués ⚙ → <em>Exportar orichinal</em> («Exportar original»); te dará un .zip. En Strava, ubre cada actividat y dimpués ⋯ → <em>Exportar orichinal</em> («Exportar original»). Os ficheros d'atras aplicacions tamién funcionan si son ficheros .fit.",
