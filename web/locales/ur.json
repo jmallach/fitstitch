@@ -8,7 +8,7 @@
     "privacy_h": "نجی: آپ کی فائلیں کبھی اپ لوڈ یا محفوظ نہیں کی جاتیں",
     "privacy_more": "کوئی سرور ہی نہیں جو انہیں وصول کر سکے: fitstitch مکمل طور پر آپ کے براؤزر میں چلتا ہے، اور صفحہ لوڈ ہونے کے بعد انٹرنیٹ کے بغیر بھی کام کرتا ہے۔ کچھ بھی محفوظ نہیں کیا جاتا، سوائے آپ کی منتخب کردہ زبان کے۔ <a href=\"https://github.com/jmallach/fitstitch\">سورس کوڈ</a> اوپن ہے، کوئی بھی اسے جانچ سکتا ہے۔",
     "export_h": "1. حصے ایکسپورٹ کریں",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> پر ہر سرگرمی کھولیں، پھر ⚙ ← <em>اصل فائل ایکسپورٹ کریں</em> (آپ کو ایک .zip فائل ملے گی)۔ <a href=\"https://www.strava.com/athlete/training\">Strava</a> پر ہر سرگرمی کھولیں، پھر ⋯ ← <em>اصل فائل ایکسپورٹ کریں</em>۔ دوسری ایپس کی فائلیں بھی کام کرتی ہیں اگر وہ .fit فائلیں ہوں۔",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a> پر ہر سرگرمی کھولیں، پھر ⚙ ← <em>اصل فائل ایکسپورٹ کریں</em> (آپ کو ایک .zip فائل ملے گی)۔ <a href=\"https://www.strava.com/athlete/training\">Strava</a> پر ہر سرگرمی کھولیں، پھر ⋯ ← <em>اصل فائل ایکسپورٹ کریں</em> ⁦(Export Original)⁩۔ دوسری ایپس کی فائلیں بھی کام کرتی ہیں اگر وہ .fit فائلیں ہوں۔",
     "export_note": "فون ایپس فائلیں ایکسپورٹ نہیں کر سکتیں: ویب سائٹس استعمال کریں، کمپیوٹر پر یا اپنے فون کے براؤزر میں (اگر بار بار ایپ کھل جائے تو ڈیسک ٹاپ سائٹ منتخب کریں)۔",
     "add_h": "2. انہیں یہاں شامل کریں",
     "drop": ".fit یا .zip فائلیں یہاں چھوڑیں، یا <u>فائلیں منتخب کریں</u>",
@@ -43,7 +43,6 @@
     "Avg / max power": "اوسط / زیادہ سے زیادہ پاور",
     "Laps": "لیپس",
     "Records": "ڈیٹا پوائنٹس",
-
     "file structure and CRC are valid": "فائل کی ساخت اور CRC درست ہیں",
     "file cannot be re-read: {0}": "فائل دوبارہ پڑھی نہیں جا سکتی: {0}",
     "Garmin FIT SDK decodes the file without errors": "Garmin FIT SDK فائل کو بغیر غلطی کے پڑھ لیتا ہے",
@@ -65,7 +64,6 @@
     "lap timer times add up to the session timer time": "لیپس کے ٹائمر اوقات کا مجموعہ کل ٹائمر کے وقت کے برابر ہے",
     "activity timer time equals the session timer time": "سرگرمی کا ٹائمر وقت سیشن کے ٹائمر وقت کے برابر ہے",
     "records fall within the session time span": "تمام ریکارڈ شدہ ڈیٹا سرگرمی کے دورانیے کے اندر ہے",
-
     "need at least two activities to stitch": "جوڑنے کے لیے کم از کم دو سرگرمیاں شامل کریں۔",
     "{0}: not an activity file": "{0} سرگرمی کی فائل نہیں ہے۔",
     "{0}: has no session summary (unfinished or partial recording?)": "{0} میں سرگرمی کا خلاصہ نہیں ہے۔ کیا یہ نامکمل یا ادھوری ریکارڈنگ ہے؟",

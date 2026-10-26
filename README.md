@@ -26,7 +26,7 @@ Pause between part 1 and 2: 0:00:39
 browser, with nothing to install, on phones too. Your files are not
 uploaded: the page runs fitstitch locally with
 [Pyodide](https://pyodide.org) (Python compiled to WebAssembly). It is
-available in 33 languages, from Arabic and Hindi to Catalan and
+available in 38 languages, from Arabic and Hindi to Catalan and
 Japanese; corrections are welcome (see
 [CONTRIBUTING.md](CONTRIBUTING.md#translations)).
 

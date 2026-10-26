@@ -8,7 +8,7 @@
     "privacy_h": "Privado: os teus ficheiros nunca se envían nin se gardan en ningures",
     "privacy_more": "Non hai ningún servidor que os poida recibir: fitstitch funciona por completo no navegador e, unha vez cargada a páxina, mesmo sen conexión. Tampouco se garda nada, agás o idioma que escollas. O <a href=\"https://github.com/jmallach/fitstitch\">código fonte</a> é aberto e calquera pode revisalo.",
     "export_h": "1. Exporta as partes",
-    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abre cada actividade e logo ⚙ → <em>Exportar orixinal</em> (obterás un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abre cada actividade e logo ⋯ → <em>Exportar orixinal</em>. Os ficheiros doutras aplicacións tamén serven se son ficheiros .fit.",
+    "export_p": "En <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, abre cada actividade e logo ⚙ → <em>Exportar orixinal</em> (obterás un .zip). En <a href=\"https://www.strava.com/athlete/training\">Strava</a>, abre cada actividade e logo ⋯ → <em>Exportar orixinal</em> (Export Original). Os ficheiros doutras aplicacións tamén serven se son ficheiros .fit.",
     "export_note": "As aplicacións do móbil non permiten exportar: usa as webs, no ordenador ou no navegador do móbil (se che segue abrindo a aplicación, pide a versión de escritorio).",
     "add_h": "2. Engádeas aquí",
     "drop": "Solta aquí os ficheiros .fit ou .zip, ou <u>escolle os ficheiros</u>",

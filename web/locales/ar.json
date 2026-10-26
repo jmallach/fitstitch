@@ -8,7 +8,7 @@
     "privacy_h": "خاص: لا تُرفع ملفاتك ولا تُخزَّن أبدًا",
     "privacy_more": "لا يوجد خادم يمكنه استلامها: يعمل fitstitch بالكامل في متصفحك، وبعد تحميل الصفحة يعمل حتى دون اتصال بالإنترنت. ولا يُخزَّن أي شيء أيضًا، باستثناء اللغة التي اخترتها. <a href=\"https://github.com/jmallach/fitstitch\">الشيفرة المصدرية</a> مفتوحة ليتحقق منها أي شخص.",
     "export_h": "1. صدِّر الأجزاء",
-    "export_p": "في <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>، افتح كل نشاط، ثم ⚙ ← <em>تصدير الملف الأصلي</em> (ستحصل على ملف .zip). في <a href=\"https://www.strava.com/athlete/training\">Strava</a>، افتح كل نشاط، ثم ⋯ ← <em>تصدير الملف الأصلي</em>. تعمل الملفات من التطبيقات الأخرى إذا كانت ملفات .fit.",
+    "export_p": "في <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>، افتح كل نشاط، ثم ⚙ ← <em>تصدير الملف الأصلي</em> (ستحصل على ملف .zip). في <a href=\"https://www.strava.com/athlete/training\">Strava</a>، افتح كل نشاط، ثم ⋯ ← <em>تصدير الملف الأصلي</em> ⁦(Export Original)⁩. تعمل الملفات من التطبيقات الأخرى إذا كانت ملفات .fit.",
     "export_note": "لا تستطيع تطبيقات الهاتف تصدير الملفات: استخدم المواقع الإلكترونية، على الحاسوب أو في متصفح هاتفك (إذا ظل يفتح التطبيق، فاطلب نسخة سطح المكتب من الموقع).",
     "add_h": "2. أضِفها هنا",
     "drop": "اسحب ملفات .fit أو .zip وأفلتها هنا، أو <u>اختر الملفات</u>",
@@ -43,7 +43,6 @@
     "Avg / max power": "متوسط / أقصى قدرة",
     "Laps": "اللفات",
     "Records": "نقاط البيانات",
-
     "file structure and CRC are valid": "بنية الملف وCRC صالحان",
     "file cannot be re-read: {0}": "تتعذّر إعادة قراءة الملف: {0}",
     "Garmin FIT SDK decodes the file without errors": "تفك Garmin FIT SDK ترميز الملف دون أخطاء",
@@ -65,7 +64,6 @@
     "lap timer times add up to the session timer time": "مجموع أوقات مؤقت اللفات يساوي وقت المؤقت الإجمالي",
     "activity timer time equals the session timer time": "وقت مؤقت النشاط يساوي وقت مؤقت الجلسة",
     "records fall within the session time span": "جميع البيانات المسجلة تقع ضمن المدة الزمنية للنشاط",
-
     "need at least two activities to stitch": "أضِف نشاطين على الأقل لدمجهما.",
     "{0}: not an activity file": "{0} ليس ملف نشاط.",
     "{0}: has no session summary (unfinished or partial recording?)": "لا يحتوي {0} على ملخص للنشاط. هل هو تسجيل غير مكتمل أو جزئي؟",

@@ -20,7 +20,7 @@ from fitstitch import fitraw
 from test_stitch import HEADER, T0, make_activity
 
 WEB = Path(__file__).resolve().parent.parent / 'web'
-LANGS = re.findall(r"^\s+'?([a-z-]+)'?: '", (WEB / 'app.js').read_text().split('const LANGUAGES')[1]
+LANGS = re.findall(r"^\s+'?([a-z0-9-]+)'?: '", (WEB / 'app.js').read_text().split('const LANGUAGES')[1]
                    .split('};')[0], re.M)
 EN = json.loads((WEB / 'locales' / 'en.json').read_text())
 

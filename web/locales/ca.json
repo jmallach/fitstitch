@@ -8,7 +8,7 @@
     "privacy_h": "Privat: els fitxers mai no es pugen ni es desen enlloc",
     "privacy_more": "No hi ha cap servidor que els pugui rebre: fitstitch funciona sencer al navegador i, un cop carregada la pàgina, fins i tot sense connexió. Tampoc no es desa res, tret de la llengua que triïs. El <a href=\"https://github.com/jmallach/fitstitch\">codi font</a> és obert i qualsevol el pot revisar.",
     "export_h": "1. Exporta les parts",
-    "export_p": "A <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, obre cada activitat i després ⚙ → <em>Exporta l'original</em> (obtindràs un .zip). A <a href=\"https://www.strava.com/athlete/training\">Strava</a>, obre cada activitat i després ⋯ → <em>Exporta l'original</em>. Els fitxers d'altres aplicacions també funcionen si són fitxers .fit.",
+    "export_p": "A <a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>, obre cada activitat i després ⚙ → <em>Exporta l'original</em> (obtindràs un .zip). A <a href=\"https://www.strava.com/athlete/training\">Strava</a>, obre cada activitat i després ⋯ → <em>Exporta l'original</em> (Export Original). Els fitxers d'altres aplicacions també funcionen si són fitxers .fit.",
     "export_note": "Les aplicacions del mòbil no permeten exportar: fes servir els webs, a l'ordinador o al navegador del mòbil (si t'obre l'aplicació, demana la versió d'escriptori).",
     "add_h": "2. Afegeix-les aquí",
     "drop": "Deixa anar aquí els fitxers .fit o .zip, o <u>tria els fitxers</u>",

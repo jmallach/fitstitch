@@ -8,7 +8,7 @@
     "privacy_h": "Pribatua: zure fitxategiak ez dira inoiz igotzen, ezta inon gordetzen ere",
     "privacy_more": "Ez dago fitxategiak jaso ditzakeen zerbitzaririk: fitstitch osorik zure nabigatzailean exekutatzen da, eta orria kargatu ondoren konexiorik gabe ere badabil. Ez da ezer gordetzen, aukeratutako hizkuntza izan ezik. <a href=\"https://github.com/jmallach/fitstitch\">Iturburu-kodea</a> irekia da, edonork egiazta dezan.",
     "export_h": "1. Esportatu zatiak",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>-en, ireki jarduera bakoitza eta gero ⚙ → <em>Esportatu jatorrizkoa</em> (.zip bat lortuko duzu). <a href=\"https://www.strava.com/athlete/training\">Strava</a>-n, ireki jarduera bakoitza eta gero ⋯ → <em>Esportatu jatorrizkoa</em>. Beste aplikazio batzuetako fitxategiek ere balio dute, .fit fitxategiak badira.",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>-en, ireki jarduera bakoitza eta gero ⚙ → <em>Esportatu jatorrizkoa</em> (.zip bat lortuko duzu). <a href=\"https://www.strava.com/athlete/training\">Strava</a>-n, ireki jarduera bakoitza eta gero ⋯ → <em>Esportatu jatorrizkoa</em> (Export Original). Beste aplikazio batzuetako fitxategiek ere balio dute, .fit fitxategiak badira.",
     "export_note": "Mugikorreko aplikazioek ez dute esportatzen uzten: erabili webguneak, ordenagailuan edo mugikorreko nabigatzailean (aplikazioa irekitzen bazaizu, eskatu mahaigaineko bertsioa).",
     "add_h": "2. Gehitu hemen",
     "drop": "Jaregin hemen .fit edo .zip fitxategiak, edo <u>aukeratu fitxategiak</u>",

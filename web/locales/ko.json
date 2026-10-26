@@ -8,7 +8,7 @@
     "privacy_h": "안전해요: 파일은 업로드되거나 저장되지 않아요",
     "privacy_more": "파일을 받을 서버 자체가 없어요. fitstitch는 전부 브라우저 안에서 실행되고, 페이지가 한 번 로드되면 오프라인에서도 작동해요. 선택한 언어 외에는 아무것도 저장하지 않아요. 누구나 확인할 수 있도록 <a href=\"https://github.com/jmallach/fitstitch\">소스 코드</a>가 공개되어 있어요.",
     "export_h": "1. 파트 내보내기",
-    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>에서 각 활동을 열고 ⚙ → <em>원본 내보내기</em>를 선택하세요(.zip 파일을 받게 돼요). <a href=\"https://www.strava.com/athlete/training\">Strava</a>에서는 각 활동을 열고 ⋯ → <em>원본 내보내기</em>를 선택하세요. 다른 앱의 파일도 .fit 파일이라면 사용할 수 있어요.",
+    "export_p": "<a href=\"https://connect.garmin.com/modern/activities\">Garmin Connect</a>에서 각 활동을 열고 ⚙ → <em>원본 내보내기</em>를 선택하세요(.zip 파일을 받게 돼요). <a href=\"https://www.strava.com/athlete/training\">Strava</a>에서는 각 활동을 열고 ⋯ → <em>원본 내보내기</em>(Export Original)를 선택하세요. 다른 앱의 파일도 .fit 파일이라면 사용할 수 있어요.",
     "export_note": "휴대폰 앱에서는 파일을 내보낼 수 없어요. 컴퓨터나 휴대폰 브라우저에서 웹사이트를 이용하세요(계속 앱이 열리면 데스크톱 사이트를 요청하세요).",
     "add_h": "2. 여기에 추가하기",
     "drop": ".fit 또는 .zip 파일을 여기에 끌어다 놓거나 <u>파일을 선택하세요</u>",
@@ -43,7 +43,6 @@
     "Avg / max power": "평균 / 최대 파워",
     "Laps": "랩",
     "Records": "기록 수",
-
     "file structure and CRC are valid": "파일 구조와 CRC가 올바름",
     "file cannot be re-read: {0}": "파일을 다시 읽을 수 없음: {0}",
     "Garmin FIT SDK decodes the file without errors": "Garmin FIT SDK로 오류 없이 파일을 읽음",
@@ -65,7 +64,6 @@
     "lap timer times add up to the session timer time": "랩 타이머 시간의 합이 총 타이머 시간과 같음",
     "activity timer time equals the session timer time": "활동 타이머 시간이 세션 타이머 시간과 같음",
     "records fall within the session time span": "모든 기록 데이터가 활동 시간 범위 안에 있음",
-
     "need at least two activities to stitch": "합치려면 활동을 두 개 이상 추가하세요.",
     "{0}: not an activity file": "{0}: 활동 파일이 아니에요.",
     "{0}: has no session summary (unfinished or partial recording?)": "{0}: 활동 요약이 없어요. 끝나지 않았거나 일부만 기록된 파일인가요?",

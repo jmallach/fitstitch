@@ -14,7 +14,8 @@ let state = 'loading'; // loading | ready | unavailable
 // Native names, in the order shown in the language menu.
 const LANGUAGES = {
   en: 'English',
-  es: 'Español',
+  es: 'Español (España)',
+  'es-419': 'Español (Latinoamérica)',
   ca: 'Català',
   gl: 'Galego',
   eu: 'Euskara',
@@ -28,6 +29,10 @@ const LANGUAGES = {
   it: 'Italiano',
   nl: 'Nederlands',
   pl: 'Polski',
+  cs: 'Čeština',
+  da: 'Dansk',
+  nb: 'Norsk bokmål',
+  sv: 'Svenska',
   ru: 'Русский',
   zh: '中文（简体）',
   'zh-hant': '中文（繁體）',
@@ -53,6 +58,8 @@ const RTL = new Set(['ar', 'fa', 'ur']);
 const ALIASES = {
   oc: 'oc-aranes',
   tl: 'fil',
+  no: 'nb',
+  nn: 'nb',
   'zh-tw': 'zh-hant',
   'zh-hk': 'zh-hant',
   'zh-mo': 'zh-hant',
@@ -121,6 +128,8 @@ function pickLanguage() {
     if (!w) continue;
     const tag = w.toLowerCase();
     const base = tag.split('-')[0];
+    // Spanish from anywhere but Spain gets the Latin American variant
+    if (base === 'es' && tag !== 'es' && tag !== 'es-es') return 'es-419';
     for (const code of [tag, ALIASES[tag], base, ALIASES[base]]) if (code && LANGUAGES[code]) return code;
   }
   return 'en';
