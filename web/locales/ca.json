@@ -5,6 +5,8 @@
     "tagline": "Uneix dos fitxers FIT en una sola activitat",
     "lede": "Has aturat i desat la cursa o la sortida en bici a mitges sense voler? Torna a unir les dues activitats en una, com si haguessis fet una pausa en lloc de desar-la. No es perd cap dada.",
     "private": "Els fitxers no surten d'aquest dispositiu: tot funciona al navegador i no es puja res.",
+    "privacy_h": "Privat: els fitxers mai no es pugen ni es desen enlloc",
+    "privacy_more": "No hi ha cap servidor que els pugui rebre: fitstitch funciona sencer al navegador i, un cop carregada la pàgina, fins i tot sense connexió. Tampoc no es desa res, tret de la llengua que triïs. El <a href=\"https://github.com/jmallach/fitstitch\">codi font</a> és obert i qualsevol el pot revisar.",
     "export_h": "1. Exporta les parts",
     "export_p": "A Garmin Connect, obre cada activitat i després ⚙ → <em>Exporta l'original</em> (obtindràs un .zip). A Strava, obre cada activitat i després ⋯ → <em>Exporta l'original</em>. Els fitxers d'altres aplicacions també funcionen si són fitxers .fit.",
     "add_h": "2. Afegeix-les aquí",

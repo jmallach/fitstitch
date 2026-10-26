@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>fitstitch – Join two FIT files into one activity · Garmin, Strava</title>
-<meta name="description" content="Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free, no data lost, runs in your browser.">
+<meta name="description" content="Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free and private: runs in your browser, files are never uploaded, no data lost.">
 <meta name="keywords" content="join FIT files, merge FIT files, combine FIT files, stitch activities, Garmin Connect, Strava, accidentally stopped activity, split run, FIT file merger">
 <link rel="canonical" href="https://jmallach.github.io/fitstitch/">
 <!-- alternates -->
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="fitstitch">
 <meta property="og:url" content="https://jmallach.github.io/fitstitch/">
 <meta property="og:title" content="fitstitch – Join two FIT files into one activity">
-<meta property="og:description" content="Accidentally stopped and saved your run or ride halfway? Join the two FIT files back into one, with no data lost. Free, runs in your browser.">
+<meta property="og:description" content="Accidentally stopped and saved your run or ride halfway? Join the two FIT files back into one, with no data lost. Free and private: it runs in your browser and your files are never uploaded.">
 <meta property="og:image" content="https://jmallach.github.io/fitstitch/social.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -57,8 +57,14 @@
     <p class="lede" data-i18n="lede">Stopped and saved your run or ride halfway by accident? Join the two
     activities back into one, as if you had paused instead of saving.
     No data is lost.</p>
-    <p class="private" data-i18n="private">Your files stay on this device: everything runs in your
-    browser and nothing is uploaded.</p>
+    <aside class="privacy">
+      <svg class="lock" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg>
+      <div>
+        <h2 data-i18n="privacy_h">Private: your files are never uploaded or stored</h2>
+        <p data-i18n="private">Your files stay on this device: everything runs in your browser and nothing is uploaded.</p>
+        <p class="more" data-i18n="privacy_more">There is no server that could receive them: fitstitch runs entirely in your browser, and once the page has loaded it even works offline. Nothing is stored either, except your language choice. The <a href="https://github.com/jmallach/fitstitch">source code</a> is open for anyone to check.</p>
+      </div>
+    </aside>
   </header>
 
   <section>
@@ -74,6 +80,7 @@
       <input id="files" type="file" multiple accept=".fit,.zip">
       <span data-i18n="drop">Drop the .fit or .zip files here, or <u>choose files</u></span>
     </label>
+    <p class="privacy-note"><svg class="lock small" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg> <span data-i18n="privacy_h">Private: your files are never uploaded or stored</span></p>
     <ul id="filelist"></ul>
     <div class="actions">
       <button id="stitch" disabled>Loading…</button>

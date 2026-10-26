@@ -5,6 +5,8 @@
     "tagline": "Fusionner deux fichiers FIT en une seule activité",
     "lede": "Vous avez arrêté et enregistré votre sortie par erreur en cours de route ? Réunissez les deux activités en une seule, comme si vous aviez fait une pause au lieu d’enregistrer. Aucune donnée n’est perdue.",
     "private": "Vos fichiers restent sur cet appareil : tout fonctionne dans votre navigateur et rien n’est envoyé.",
+    "privacy_h": "Confidentiel : vos fichiers ne sont jamais envoyés ni stockés",
+    "privacy_more": "Aucun serveur ne peut les recevoir : fitstitch fonctionne entièrement dans votre navigateur et, une fois la page chargée, même hors ligne. Rien n’est conservé non plus, à part la langue choisie. Le <a href=\"https://github.com/jmallach/fitstitch\">code source</a> est ouvert et vérifiable par tous.",
     "export_h": "1. Exportez les parties",
     "export_p": "Sur Garmin Connect, ouvrez chaque activité, puis ⚙ → <em>Exporter l’original</em> (vous obtenez un .zip). Sur Strava, ouvrez chaque activité, puis ⋯ → <em>Exporter l’original</em>. Les fichiers d’autres applications fonctionnent s’il s’agit de fichiers .fit.",
     "add_h": "2. Ajoutez-les ici",

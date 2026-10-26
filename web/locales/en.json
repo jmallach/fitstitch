@@ -1,10 +1,12 @@
 {
   "ui": {
-    "description": "Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free, no data lost, runs in your browser.",
+    "description": "Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with Garmin, Strava, Wahoo, Coros and more. Free and private: runs in your browser, files are never uploaded, no data lost.",
     "language": "Language",
     "tagline": "Join two FIT files into one activity",
     "lede": "Stopped and saved your run or ride halfway by accident? Join the two activities back into one, as if you had paused instead of saving. No data is lost.",
     "private": "Your files stay on this device: everything runs in your browser and nothing is uploaded.",
+    "privacy_h": "Private: your files are never uploaded or stored",
+    "privacy_more": "There is no server that could receive them: fitstitch runs entirely in your browser, and once the page has loaded it even works offline. Nothing is stored either, except your language choice. The <a href=\"https://github.com/jmallach/fitstitch\">source code</a> is open for anyone to check.",
     "export_h": "1. Export the parts",
     "export_p": "On Garmin Connect, open each activity, then ⚙ → <em>Export Original</em> (you get a .zip). On Strava, open each activity, then ⋯ → <em>Export Original</em>. Files from other apps work if they are .fit files.",
     "add_h": "2. Add them here",

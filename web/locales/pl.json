@@ -5,6 +5,8 @@
     "tagline": "Połącz dwa pliki FIT w jedną aktywność",
     "lede": "Bieg lub jazda na rowerze przypadkiem zatrzymane i zapisane w połowie? Połącz obie aktywności z powrotem w jedną, tak jakby zamiast zapisu była pauza. Nie tracisz żadnych danych.",
     "private": "Twoje pliki zostają na tym urządzeniu: wszystko działa w przeglądarce i nic nie jest wysyłane.",
+    "privacy_h": "Prywatnie: twoje pliki nigdy nie są nigdzie wysyłane ani przechowywane",
+    "privacy_more": "Nie ma serwera, który mógłby je odebrać: fitstitch działa w całości w przeglądarce, a po wczytaniu strony nawet bez internetu. Nic nie jest też zapisywane, poza wybranym językiem. <a href=\"https://github.com/jmallach/fitstitch\">Kod źródłowy</a> jest otwarty i każdy może go sprawdzić.",
     "export_h": "1. Wyeksportuj części",
     "export_p": "W Garmin Connect otwórz każdą aktywność, a następnie ⚙ → <em>Eksportuj oryginał</em> (otrzymasz plik .zip). W serwisie Strava otwórz każdą aktywność, a następnie ⋯ → <em>Eksportuj oryginał</em>. Pliki z innych aplikacji też zadziałają, jeśli są plikami .fit.",
     "add_h": "2. Dodaj je tutaj",

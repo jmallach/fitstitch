@@ -5,6 +5,8 @@
     "tagline": "Ajunta dus fichèrs FIT en ua soleta activitat",
     "lede": "As arturat e guardat era tua corsa o sortida en bici a mieg camin sense voler? Torna a ajuntar es dues activitats en ua, coma s'auesses hèt ua pausa en lòc de guardar-la. Non se pèrd cap donada.",
     "private": "Es tòns fichèrs se demoren en aguest dispositiu: tot fonciona en tòn navegador e non se puge arren.",
+    "privacy_h": "Privat: es tòns fichèrs jamès se pugen ni se guarden en nat lòc",
+    "privacy_more": "Non i a cap de servidor que les pogue recéber: fitstitch fonciona sancer en tòn navegador e, un còp cargada era pagina, enquia sense connexion. Tanpòc non se guarde arren, sauf era lengua que causisques. Eth <a href=\"https://github.com/jmallach/fitstitch\">còdi font</a> ei dubèrt e quinsevolh lo pòt revisar.",
     "export_h": "1. Exporta es parts",
     "export_p": "En Garmin Connect, daurís cada activitat e dempús ⚙ → <em>Exportar originau</em> («Exportar original»); auràs un .zip. En Strava, daurís cada activitat e dempús ⋯ → <em>Exportar originau</em> («Exportar original»). Es fichèrs d'autes aplicacions tanben foncionen se son fichèrs .fit.",
     "add_h": "2. Hica-les ací",

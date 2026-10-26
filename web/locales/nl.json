@@ -5,6 +5,8 @@
     "tagline": "Twee FIT-bestanden samenvoegen tot één activiteit",
     "lede": "Per ongeluk je training halverwege gestopt en opgeslagen? Voeg de twee activiteiten weer samen tot één, alsof je had gepauzeerd in plaats van opgeslagen. Er gaan geen gegevens verloren.",
     "private": "Je bestanden blijven op dit apparaat: alles draait in je browser en er wordt niets geüpload.",
+    "privacy_h": "Privé: je bestanden worden nooit geüpload of opgeslagen",
+    "privacy_more": "Er is geen server die ze kan ontvangen: fitstitch draait volledig in je browser en werkt, zodra de pagina geladen is, zelfs offline. Er wordt ook niets bewaard, behalve je taalkeuze. De <a href=\"https://github.com/jmallach/fitstitch\">broncode</a> is open en door iedereen te controleren.",
     "export_h": "1. Exporteer de delen",
     "export_p": "Open in Garmin Connect elke activiteit en kies ⚙ → <em>Origineel exporteren</em> (je krijgt een .zip). Open in Strava elke activiteit en kies ⋯ → <em>Origineel exporteren</em>. Bestanden uit andere apps werken als het .fit-bestanden zijn.",
     "add_h": "2. Voeg ze hier toe",

@@ -8,6 +8,8 @@
   --accent-fg: #ffffff;
   --ok: #1a7f37;
   --fail: #c62828;
+  --safe: #1a7f37;
+  --safe-bg: #e9f6ec;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -21,6 +23,8 @@
     --accent-fg: #0b1a2b;
     --ok: #4cc26a;
     --fail: #ff6b6b;
+    --safe: #4cc26a;
+    --safe-bg: #15271b;
   }
 }
 
@@ -38,7 +42,6 @@ h1 img { border-radius: 9px; flex: none; }
 h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
 a { color: var(--accent); }
 .lede { font-size: 1.1rem; margin: 0 0 .5rem; }
-.private { color: var(--muted); margin: 0; }
 header { margin-bottom: 1.5rem; }
 .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
 #lang {
@@ -50,6 +53,23 @@ header { margin-bottom: 1.5rem; }
   border-radius: 8px;
   padding: .3rem .5rem;
 }
+.privacy {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--safe-bg);
+  border: 1px solid var(--safe);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+.privacy h2 { color: var(--safe); margin-bottom: .25rem; }
+.privacy p { margin: 0; }
+.privacy .more { margin-top: .4rem; font-size: .9rem; color: var(--muted); }
+.lock { width: 2rem; height: 2rem; flex: none; color: var(--safe); }
+.lock.small { width: 1em; height: 1em; vertical-align: -.12em; }
+.privacy-note { margin: .6rem 0 0; font-size: .9rem; font-weight: 600; color: var(--safe); }
+
 section {
   background: var(--card);
   border: 1px solid var(--border);
@@ -116,4 +136,6 @@ td:last-child, tr:first-child th:last-child { font-weight: 700; }
   section { padding: 1rem; }
   table { font-size: .85rem; }
   th, td { padding: .3rem .25rem; white-space: normal; }
+  .privacy { gap: .6rem; padding: .9rem 1rem; }
+  .lock { width: 1.4rem; height: 1.4rem; }
 }

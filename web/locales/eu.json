@@ -5,6 +5,8 @@
     "tagline": "Batu bi FIT fitxategi jarduera bakar batean",
     "lede": "Nahi gabe gelditu eta gorde duzu lasterketa edo bizikleta-irteera erdibidean? Batu berriro bi jarduerak bakar batean, gorde beharrean pausatu izan bazenu bezala. Ez da daturik galtzen.",
     "private": "Zure fitxategiak gailu honetan geratzen dira: dena zure nabigatzailean exekutatzen da eta ez da ezer igotzen.",
+    "privacy_h": "Pribatua: zure fitxategiak ez dira inoiz igotzen, ezta inon gordetzen ere",
+    "privacy_more": "Ez dago fitxategiak jaso ditzakeen zerbitzaririk: fitstitch osorik zure nabigatzailean exekutatzen da, eta orria kargatu ondoren konexiorik gabe ere badabil. Ez da ezer gordetzen, aukeratutako hizkuntza izan ezik. <a href=\"https://github.com/jmallach/fitstitch\">Iturburu-kodea</a> irekia da, edonork egiazta dezan.",
     "export_h": "1. Esportatu zatiak",
     "export_p": "Garmin Connect-en, ireki jarduera bakoitza eta gero ⚙ → <em>Esportatu jatorrizkoa</em> (.zip bat lortuko duzu). Strava-n, ireki jarduera bakoitza eta gero ⋯ → <em>Esportatu jatorrizkoa</em>. Beste aplikazio batzuetako fitxategiek ere balio dute, .fit fitxategiak badira.",
     "add_h": "2. Gehitu hemen",

@@ -5,6 +5,8 @@
     "tagline": "Une dous ficheiros FIT nunha soa actividade",
     "lede": "Detiveches e gardaches a túa carreira ou saída en bici á metade sen querer? Volve unir as dúas actividades nunha, coma se fixeses unha pausa en vez de gardar. Non se perde ningún dato.",
     "private": "Os teus ficheiros non saen deste dispositivo: todo funciona no navegador e non se envía nada.",
+    "privacy_h": "Privado: os teus ficheiros nunca se envían nin se gardan en ningures",
+    "privacy_more": "Non hai ningún servidor que os poida recibir: fitstitch funciona por completo no navegador e, unha vez cargada a páxina, mesmo sen conexión. Tampouco se garda nada, agás o idioma que escollas. O <a href=\"https://github.com/jmallach/fitstitch\">código fonte</a> é aberto e calquera pode revisalo.",
     "export_h": "1. Exporta as partes",
     "export_p": "En Garmin Connect, abre cada actividade e logo ⚙ → <em>Exportar orixinal</em> (obterás un .zip). En Strava, abre cada actividade e logo ⋯ → <em>Exportar orixinal</em>. Os ficheiros doutras aplicacións tamén serven se son ficheiros .fit.",
     "add_h": "2. Engádeas aquí",
