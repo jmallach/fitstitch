@@ -8,6 +8,7 @@ loaded from elsewhere is the Pyodide runtime itself.
 Serve the result with e.g. `python -m http.server -d _site`.
 """
 import argparse
+import hashlib
 import json
 import shutil
 import subprocess
@@ -50,8 +51,9 @@ def build(out):
         shutil.copy(ROOT / 'docs' / name, out / name)
     langs = ['en'] + sorted(p.stem for p in (out / 'locales').glob('*.json') if p.stem != 'en')
     page = out / 'index.html'
-    page.write_text(page.read_text().replace('<!-- alternates -->', '\n'.join(
-        f'<link rel="alternate" hreflang="{h}" href="{u}">' for h, u in _alternates(langs))))
+    html = page.read_text().replace('<!-- alternates -->', '\n'.join(
+        f'<link rel="alternate" hreflang="{h}" href="{u}">' for h, u in _alternates(langs)))
+    page.write_text(html)
     (out / 'sitemap.xml').write_text(_sitemap(langs))
     pip = [sys.executable, '-m', 'pip', '-q', '--disable-pip-version-check']
     subprocess.run(pip + ['wheel', '--no-deps', '-w', str(wheels), str(ROOT)], check=True)
@@ -59,6 +61,17 @@ def build(out):
                           'garmin-fit-sdk'], check=True)
     names = sorted(p.name for p in wheels.glob('*.whl'))
     (out / 'wheels.json').write_text(json.dumps(names) + '\n')
+    # GitHub Pages lets browsers cache files for 10 minutes. Version
+    # everything the page loads with a hash of the build, so a deploy never
+    # mixes a new page with an old stylesheet, script or translation.
+    digest = hashlib.sha256()
+    for f in sorted(p for p in out.rglob('*') if p.is_file() and p.name != 'index.html'):
+        digest.update(f.relative_to(out).as_posix().encode() + b'\0' + f.read_bytes())
+    version = digest.hexdigest()[:10]
+    html = page.read_text()
+    for name in ('style.css', 'app.js'):
+        html = html.replace(f'"{name}"', f'"{name}?v={version}"')
+    page.write_text(html)
     return out
 
 

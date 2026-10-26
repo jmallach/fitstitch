@@ -1,6 +1,9 @@
 'use strict';
 
 const $ = (id) => document.getElementById(id);
+// The build appends ?v=<build hash> to this script; reuse it for everything
+// else the page fetches, so cached copies from an older deploy are not used.
+const VERSION = new URL(document.currentScript.src).search;
 let files = [];
 let run = null;
 let downloadUrl = null;
@@ -81,7 +84,7 @@ function tm(message) {
 }
 
 async function loadLocale(lang) {
-  const res = await fetch(`locales/${lang}.json`);
+  const res = await fetch(`locales/${lang}.json${VERSION}`);
   if (!res.ok) throw new Error(`locales/${lang}.json: ${res.status}`);
   return res.json();
 }
@@ -139,10 +142,10 @@ async function init() {
   try {
     const pyodide = await loadPyodide();
     await pyodide.loadPackage('micropip');
-    const wheels = await (await fetch('wheels.json')).json();
+    const wheels = await (await fetch(`wheels.json${VERSION}`)).json();
     const base = new URL('wheels/', location.href);
     await pyodide.pyimport('micropip').install(wheels.map((w) => new URL(w, base).href));
-    pyodide.runPython(await (await fetch('app.py')).text());
+    pyodide.runPython(await (await fetch(`app.py${VERSION}`)).text());
     const py = pyodide.globals;
     run = (paths, force) => JSON.parse(py.get('run')(pyodide.toPy(paths), force));
     $('version').textContent = py.get('version')();
