@@ -20,6 +20,13 @@ Pause between part 1 and 2: 0:00:39
   ...
 ```
 
+## Use it in your browser
+
+**<https://jmallach.github.io/fitstitch/>** runs the same code in your
+browser, with nothing to install, on phones too. Your files are not
+uploaded: the page runs fitstitch locally with
+[Pyodide](https://pyodide.org) (Python compiled to WebAssembly).
+
 ## Install
 
 ```
@@ -48,8 +55,9 @@ fit-stitch PART1 PART2 [PART3...] [-o OUTPUT] [-n] [-f] [--overwrite]
 
 ### Replacing the activity on Garmin Connect and Strava
 
-1. Export each part from Garmin Connect (activity → ⚙ → *Export Original*).
-2. Run `fit-stitch`.
+1. Export each part from Garmin Connect (activity → ⚙ → *Export Original*)
+   or Strava (activity → ⋯ → *Export Original*).
+2. Run `fit-stitch`, or use the web page.
 3. **Delete the original parts** on Garmin Connect and on Strava. Both
    reject an upload with the same start time as an existing activity as a
    duplicate. Kudos, comments, photos, titles and gear on the parts are lost.
@@ -142,6 +150,14 @@ Every stitched file in the tests is also checked by independent decoders:
 The tool's own output checks include the same summary rules as Garmin's
 validator, with the same tolerances: laps must be contiguous, and lap
 elapsed and timer times must add up to the session's.
+
+The web frontend lives in `web/`. `tools/build_web.py` bundles it with
+wheels of fitstitch and garmin-fit-sdk into `_site/` (serve it with
+`python -m http.server -d _site`), and GitHub Pages publishes it on every
+push to `main`. `tests/test_web.py` drives the page in headless Chromium
+and checks that it produces the same file as the Python API; it needs
+`pip install playwright && playwright install chromium` and is skipped
+otherwise.
 
 `fit-split FILE 0.5` cuts an activity into parts as if it had been stopped
 and restarted. It is meant for testing.
