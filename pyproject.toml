@@ -24,6 +24,7 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/jmallach/fitstitch"
+"Web app" = "https://jmallach.github.io/fitstitch/"
 Issues = "https://github.com/jmallach/fitstitch/issues"
 
 [project.optional-dependencies]
