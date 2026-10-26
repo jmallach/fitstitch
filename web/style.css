@@ -37,7 +37,7 @@ body {
 }
 main { max-width: 52rem; margin: 0 auto; padding: 2rem 16px 3rem; }
 h1 { margin: 0; font-size: 2rem; letter-spacing: -.02em; display: flex; align-items: center; gap: .6rem; }
-h1 img { border-radius: 9px; flex: none; }
+h1 .mark { width: 2.6rem; height: 2.4rem; flex: none; }
 .tagline { margin: 0 0 .75rem; color: var(--muted); font-weight: 600; }
 h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
 a { color: var(--accent); }
