@@ -91,25 +91,25 @@ class Msg:
         return None
 
     def name_of(self, num):
-        if num == TIMESTAMP:
-            return 'timestamp'
-        if num == MESSAGE_INDEX:
-            return 'message_index'
+        # the profile first: the set message has its timestamp in field 254,
+        # the number every other message uses for message_index
         fi = self.finfo(num)
-        return fi['name'] if fi else num
+        if fi:
+            return fi['name']
+        return {TIMESTAMP: 'timestamp', MESSAGE_INDEX: 'message_index'}.get(num, num)
 
     def num_of(self, name):
         if isinstance(name, int):
             return name
-        if name == 'timestamp':
-            return TIMESTAMP
-        if name == 'message_index':
-            return MESSAGE_INDEX
         p = self.pdef
         if p:
             for n, fi in p['fields'].items():
                 if fi['name'] == name:
                     return n
+        if name == 'timestamp':
+            return TIMESTAMP
+        if name == 'message_index':
+            return MESSAGE_INDEX
         raise KeyError(name)
 
     def _field(self, num):
@@ -128,7 +128,7 @@ class Msg:
 
     def _scale(self, num):
         fi = self.finfo(num)
-        if not fi or num in (TIMESTAMP, MESSAGE_INDEX):
+        if not fi or fi['name'] in ('timestamp', 'message_index'):
             return 1, 0
         s = fi['scale'][0] if fi['scale'] and len(fi['scale']) == 1 else 1
         o = fi['offset'][0] if fi['offset'] and len(fi['offset']) == 1 else 0
