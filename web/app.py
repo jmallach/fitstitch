@@ -78,9 +78,12 @@ def prepare(path):
     if act.end - prev >= 1:
         pauses.append([prev - act.start, act.end - act.start])
     start, end = trimming.suggest(act)
+    # series with nothing to show (no movement, no heart rate) are left out
+    flat = lambda s: None if not any(x for x in s) else s
+    moved = flat(v)
     return json.dumps({
         'duration': act.end - act.start,
-        't': t, 'speed': v, 'hr': hr, 'distance': dist,
+        't': t, 'speed': moved, 'hr': flat(hr), 'distance': dist if moved else None,
         'track': track if any(track) else None,
         'pauses': pauses,
         'suggest': [None if start is None else start - act.start, None if end is None else end - act.start],

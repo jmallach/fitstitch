@@ -371,6 +371,8 @@ function openTrim(path) {
   Object.assign(trimState, { path, data, start: data.suggest[0] ?? 0, end: data.suggest[1] ?? data.duration });
   $('trim').hidden = false;
   $('track-box').hidden = !data.track;
+  $('legend-speed').hidden = !data.speed;
+  $('legend-hr').hidden = !data.hr;
   trimHint();
   drawTrim();
   $('trim').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -407,9 +409,9 @@ function drawTrim() {
   if (!data) return;
   $('t-start').value = dur(start);
   $('t-end').value = dur(end);
-  const d0 = valueAt(data.distance, start);
-  const d1 = valueAt(data.distance, end);
-  $('keep').textContent = d1 !== null
+  const d0 = data.distance && valueAt(data.distance, start);
+  const d1 = data.distance && valueAt(data.distance, end);
+  $('keep').textContent = d1 != null
     ? t('keep', dur(end - start), ((d1 - (d0 || 0)) / 1000).toFixed(2))
     : t('keep_time', dur(end - start));
   // nothing to do until a handle has moved
@@ -427,6 +429,7 @@ function drawChart() {
   ctx.fillStyle = css('--border');
   for (const [a, b] of data.pauses) ctx.fillRect(x(a), 0, Math.max(1, x(b) - x(a)), h);
   const line = (series, color) => {
+    if (!series) return;
     const vals = series.filter((v) => v !== null);
     if (!vals.length) return;
     const sorted = [...vals].sort((a, b) => a - b);

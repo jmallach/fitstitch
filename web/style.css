@@ -143,10 +143,10 @@ td:last-child, tr:first-child th:last-child { font-weight: 700; }
 .chart, .track { display: block; width: 100%; border: 1px solid var(--border); border-radius: 8px; touch-action: none; }
 .chart { height: 200px; margin-top: .75rem; cursor: ew-resize; }
 .track { height: 320px; margin-top: .75rem; }
-.legend { margin: .4rem 0 0; font-size: .85rem; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: .2rem 1rem; margin: .4rem 0 0; font-size: .85rem; color: var(--muted); }
 .swatch { display: inline-block; width: 1.2em; height: .25em; vertical-align: .2em; border-radius: 2px; }
 .swatch.speed { background: var(--accent); }
-.swatch.hr { background: var(--hr); margin-inline-start: 1rem; }
+.swatch.hr { background: var(--hr); }
 .bounds { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; margin-top: .75rem; }
 .bounds input { font: inherit; font-variant-numeric: tabular-nums; width: 6.5em; padding: .25rem .4rem;
   color: var(--fg); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; }

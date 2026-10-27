@@ -211,6 +211,16 @@ def test_trim_drag_and_type(page, tmp_path):
     assert page.text_content('#keep').startswith('Keeping 0:0')
 
 
+def test_trim_without_movement(page, tmp_path):
+    from test_trim import with_tail
+    act = with_tail(n=600, tail=0, speed=0.0)  # e.g. strength training: distance stays 0
+    add(page, [write(tmp_path, 'gym.fit', act.msgs)])
+    page.click('#stitch')
+    page.wait_for_selector('#trim:not([hidden])')
+    assert not page.is_visible('#legend-speed') and page.is_visible('#legend-hr')
+    assert page.text_content('#keep') == 'Keeping 0:09:59'
+
+
 def test_trim_stitched_result(page, tmp_path):
     paths = [write(tmp_path, 'a.fit', make_activity(T0)), write(tmp_path, 'b.fit', make_activity(T0 + 100))]
     add(page, paths)
