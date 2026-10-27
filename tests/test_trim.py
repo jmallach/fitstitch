@@ -3,8 +3,9 @@ from pathlib import Path
 import pytest
 
 from fitstitch import fitraw
+from fitstitch.fitraw import Msg
 from fitstitch.cli import main_trim
-from fitstitch.merge import Activity, load, StitchError
+from fitstitch.merge import Activity, load, StitchError, SET, stitch
 from fitstitch.summary import resummarise, recompute_zones, timer_intervals
 from fitstitch.trim import trim, suggest, point, TrimError
 from fitstitch.verify import verify_trim
@@ -114,6 +115,43 @@ def test_trim_keeps_developer_fields():
     out, _ = checked(act, end=T0 + 200)
     assert all(r.devfields for r in out.of(20))
     assert [m.gnum for m in out.msgs].count(206) == 1
+
+
+def strength(n=600, sets=((0, 120, 1), (120, 60, 0), (180, 120, 1), (300, 300, 0))):
+    """A strength activity: (start offset, duration, set_type) sets, the last
+    one the rest the watch kept timing after the workout."""
+    msgs = make_activity(T0, n=n)
+    for k, (off, length, kind) in enumerate(sets):
+        msgs.insert(1 + k, Msg.build(SET, timestamp=T0 + off, start_time=T0 + off, duration=length,
+                                     set_type=kind, repetitions=10 if kind else None, message_index=k))
+    return activity([m for m in msgs])
+
+
+def test_trim_cuts_strength_sets():
+    act = strength()
+    out, data = checked(act, start=T0 + 150, end=T0 + 400)
+    sets = [(m.raw('start_time') - T0, m.get('duration'), m.get('set_type'), m.raw('message_index'))
+            for m in out.of(SET)]
+    # the first set is gone, the rest after it starts late, the last rest ends at the cut
+    assert sets == [(150, 30, 0, 0), (180, 120, 1, 1), (300, 100, 0, 2)]
+    assert [m.raw('timestamp') - T0 for m in out.of(SET)] == [150, 180, 300]
+    assert_fitdecode_agrees(data)
+
+
+def test_set_timestamp_is_field_254():
+    m = Msg.build(SET, timestamp=T0, message_index=3)
+    assert {f[0] for f in m.fields} == {254, 10}
+    assert m.raw('timestamp') == T0 and m.raw('message_index') == 3
+
+
+def test_stitch_numbers_sets_on():
+    a, b = strength(n=300, sets=((0, 100, 1), (100, 200, 0))), strength(n=300, sets=((0, 300, 1),))
+    for m in b.msgs:
+        for name in ('timestamp', 'start_time', 'time_created'):
+            if m.raw(name) is not None:
+                m.set_raw(name, m.raw(name) + 400)
+    merged, _, _ = stitch([a, b])
+    assert [m.raw('message_index') for m in merged.of(SET)] == [0, 1, 2]
 
 
 def test_nothing_left():

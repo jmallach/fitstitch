@@ -10,7 +10,7 @@ compute are kept as they were and reported.
 """
 from .fitraw import Msg
 from .merge import (Activity, StitchError, utc_offset, FILE_ID, EVENT, RECORD, LAP, SESSION, ACTIVITY,
-                    DEVELOPER_DATA_ID, FIELD_DESCRIPTION,
+                    DEVELOPER_DATA_ID, FIELD_DESCRIPTION, SET,
                     TIME_IN_ZONE, SPLIT, SPLIT_SUMMARY, GARMIN_METRICS, GARMIN_BEST_EFFORT,
                     EVENT_TIMER, EVENT_START, EVENT_STOP_ALL)
 from . import fitraw
@@ -194,6 +194,29 @@ def trim(act, start=None, end=None):
             new.set('num_splits', len(mine))
         summaries.append(new)
 
+    # strength sets (and the rests between them): kept, cut or dropped like
+    # laps, and renumbered
+    sets = {}
+    for m in act.of(SET):
+        start, duration = m.raw('start_time'), m.get('duration')
+        if start is None or duration is None:
+            sets[id(m)] = m
+            continue
+        a, b = max(start, t0), min(start + duration, t1)
+        if start >= t1 or b <= a and duration > 0:
+            sets[id(m)] = None
+            continue
+        new = m.copy()
+        if (a, b) != (start, start + duration):
+            ts = new.raw('timestamp')
+            new.set_raw('start_time', round(a))
+            new.set('duration', b - a)
+            if ts is not None:
+                new.set_raw('timestamp', round(a) if ts <= start else round(b))
+        if new.has('message_index'):
+            new.set('message_index', sum(1 for v in sets.values() if v is not None))
+        sets[id(m)] = new
+
     if act.of(GARMIN_BEST_EFFORT):
         warnings.append('best efforts (fastest 1 km, 5 km...) were removed: they may have been set in '
                         'the trimmed part, and the app will work them out again')
@@ -233,6 +256,10 @@ def trim(act, start=None, end=None):
                 placed[m.gnum] = True
             continue
         if m.gnum == GARMIN_BEST_EFFORT:
+            continue
+        if m.gnum == SET:
+            if sets[id(m)] is not None:
+                out.append(sets[id(m)])
             continue
         if m.gnum in SUMMARY:  # other summaries (e.g. Garmin's metrics) stay as they are
             out.append(m)

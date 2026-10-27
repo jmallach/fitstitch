@@ -7,7 +7,7 @@ from . import fitraw
 from .fitraw import Msg, FitError
 
 FILE_ID, FILE_CREATOR, EVENT, RECORD, LAP, SESSION, ACTIVITY = 0, 49, 21, 20, 19, 18, 34
-LENGTH, HRV = 101, 78
+LENGTH, HRV, SET = 101, 78, 225
 DEVELOPER_DATA_ID, FIELD_DESCRIPTION = 207, 206
 TIME_IN_ZONE, SPLIT, SPLIT_SUMMARY = 216, 312, 313
 # Undocumented Garmin messages
@@ -507,11 +507,15 @@ def merge_two(a, b, warnings, force=False):
     offsets = _record_offsets(a)
     b_body = []
     a_setup = {m.gnum for m in a.msgs}
+    n_sets = len(a.of(SET))
     for m in b.msgs:
         if m.gnum in SUMMARY_TYPES:
             continue
         if m.gnum in SETUP_ONCE and m.gnum in a_setup:
             continue
+        if m.gnum == SET and m.has('message_index'):
+            m = m.copy()  # strength sets: numbered on from the first part's
+            m.set('message_index', n_sets + (m.raw('message_index') or 0))
         if m.gnum == RECORD and offsets:
             m = m.copy()
             for num, off in offsets.items():
