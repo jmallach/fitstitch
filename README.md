@@ -32,7 +32,9 @@ Pause between part 1 and 2: 0:00:39
 **<https://jmallach.github.io/fitstitch/>** runs the same code in your
 browser, with nothing to install, on phones too. Your files are not
 uploaded: the page runs fitstitch locally with
-[Pyodide](https://pyodide.org) (Python compiled to WebAssembly). It is
+[Pyodide](https://pyodide.org) (Python compiled to WebAssembly). Add
+two or more files to stitch them, or a single file to trim it on a
+chart of its speed and heart rate. It is
 available in 38 languages, from Arabic and Hindi to Catalan and
 Japanese; corrections are welcome (see
 [CONTRIBUTING.md](CONTRIBUTING.md#translations)).
