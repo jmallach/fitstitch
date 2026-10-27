@@ -9,6 +9,7 @@
   --ok: #1a7f37;
   --fail: #c62828;
   --warn: #9a6700;
+  --hr: #c2185b;
   --safe: #1a7f37;
   --safe-bg: #e9f6ec;
   color-scheme: light dark;
@@ -25,12 +26,14 @@
     --ok: #4cc26a;
     --fail: #ff6b6b;
     --warn: #e3b341;
+    --hr: #f06292;
     --safe: #4cc26a;
     --safe-bg: #15271b;
   }
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }  /* even for elements styled with a display */
 body {
   margin: 0;
   background: var(--bg);
@@ -136,6 +139,20 @@ td:last-child, tr:first-child th:last-child { font-weight: 700; }
 #warnings li { color: var(--warn); }
 #warnings li.fail { color: var(--fail); font-weight: 600; }
 #warnings li::before { content: "⚠ "; }
+
+.chart, .track { display: block; width: 100%; border: 1px solid var(--border); border-radius: 8px; touch-action: none; }
+.chart { height: 200px; margin-top: .75rem; cursor: ew-resize; }
+.track { height: 320px; margin-top: .75rem; }
+.legend { margin: .4rem 0 0; font-size: .85rem; color: var(--muted); }
+.swatch { display: inline-block; width: 1.2em; height: .25em; vertical-align: .2em; border-radius: 2px; }
+.swatch.speed { background: var(--accent); }
+.swatch.hr { background: var(--hr); margin-inline-start: 1rem; }
+.bounds { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; margin-top: .75rem; }
+.bounds input { font: inherit; font-variant-numeric: tabular-nums; width: 6.5em; padding: .25rem .4rem;
+  color: var(--fg); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; }
+#keep { color: var(--muted); }
+#track-box .force { display: block; margin-top: .5rem; }
+#trim-hint:empty { display: none; }
 
 @media (max-width: 600px) {
   main { padding-top: 1.25rem; }

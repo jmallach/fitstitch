@@ -161,3 +161,63 @@ def test_csp_blocks_other_hosts(page):
     assert blocked
     for e in blocked:
         page.csp_errors.remove(e)
+
+
+def test_trim_one_file(page, tmp_path):
+    from fitstitch.trim import trim, suggest
+    from test_trim import with_tail
+    act = with_tail(n=900, tail=300)  # stood still for the last 5 minutes
+    path = write(tmp_path, 'forgot.fit', act.msgs)
+    add(page, [path])
+    assert page.text_content('#stitch') == 'Trim'
+    page.click('#stitch')
+    page.wait_for_selector('#trim:not([hidden])')
+    assert 'remove the last 0:05:00' in page.text_content('#trim-hint')
+    assert page.input_value('#t-end') == '0:09:59'
+    with page.expect_download() as dl:
+        page.click('#do-trim')
+        page.wait_for_selector('#download:not([hidden])')
+        page.click('#download')
+    got = Path(dl.value.path()).read_bytes()
+    _, end = suggest(act)
+    expected, _ = trim(load(path), None, end)
+    assert got == fitraw.encode(expected.header, expected.msgs)
+    assert dl.value.suggested_filename.startswith('trimmed-')
+    assert page.locator('#checks li.fail').count() == 0
+    assert page.text_content('#notes') == 'Removed 0:05:00 from the end.'
+    assert page.is_hidden('#trim-result')
+
+
+def test_trim_drag_and_type(page, tmp_path):
+    from test_trim import with_tail
+    add(page, [write(tmp_path, 'run.fit', with_tail(n=600, tail=0).msgs)])
+    page.click('#stitch')
+    page.wait_for_selector('#trim:not([hidden])')
+    assert page.input_value('#t-end') == '0:09:59'
+    box = page.locator('#chart').bounding_box()
+    # drag the end handle to the middle of the chart
+    page.mouse.move(box['x'] + box['width'] - 7, box['y'] + box['height'] / 2)
+    page.mouse.down()
+    page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2, steps=5)
+    page.mouse.up()
+    end = page.input_value('#t-end')
+    assert '0:04:4' in end or '0:05:0' in end, end
+    page.fill('#t-start', '1:00')
+    page.press('#t-start', 'Enter')
+    assert page.input_value('#t-start') == '0:01:00'
+    assert page.text_content('#keep').startswith('Keeping 0:0')
+
+
+def test_trim_stitched_result(page, tmp_path):
+    paths = [write(tmp_path, 'a.fit', make_activity(T0)), write(tmp_path, 'b.fit', make_activity(T0 + 100))]
+    add(page, paths)
+    page.click('#stitch')
+    page.wait_for_selector('#trim-result:not([hidden])')
+    page.click('#trim-result')
+    page.wait_for_selector('#trim:not([hidden])')
+    page.fill('#t-end', '0:02:00')
+    page.press('#t-end', 'Enter')
+    page.click('#do-trim')
+    page.wait_for_selector('#download:not([hidden])')
+    assert page.text_content('#download').startswith('Download trimmed-')
+    assert page.locator('#checks li.fail').count() == 0

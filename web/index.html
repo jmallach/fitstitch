@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Only this site and the Pyodide CDN may be contacted: the browser itself
-     blocks any attempt to send data anywhere else. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; connect-src 'self' https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<!-- Only this site and the Pyodide CDN may be contacted, plus OpenStreetMap's
+     map images when someone asks for a map: the browser itself blocks any
+     attempt to send data anywhere else. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; connect-src 'self' https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; base-uri 'none'; form-action 'none'">
 <title>fitstitch – Join two FIT files into one activity</title>
-<meta name="description" content="Join, merge or combine two FIT files into one activity: fix a run or ride you accidentally stopped and saved halfway. Works with files from Garmin, Suunto, Wahoo, Coros and others; upload the result to Garmin Connect, Strava or any other sports app. Free and private: runs in your browser, files are never uploaded.">
-<meta name="keywords" content="join FIT files, merge FIT files, combine FIT files, stitch activities, accidentally stopped activity, FIT file merger, Garmin, Suunto, Wahoo, Coros, Garmin Connect, Strava">
+<meta name="description" content="Join, merge or combine two FIT files into one activity, or trim one you forgot to stop: fix a run or ride you accidentally stopped and saved halfway, or that kept recording after the finish. Works with files from Garmin, Suunto, Wahoo, Coros and others; upload the result to Garmin Connect, Strava or any other sports app. Free and private: runs in your browser, files are never uploaded.">
+<meta name="keywords" content="join FIT files, merge FIT files, combine FIT files, stitch activities, trim FIT file, cut activity, forgot to stop watch, accidentally stopped activity, FIT file merger, Garmin, Suunto, Wahoo, Coros, Garmin Connect, Strava">
 <meta name="google-site-verification" content="onb31Z5EYZlqBS5sE8n3xD6yryNcm8HQneMqn9leutQ">
 <meta name="msvalidate.01" content="00E7CFED34198C43F995B8781C14F63D">
 <link rel="canonical" href="https://jmallach.github.io/fitstitch/">
@@ -33,7 +34,7 @@
   "@type": "WebApplication",
   "name": "fitstitch",
   "url": "https://jmallach.github.io/fitstitch/",
-  "description": "Join, merge or combine two FIT activity files from any device (Garmin, Suunto, Wahoo, Coros…) into one, when an activity was accidentally stopped and saved halfway. No data is lost; the result uploads to Garmin Connect, Strava and other sports apps. Files are processed in the browser and never uploaded.",
+  "description": "Join, merge or combine two FIT activity files from any device (Garmin, Suunto, Wahoo, Coros…) into one, when an activity was accidentally stopped and saved halfway, or trim one that kept recording after the finish. No data is lost; the result uploads to Garmin Connect, Strava and other sports apps. Files are processed in the browser and never uploaded.",
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Any (web browser)",
   "browserRequirements": "Requires JavaScript and WebAssembly",
@@ -65,15 +66,13 @@
       </div>
       <select id="lang" aria-label="Language" data-i18n-label="language"></select>
     </div>
-    <p class="lede" data-i18n="lede">Stopped and saved your run or ride halfway by accident? Join the two
-    activities back into one, as if you had paused instead of saving.
-    No data is lost.</p>
+    <p class="lede" data-i18n="lede">Stopped and saved your run or ride halfway by accident, or forgot to stop the watch at the end? Join the two activities back into one, as if you had paused instead of saving, or trim off what you didn’t mean to record. No data is lost.</p>
     <aside class="privacy">
       <svg class="lock" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg>
       <div>
         <h2 data-i18n="privacy_h">Private: your files are never uploaded or stored</h2>
         <p data-i18n="private">Your files stay on this device: everything runs in your browser and nothing is uploaded.</p>
-        <p class="more" data-i18n="privacy_more">There is no server that could receive them: fitstitch runs entirely in your browser, and once the page has loaded it even works offline. Nothing is stored either, except your language choice. The <a href="https://github.com/jmallach/fitstitch">source code</a> is open for anyone to check.</p>
+        <p class="more" data-i18n="privacy_more">There is no server that could receive them: fitstitch runs entirely in your browser, and once the page has loaded it even works offline. Nothing is stored either, except your language choice. Only if you ask for a map does the page load map images from OpenStreetMap, whose servers then see roughly where the activity was. The <a href="https://github.com/jmallach/fitstitch">source code</a> is open for anyone to check.</p>
       </div>
     </aside>
   </header>
@@ -100,6 +99,25 @@
     <p id="status" role="status"></p>
   </section>
 
+  <section id="trim" hidden>
+    <h2 data-i18n="trim_h">Choose what to keep</h2>
+    <p id="trim-hint"></p>
+    <canvas id="chart" class="chart" aria-hidden="true"></canvas>
+    <p class="legend"><span class="swatch speed"></span> <span data-i18n="speed">Speed (km/h)</span>
+      <span class="swatch hr"></span> <span data-i18n="hr">Heart rate</span></p>
+    <div class="bounds">
+      <label><span data-i18n="trim_start">Start</span> <input id="t-start" inputmode="numeric" autocomplete="off" size="8"></label>
+      <label><span data-i18n="trim_end">End</span> <input id="t-end" inputmode="numeric" autocomplete="off" size="8"></label>
+      <span id="keep"></span>
+    </div>
+    <div id="track-box" hidden>
+      <canvas id="track" class="track" aria-hidden="true"></canvas>
+      <label class="force"><input id="map" type="checkbox"> <span data-i18n="map">Show a map</span></label>
+      <p id="map-credit" class="note" hidden>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</p>
+    </div>
+    <div class="actions"><button id="do-trim" data-i18n="trim">Trim</button></div>
+  </section>
+
   <section id="result" hidden>
     <h2 data-i18n="result_h">3. Check and download</h2>
     <p id="error" class="error" hidden></p>
@@ -108,7 +126,10 @@
       <p id="notes"></p>
       <ul id="checks"></ul>
       <ul id="warnings"></ul>
-      <a id="download" class="button" hidden>Download</a>
+      <div class="actions">
+        <a id="download" class="button" hidden>Download</a>
+        <button id="trim-result" class="secondary" hidden data-i18n="trim_stitched">Trim the stitched activity</button>
+      </div>
     </div>
   </section>
 
