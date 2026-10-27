@@ -170,6 +170,7 @@ def test_trim_one_file(page, tmp_path):
     path = write(tmp_path, 'forgot.fit', act.msgs)
     add(page, [path])
     assert page.text_content('#stitch') == 'Trim'
+    assert not page.is_visible('#force')  # nothing to force when trimming
     page.click('#stitch')
     page.wait_for_selector('#trim:not([hidden])')
     assert 'remove the last 0:05:00' in page.text_content('#trim-hint')

@@ -210,6 +210,8 @@ function update() {
     return li;
   }));
   $('clear').hidden = files.length === 0;
+  // only stitching has anything to force
+  $('force').parentElement.hidden = files.length === 1;
   const btn = $('stitch');
   if (state !== 'ready') {
     btn.textContent = t(state);
