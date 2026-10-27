@@ -63,6 +63,8 @@ def verify(data, inputs):
     if s.get('total_elapsed_time') is not None:
         check(abs(s.get('total_elapsed_time') - exp_elapsed) < 1.5,
               f'session elapsed time spans first start to last end ({exp_elapsed:.0f} s)')
+    if not any(_undeclared_dev_fields(a) for a in inputs):
+        check(not _undeclared_dev_fields(out), 'every developer field used is declared')
     nl = sum(len(a.of(LAP)) for a in inputs)
     if nl or out.of(LAP):
         check(len(out.of(LAP)) == nl and (s.raw('num_laps') in (None, nl)), f'all {nl} laps present')
@@ -77,6 +79,14 @@ def verify(data, inputs):
         if all(rule(a) for a in inputs):
             check(rule(out), desc)
     return checks
+
+
+def _undeclared_dev_fields(act):
+    """(developer data index, field number) pairs used without a field description."""
+    declared = {(m.raw('developer_data_index'), m.raw('field_definition_number'))
+                for m in act.of(FIELD_DESCRIPTION)}
+    used = {(idx, num) for m in act.msgs for num, idx, _ in m.devfields}
+    return used - declared
 
 
 def _lap_spans(act):
@@ -129,3 +139,66 @@ RULES = [
     (_activity_timer, 'activity timer time equals the session timer time'),
     (_records_within_session, 'records fall within the session time span'),
 ]
+
+
+def verify_trim(data, original):
+    """Checks of a trimmed file against the original activity. Returns a
+    list of (ok, description), as verify() does."""
+    from .trim import ACCUMULATED
+    checks = []
+
+    def check(ok, desc):
+        checks.append((bool(ok), desc))
+
+    try:
+        header, msgs, _ = fitraw.read_bytes(data)
+        out = Activity('output', header, msgs)
+        check(True, 'file structure and CRC are valid')
+    except Exception as e:  # noqa: BLE001
+        check(False, f'file cannot be re-read: {e}')
+        return checks
+    dec = Decoder(Stream.from_byte_array(bytearray(data)))
+    ok = dec.is_fit() and dec.check_integrity()
+    _, errors = Decoder(Stream.from_byte_array(bytearray(data))).read()
+    check(ok and not errors, 'Garmin FIT SDK decodes the file without errors'
+          + (f' ({errors})' if errors else ''))
+
+    s = out.session
+    t0 = s.raw('start_time')
+    t1 = t0 + (s.get('total_elapsed_time') or 0)
+    recs = out.of(RECORD)
+    # An end that was not trimmed keeps every record on its side (watches
+    # may write some past the session's own span); a trimmed one keeps
+    # those within the new session span (whose end is a record's time).
+    trimmed_start, trimmed_end = t0 > original.start, t1 < original.end - 1
+    expected = [r for r in original.of(RECORD)
+                if (not trimmed_start or r.raw('timestamp') >= t0)
+                and (not trimmed_end or r.raw('timestamp') < t1 + 1)]
+    same = [r.raw('timestamp') for r in recs] == [r.raw('timestamp') for r in expected]
+    check(same, f'the {len(expected)} records in the kept span are all there, and no others')
+    unchanged = same and all(
+        [f for f in a.fields if f[0] not in ACCUMULATED] == [f for f in b.fields if f[0] not in ACCUMULATED]
+        and a.devfields == b.devfields for a, b in zip(recs, expected))
+    check(unchanged, 'record values and developer fields are unchanged')
+    if not _undeclared_dev_fields(original):
+        check(not _undeclared_dev_fields(out), 'every developer field used is declared')
+    ts = [r.raw('timestamp') for r in recs]
+    check(all(y >= x for x, y in zip(ts, ts[1:])), 'record timestamps never go backwards')
+    dist = [r.get('distance') for r in recs if r.get('distance') is not None]
+    check(all(y >= x - 0.01 for x, y in zip(dist, dist[1:])), 'record distance never decreases')
+    if dist and s.get('total_distance') is not None:
+        check(abs(s.get('total_distance') - dist[-1]) <= max(1.0, dist[-1] * 0.005),
+              f'session total_distance = distance in the records ({s.get("total_distance"):g})')
+    if s.get('total_timer_time') is not None and s.get('total_elapsed_time') is not None:
+        check(s.get('total_timer_time') <= s.get('total_elapsed_time') + 1,
+              'timer time is not longer than elapsed time')
+    nl = len(out.of(LAP))
+    if nl:
+        idx = [l.raw('message_index') for l in out.of(LAP) if l.has('message_index')]
+        check(idx == list(range(len(idx))), 'lap indexes are sequential')
+        check(s.raw('num_laps') in (None, nl), f'session lap count matches the {nl} laps')
+    check(len(out.of(SESSION)) == 1, 'exactly one session')
+    for rule, desc in RULES:
+        if rule(original):
+            check(rule(out), desc)
+    return checks

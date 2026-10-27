@@ -4,6 +4,9 @@ Stitch FIT activities that were accidentally split (stopped and saved
 halfway) back into one, offline and without losing data. The result is the
 activity you would have had if you had pressed pause instead of saving.
 
+It also trims an activity you forgot to stop at the end (or started too
+early), as if the watch had been stopped at the right moment.
+
 It works with FIT files from any device (Garmin, Suunto, Wahoo, Coros…),
 and the stitched file uploads to Garmin Connect, Strava and other sports
 apps.
@@ -62,6 +65,28 @@ fit-stitch PART1 PART2 [PART3...] [-o OUTPUT] [-n] [-f] [--overwrite]
 - If the output fails any check, the tool writes nothing and exits with
   status 2.
 
+### Trimming
+
+```
+fit-trim FILE [--start WHEN] [--end WHEN] [--auto] [-o OUTPUT] [-n] [--overwrite]
+```
+
+- With no options, `fit-trim` only shows where it would suggest cutting:
+  stretches of at least three minutes at either end spent standing still or
+  moving at vehicle speed. `--auto` applies the suggestion.
+- `WHEN` is an elapsed time from the start (`1:02:30`, `45:00`, `90s`) or
+  a distance (`10.4km`, `850m`); with a leading `-` it counts back from the
+  end, so `--end -23:00` removes the last 23 minutes.
+- Records and events outside the kept part are removed. Laps, splits, time
+  in zone and the session summary are recomputed from the records that
+  remain: times, distance, averages and maximums, normalized power, work,
+  and ascent (scaled from the watch's own figures). Values only the watch
+  can compute, such as training effect, are kept and reported.
+- The output is checked as stitched files are, and nothing is written if a
+  check fails.
+- On the web page, drop a single file to trim it. A chart of speed and
+  heart rate shows where you stopped moving, with handles to drag.
+
 ### Replacing the original activities
 
 1. Export the original FIT file of each part from your sports app. On
@@ -69,7 +94,7 @@ fit-stitch PART1 PART2 [PART3...] [-o OUTPUT] [-n] [-f] [--overwrite]
    Strava website: activity → ⋯ → *Export Original*. Their phone apps
    can't export files; in a phone's browser, ask for the desktop site if
    it keeps opening the app.
-2. Run `fit-stitch`, or use the web page.
+2. Run `fit-stitch` (or `fit-trim`), or use the web page.
 3. **Delete the original parts** wherever they were uploaded. Garmin
    Connect, Strava and most other apps reject an activity with the same
    start time as an existing one as a duplicate. Kudos, comments, photos,

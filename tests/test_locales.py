@@ -103,3 +103,23 @@ def test_locale_complete(lang):
     # translations of templates must keep every placeholder of the template itself
     for template, text in loc['messages'].items():
         assert _placeholders(text) == _placeholders(template), template
+
+
+def test_trim_messages_translatable(tmp_path):
+    from fitstitch.trim import trim, TrimError
+    from fitstitch.verify import verify_trim
+    from fitstitch.merge import Activity
+    act = load(write(tmp_path, 'a.fit', make_activity(T0, n=300, laps=3)))
+    for start, end in ((None, T0 + 200), (T0 + 50, None)):
+        out, warnings = trim(act, start, end)
+        checks = verify_trim(fitraw.encode(out.header, out.msgs), act)
+        for _, desc in checks:
+            assert translatable(desc), desc
+        for w in warnings:
+            assert translatable(w), w
+    real = load(Path(__file__).parent / 'data' / 'suunto-ambit3-split' / 'part1.fit')
+    for w in trim(real, None, real.end - 100)[1]:
+        assert translatable(w), w
+    with pytest.raises(TrimError) as e:
+        trim(act, T0 + 200, T0 + 100)
+    assert translatable(str(e.value))

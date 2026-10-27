@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fitstitch"
 dynamic = ["version"]
-description = "Join accidentally split FIT activities back into one, losslessly, from any device (Garmin, Suunto, Wahoo, Coros...)"
+description = "Join accidentally split FIT activities back into one, or trim one you forgot to stop, losslessly, from any device (Garmin, Suunto, Wahoo, Coros...)"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -33,6 +33,7 @@ test = ["pytest", "fitdecode>=0.10"]
 [project.scripts]
 fit-stitch = "fitstitch.cli:main"
 fit-split = "fitstitch.split:main"
+fit-trim = "fitstitch.cli:main_trim"
 
 [tool.setuptools]
 packages = ["fitstitch"]

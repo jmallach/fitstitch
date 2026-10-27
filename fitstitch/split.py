@@ -10,7 +10,7 @@ metrics) are dropped from the parts.
 import argparse
 import sys
 
-from . import fitraw
+from . import fitraw, summary
 from .fitraw import Msg
 from .merge import (Activity, load, utc_offset, FILE_ID, EVENT, RECORD, LAP, SESSION, ACTIVITY,
                     TIME_IN_ZONE, SPLIT, SPLIT_SUMMARY, GARMIN_METRICS, GARMIN_BEST_EFFORT,
@@ -23,19 +23,7 @@ ACCUMULATED = [num for num, fi in fitraw.PROFILE['messages'][RECORD]['fields'].i
 
 def _timer_intervals(act):
     """[(start, stop)] intervals during which the timer ran."""
-    out, running = [], None
-    for e in act.of(EVENT):
-        if e.raw('event') != EVENT_TIMER:
-            continue
-        t, et = e.raw('timestamp'), e.raw('event_type')
-        if et == EVENT_START and running is None:
-            running = t
-        elif et in (1, EVENT_STOP_ALL) and running is not None:
-            out.append((running, t))
-            running = None
-    if running is not None:
-        out.append((running, act.end))
-    return out or [(act.start, act.end)]
+    return summary.timer_intervals(act.of(EVENT), act.start, act.end)
 
 
 def _overlap(intervals, a, b):

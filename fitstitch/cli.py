@@ -6,7 +6,8 @@ import sys
 
 from . import fitraw, __version__
 from .merge import load, stitch, StitchError, utc_offset
-from .verify import verify
+from .verify import verify, verify_trim
+from . import trim as trimming
 
 
 def _local(act, fit_ts):
@@ -47,8 +48,8 @@ def _k(v):
     return None if v is None else v / 1000
 
 
-def table(inputs, merged):
-    cols = [f'Part {i + 1}' for i in range(len(inputs))] + ['Stitched']
+def table(inputs, merged, cols=None):
+    cols = cols or [f'Part {i + 1}' for i in range(len(inputs))] + ['Stitched']
     data = [[fn(a) for a in inputs + [merged]] for _, fn in ROWS]
     w0 = max(len(r[0]) for r in ROWS)
     ws = [max(len(c), *(len(row[i]) for row in data)) for i, c in enumerate(cols)]
@@ -119,6 +120,92 @@ def main(argv=None):
     say('Before uploading, delete the original parts wherever they were uploaded: Garmin\n'
         'Connect, Strava and most other apps reject an activity with the same start time\n'
         'as an existing one as a duplicate.')
+    return 0
+
+
+
+def _offset(act, ts):
+    return _dur(ts - act.start)
+
+
+def main_trim(argv=None):
+    p = argparse.ArgumentParser(
+        prog='fit-trim',
+        description='Trim a FIT activity at the start and/or the end, as if the watch had been '
+                    'started later or stopped earlier (e.g. it kept recording after the finish). '
+                    'Without --start, --end or --auto, only shows where it would suggest cutting.')
+    p.add_argument('file', metavar='FILE', help='.fit file, or .zip file holding one')
+    p.add_argument('--start', metavar='WHEN',
+                   help='new start: elapsed time from the start (1:02:30, 45:00, 90s) or distance '
+                        '(10.4km, 850m); with a leading "-", counted back from the end')
+    p.add_argument('--end', metavar='WHEN', help='new end, in the same forms (e.g. -23:00 or -1.2km)')
+    p.add_argument('--auto', action='store_true',
+                   help='cut where fitstitch suggests, for the ends not given explicitly')
+    p.add_argument('-o', '--output', help='output .fit file (default: trimmed-<start time>.fit)')
+    p.add_argument('-n', '--dry-run', action='store_true', help='show the result without writing a file')
+    p.add_argument('--overwrite', action='store_true', help='overwrite the output file if it exists')
+    p.add_argument('-q', '--quiet', action='store_true', help='only print warnings and errors')
+    p.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
+    args = p.parse_args(argv)
+    say = (lambda *a: None) if args.quiet else print
+
+    try:
+        act = load(args.file)
+        start = trimming.point(act, args.start) if args.start else None
+        end = trimming.point(act, args.end) if args.end else None
+        s_start, s_end = trimming.suggest(act)
+        if not (args.start or args.end or args.auto):
+            if s_start is None and s_end is None:
+                say('Nothing to suggest: no stretch of standing still or vehicle speed at either end.\n'
+                    'Give --start and/or --end to trim anyway.')
+            for label, ts, opt in (('start', s_start, '--start'), ('end', s_end, '--end')):
+                if ts is not None:
+                    say(f'Suggested {label}: {_offset(act, ts)} into the activity '
+                        f'({_local(act, ts)}); {opt} {_offset(act, ts)} or --auto to apply.')
+            return 0
+        if args.auto:
+            start = start if args.start else s_start
+            end = end if args.end else s_end
+            if start is None and end is None:
+                say('Nothing to trim: no suggestion at either end.')
+                return 0
+        trimmed, warnings = trimming.trim(act, start, end)
+        data = fitraw.encode(trimmed.header, trimmed.msgs)
+    except (StitchError, fitraw.FitError, OSError) as e:
+        print(f'error: {e}', file=sys.stderr)
+        return 1
+
+    say(table([act], trimmed, cols=['Original', 'Trimmed']))
+    s = trimmed.session
+    cut_start = s.raw('start_time') - act.start
+    cut_end = act.end - (s.raw('start_time') + (s.get('total_elapsed_time') or 0))
+    if cut_start > 0.5:
+        say(f'Removed from the start: {_dur(cut_start)}')
+    if cut_end > 0.5:
+        say(f'Removed from the end: {_dur(cut_end)}')
+    say()
+    checks = verify_trim(data, act)
+    for ok, desc in checks:
+        if not ok or not args.quiet:
+            print(f"  [{'ok' if ok else 'FAIL'}] {desc}", file=sys.stdout if ok else sys.stderr)
+    for w in warnings:
+        print(f'warning: {w}', file=sys.stderr)
+    if not all(ok for ok, _ in checks):
+        print('error: verification failed; no file written', file=sys.stderr)
+        return 2
+    if args.dry_run:
+        say('\nDry run: nothing written.')
+        return 0
+    out = args.output or default_output([trimmed]).replace('stitched-', 'trimmed-')
+    if os.path.exists(out) and not args.overwrite:
+        print(f'error: {out} exists (use --overwrite)', file=sys.stderr)
+        return 1
+    with open(out, 'wb') as f:
+        f.write(data)
+    say(f'\nWrote {out}')
+    say('Before uploading, delete the original wherever it was uploaded: Garmin Connect,\n'
+        'Strava and most other apps reject an activity with the same start time as an\n'
+        'existing one as a duplicate.')
     return 0
 
 
