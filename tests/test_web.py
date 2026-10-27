@@ -195,6 +195,7 @@ def test_trim_drag_and_type(page, tmp_path):
     page.click('#stitch')
     page.wait_for_selector('#trim:not([hidden])')
     assert page.input_value('#t-end') == '0:09:59'
+    assert page.is_disabled('#do-trim')  # no suggestion: nothing to remove yet
     box = page.locator('#chart').bounding_box()
     # drag the end handle to the middle of the chart
     page.mouse.move(box['x'] + box['width'] - 7, box['y'] + box['height'] / 2)
@@ -203,6 +204,7 @@ def test_trim_drag_and_type(page, tmp_path):
     page.mouse.up()
     end = page.input_value('#t-end')
     assert '0:04:4' in end or '0:05:0' in end, end
+    assert page.is_enabled('#do-trim')
     page.fill('#t-start', '1:00')
     page.press('#t-start', 'Enter')
     assert page.input_value('#t-start') == '0:01:00'

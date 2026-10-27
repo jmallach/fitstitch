@@ -412,6 +412,8 @@ function drawTrim() {
   $('keep').textContent = d1 !== null
     ? t('keep', dur(end - start), ((d1 - (d0 || 0)) / 1000).toFixed(2))
     : t('keep_time', dur(end - start));
+  // nothing to do until a handle has moved
+  $('do-trim').disabled = !(start > 0.5 || end < data.duration - 0.5);
   drawChart();
   if (data.track) drawTrack();
 }
@@ -601,8 +603,8 @@ $('do-trim').addEventListener('click', async () => {
     show({ error: t('unexpected', e), translated: true });
     console.error(e);
   }
-  btn.disabled = false;
   btn.textContent = t('trim');
+  drawTrim();
 });
 $('trim-result').addEventListener('click', () => openTrim('/tmp/stitched.fit'));
 
