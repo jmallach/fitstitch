@@ -146,6 +146,12 @@ def main_trim(argv=None):
     p.add_argument('--overwrite', action='store_true', help='overwrite the output file if it exists')
     p.add_argument('-q', '--quiet', action='store_true', help='only print warnings and errors')
     p.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
+    # "--end -23:00": before Python 3.14 argparse takes a value starting with
+    # "-" for an option, so join it to its option ("--end=-23:00")
+    argv = list(sys.argv[1:] if argv is None else argv)
+    for i in range(len(argv) - 1, 0, -1):
+        if argv[i - 1] in ('--start', '--end') and argv[i].startswith('-'):
+            argv[i - 1:i + 1] = [f'{argv[i - 1]}={argv[i]}']
     args = p.parse_args(argv)
     say = (lambda *a: None) if args.quiet else print
 
